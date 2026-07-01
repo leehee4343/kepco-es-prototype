@@ -5,8 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>업무 분석 프로토타입</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
+/* LUCIDE ICON STYLES */
+.lucide {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.nv-num .lucide {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2px;
+  color: inherit;
+}
+.srch-ic .lucide {
+  width: 16px;
+  height: 16px;
+}
+.cp .lucide {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.2px;
+  margin-right: 3px;
+}
+.kpi .lucide {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.8px;
+  margin-bottom: 6px;
+}
+.kpi-icon-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
 :root {
   --bg:      #f5f7fa;
   --bg2:     #ffffff;
@@ -16,7 +53,7 @@
   --border2: #bcc3cc;
   --text:    #1a202c;
   --text2:   #4a5568;
-  --text3:   #8896a5;
+  --text3:   #5a6e85;
 
   --navy:     #1a3557;
 
@@ -45,7 +82,7 @@
   --red-dk:  #c0291a;
 
   --font: 'Noto Sans KR', sans-serif;
-  --mono: 'IBM Plex Mono', monospace;
+  --mono: 'Noto Sans KR', sans-serif;
 
   --sh1: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
   --sh2: 0 4px 12px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.05);
@@ -92,7 +129,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 /* SIDEBAR */
 .side{width:256px;min-width:256px;background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column;}
 .side-sec{padding:16px 12px 6px;}
-.side-lbl{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;padding:0 8px;margin-bottom:6px;}
+.side-lbl{font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;padding:0 8px;margin-bottom:6px;}
 .nv{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;cursor:pointer;transition:all .12s;border:1px solid transparent;margin-bottom:2px;}
 .nv:hover{background:var(--bg3);}
 .nv.on{background:var(--blue-lt);border-color:var(--blue-md);}
@@ -103,7 +140,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 .nv-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
 .side-div{height:1px;background:var(--border);margin:8px 12px;}
 .lgd{margin:0 12px 12px;padding:12px 14px;background:var(--bg3);border-radius:10px;border:1px solid var(--border);}
-.lgd-t{font-size:12px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.lgd-t{font-size:13px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
 .lgd-r{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--text2);margin-bottom:5px;}
 .lgd-d{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 
@@ -123,7 +160,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 
 /* FILTER */
 .fbar{padding:12px 40px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;background:var(--bg2);flex-wrap:wrap;position:sticky;top:56px;z-index:90;box-shadow:0 1px 0 var(--border);}
-.flbl{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-right:2px;}
+.flbl{font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-right:2px;}
 .fchip{padding:4px 12px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font);transition:all .15s;}
 .fchip:hover{background:var(--bg3);color:var(--text);}
 .fchip.on       {background:var(--blue-lt);border-color:var(--blue-md);color:var(--blue);}
@@ -240,7 +277,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 .term:last-child{border-bottom:none;}
 .term-k{flex-shrink:0;width:150px;}
 .term-kb{display:inline-block;background:var(--amber-lt);color:var(--amber);border:1px solid var(--amber-md);font-size:14px;font-weight:700;padding:3px 10px;border-radius:6px;}
-.term-d{flex:1;font-size:12.5px;color:var(--text2);line-height:1.6;}
+.term-d{flex:1;font-size:13px;color:var(--text2);line-height:1.6;}
 .term-d .en{color:var(--text3);font-size:13px;font-family:var(--mono);}
 .term.hide{display:none;}
 @media print{.hdr,.side,.fbar,.sct,.prog{display:none!important;}.lay{display:block;}.main{overflow:visible;}.cd{display:block!important;}.chv{display:none;}.ovl{display:none!important;}}
@@ -253,16 +290,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 .sec-sub{font-size:14px;color:var(--text3);margin:-6px 0 14px 33px;}
 .hf{display:flex;align-items:stretch;gap:0;margin:14px 0 22px;flex-wrap:wrap;}
 .hfs{flex:1;min-width:130px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;box-shadow:var(--sh1);}
-.hfs-n{font-family:var(--mono);font-size:12px;color:var(--blue);font-weight:700;margin-bottom:5px;letter-spacing:.04em;}
-.hfs-t{font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.35;}
+.hfs-n{font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:700;margin-bottom:5px;letter-spacing:.04em;}
+.hfs-t{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.35;}
 .hfs-d{font-size:13px;color:var(--text2);line-height:1.55;}
 .hfa{display:flex;align-items:center;justify-content:center;width:26px;color:var(--border2);font-size:17px;flex-shrink:0;}
 @media (max-width:1180px){.hf{flex-direction:column;}.hfa{width:100%;height:22px;transform:rotate(90deg);}.hfs{min-width:0;}}
 .brg{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 22px;}
 .brgc{flex:1;min-width:200px;border-radius:10px;padding:14px 16px;border:1px solid;box-shadow:var(--sh1);}
 .brgc-t{font-size:15px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
-.brgc-d{font-size:11.5px;line-height:1.6;}
-.fml{font-family:var(--mono);font-size:12.5px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-top:8px;color:var(--blue-dk);}
+.brgc-d{font-size:13px;line-height:1.6;}
+.fml{font-family:var(--mono);font-size:13px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-top:8px;color:var(--blue-dk);}
 .gc.static{cursor:default;}
 .gc.static:hover{transform:none;}
 .grphdr{font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin:18px 0 8px;}
@@ -272,26 +309,23 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 .kpi{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--sh1);border-top:3px solid var(--blue);}
 .kpi-l{font-size:13px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
 .kpi-v{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--text);}
-.kpi-s{font-size:11.5px;color:var(--text2);margin-top:4px;}
+.kpi-s{font-size:13px;color:var(--text2);margin-top:4px;}
 .kpi-v .u{font-size:15px;font-weight:500;color:var(--text3);margin-left:2px;}
 .bch{display:flex;flex-direction:column;gap:10px;margin:14px 0 22px;}
 .bcr{display:flex;align-items:center;gap:12px;}
 .bcr-l{width:108px;flex-shrink:0;font-size:14px;color:var(--text2);text-align:right;}
 .bcr-bar{flex:1;height:20px;background:var(--bg3);border-radius:6px;overflow:hidden;position:relative;}
-.bcr-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-family:var(--mono);font-weight:700;white-space:nowrap;}
-.bcr-v{width:90px;flex-shrink:0;font-family:var(--mono);font-size:11.5px;color:var(--text2);}
+.bcr-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:13px;font-family:var(--mono);font-weight:700;white-space:nowrap;}
+.bcr-v{width:90px;flex-shrink:0;font-family:var(--mono);font-size:13px;color:var(--text2);}
 .donut-wrap{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:14px 0 22px;}
 .donut{width:140px;height:140px;border-radius:50%;flex-shrink:0;}
 .donut-lgd{display:flex;flex-direction:column;gap:8px;}
-.donut-li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text2);}
+.donut-li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);}
 .donut-d{width:11px;height:11px;border-radius:3px;flex-shrink:0;}
 </style>
-</head>
-<body>
-
 <header class="hdr">
   <div class="hdr-l">
-    <img src="data:image/png;base64,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" alt="켑코이에스(주)" style="height:48px;width:auto;display:block;">
+    <img src="data:image/png;base64,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" alt="켑코이에스(주)" style="height:48px;width:auto;display:block;">
     <span class="hdr-title">업무 분석 프로토타입</span>
   </div>
   <div class="hdr-r">
@@ -316,80 +350,46 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
     <div class="side-sec">
       <div class="side-lbl">업무분석 프로토타입</div>
       <div class="nv" id="nvTerms" onclick="openTerms()">
-        <div class="nv-num" style="background:var(--navy);color:#fff;">📖</div>
+        <div class="nv-num" style="background:var(--navy);color:#fff;"><i data-lucide="book-open"></i></div>
         <div class="nv-lbl">용어의 정의</div>
         <div class="nv-dot" style="background:var(--navy)"></div>
       </div>
       <div class="nv on" id="nvProc" onclick="showPage('proc',this)">
-        <div class="nv-num" style="background:var(--blue-lt);color:var(--blue);">📋</div>
+        <div class="nv-num" style="background:var(--blue-lt);color:var(--blue);"><i data-lucide="clipboard-list"></i></div>
         <div class="nv-lbl">PMS 업무 프로세스</div>
         <div class="nv-dot" style="background:var(--blue)"></div>
       </div>
       <div class="nv" id="nvSrm" onclick="showPage('srm',this)">
-        <div class="nv-num" style="background:var(--green-lt);color:var(--green);">🔄</div>
+        <div class="nv-num" style="background:var(--green-lt);color:var(--green);"><i data-lucide="refresh-cw"></i></div>
         <div class="nv-lbl">SRM 업무 프로세스</div>
         <div class="nv-dot" style="background:var(--green)"></div>
       </div>
       <div class="nv" id="nvEbid" onclick="showPage('ebid',this)">
-        <div class="nv-num" style="background:var(--purple-lt);color:var(--purple);">🧾</div>
+        <div class="nv-num" style="background:var(--purple-lt);color:var(--purple);"><i data-lucide="receipt"></i></div>
         <div class="nv-lbl">전자입찰 상세프로세스</div>
         <div class="nv-dot" style="background:var(--purple)"></div>
       </div>
       <div class="nv" id="nvPartner" onclick="showPage('partner',this)">
-        <div class="nv-num" style="background:var(--amber-lt);color:var(--amber);">✅</div>
+        <div class="nv-num" style="background:var(--amber-lt);color:var(--amber);"><i data-lucide="user-check"></i></div>
         <div class="nv-lbl">협력업체 선정 세부기준</div>
         <div class="nv-dot" style="background:var(--amber)"></div>
       </div>
       <div class="nv" id="nvReg1" onclick="showPage('reg1',this)">
-        <div class="nv-num" style="background:var(--blue-lt);color:var(--blue-dk);">📜</div>
+        <div class="nv-num" style="background:var(--blue-lt);color:var(--blue-dk);"><i data-lucide="scroll"></i></div>
         <div class="nv-lbl">계약규정</div>
         <div class="nv-dot" style="background:var(--blue-dk)"></div>
       </div>
       <div class="nv" id="nvReg2" onclick="showPage('reg2',this)">
-        <div class="nv-num" style="background:var(--purple-lt);color:var(--purple);">🗂️</div>
+        <div class="nv-num" style="background:var(--purple-lt);color:var(--purple);"><i data-lucide="folder-open"></i></div>
         <div class="nv-lbl">계약업무 처리기준</div>
         <div class="nv-dot" style="background:var(--purple)"></div>
       </div>
+      <div class="nv" id="nvSecDoc" onclick="showPage('secdoc',this)">
+        <div class="nv-num" style="background:var(--red-lt);color:var(--red);"><i data-lucide="shield-alert"></i></div>
+        <div class="nv-lbl">문서보안SW 적용 비교</div>
+        <div class="nv-dot" style="background:var(--red)"></div>
+      </div>
       <div id="navList" style="display:none;"></div>
-    </div>
-    <div class="side-div"></div>
-    <div class="side-sec" style="padding-top:0;">
-      <div class="side-lbl">PMS 통계 자료 분석</div>
-      <div class="nv" id="nvStat1" onclick="showPage('stat1',this)">
-        <div class="nv-num" style="background:var(--blue-lt);color:var(--blue);">📊</div>
-        <div class="nv-lbl">종합현황</div>
-        <div class="nv-dot" style="background:var(--blue)"></div>
-      </div>
-      <div class="nv" id="nvStat2" onclick="showPage('stat2',this)">
-        <div class="nv-num" style="background:var(--blue-lt);color:var(--blue);">📈</div>
-        <div class="nv-lbl">연도별 추이</div>
-        <div class="nv-dot" style="background:var(--blue)"></div>
-      </div>
-      <div class="nv" id="nvStat3" onclick="showPage('stat3',this)">
-        <div class="nv-num" style="background:var(--green-lt);color:var(--green);">🏢</div>
-        <div class="nv-lbl">부서/분야별 현황</div>
-        <div class="nv-dot" style="background:var(--green)"></div>
-      </div>
-      <div class="nv" id="nvStat4" onclick="showPage('stat4',this)">
-        <div class="nv-num" style="background:var(--amber-lt);color:var(--amber);">🚦</div>
-        <div class="nv-lbl">진행/이상 현황</div>
-        <div class="nv-dot" style="background:var(--amber)"></div>
-      </div>
-      <div class="nv" id="nvStat5" onclick="showPage('stat5',this)">
-        <div class="nv-num" style="background:var(--green-lt);color:var(--green);">💵</div>
-        <div class="nv-lbl">상환·회수 현황</div>
-        <div class="nv-dot" style="background:var(--green)"></div>
-      </div>
-      <div class="nv" id="nvStat6" onclick="showPage('stat6',this)">
-        <div class="nv-num" style="background:var(--purple-lt);color:var(--purple);">📐</div>
-        <div class="nv-lbl">수익율 분석</div>
-        <div class="nv-dot" style="background:var(--purple)"></div>
-      </div>
-      <div class="nv" id="nvStat7" onclick="showPage('stat7',this)">
-        <div class="nv-num" style="background:var(--blue-lt);color:var(--blue);">🗓️</div>
-        <div class="nv-lbl">상환스케쥴 현황</div>
-        <div class="nv-dot" style="background:var(--blue)"></div>
-      </div>
     </div>
     <div class="side-div"></div>
     <div class="lgd">
@@ -401,9 +401,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
     </div>
     <div class="lgd">
       <div class="lgd-t">계약 유형</div>
-      <div class="lgd-r" style="font-size:12px;">🔷 시설대여계약 (3자 계약)</div>
-      <div class="lgd-r" style="font-size:12px;">🔶 장기할부판매계약 (2자)</div>
-      <div style="margin-top:5px;font-size:11px;color:var(--text3);line-height:1.5;">두 유형 모두 동일 절차 적용.<br>일부 단계에서 차이 발생.</div>
+      <div class="lgd-r" style="font-size:13px;">🔷 시설대여계약 (3자 계약)</div>
+      <div class="lgd-r" style="font-size:13px;">🔶 장기할부판매계약 (2자)</div>
+      <div style="margin-top:5px;font-size:13px;color:var(--text3);line-height:1.5;">두 유형 모두 동일 절차 적용.<br>일부 단계에서 차이 발생.</div>
     </div>
   </aside>
 
@@ -439,14 +439,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 
 <div class="page" id="srmPage">
   <div class="hero">
-    <div class="hero-id" style="color:var(--green);background:var(--green-lt);border-color:var(--green-md);">🔄 SRM (전자입찰시스템) &nbsp;·&nbsp; srm.kepcoes.co.kr</div>
+    <div class="hero-id" style="color:var(--green);background:var(--green-lt);border-color:var(--green-md);"><i data-lucide="refresh-cw" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> SRM (전자입찰시스템) &nbsp;·&nbsp; srm.kepcoes.co.kr</div>
     <div class="hero-h">SRM 업무 프로세스<br>전주기 흐름</div>
     <div class="hero-sub">견적요청부터 발주요청·입찰·평가심사를 거쳐 수주계약 체결 및 PMS 연계까지의 전체 흐름</div>
     <div class="hero-chips">
       <div class="hchip"><span class="hchip-dot" style="background:var(--green)"></span>전주기 6단계</div>
-      <div class="hchip">👥 4개 주체</div>
-      <div class="hchip">⚙️ 시스템 자동처리 포함</div>
-      <div class="hchip">🔗 PMS 양방향 연계</div>
+      <div class="hchip">4개 주체</div>
+      <div class="hchip">시스템 자동처리 포함</div>
+      <div class="hchip">PMS 양방향 연계</div>
     </div>
   </div>
 
@@ -458,11 +458,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
       <div class="hfa">▶</div>
       <div class="hfs" style="border-top:3px solid var(--blue);"><div class="hfs-n">STEP 2 · 사업담당자</div><div class="hfs-t">발주요청</div><div class="hfs-d">접수된 견적을 바탕으로 PMS 사업내용을 반영하여 SRM에 발주요청 작성</div></div>
       <div class="hfa">▶</div>
-      <div class="hfs" style="border-top:3px solid var(--purple);"><div class="hfs-n">STEP 3 · 시스템</div><div class="hfs-t">발주요청번호 자동부여</div><div class="hfs-d">⚙️ SRM이 발주요청을 접수하면 발주요청번호를 자동 생성·부여</div></div>
+      <div class="hfs" style="border-top:3px solid var(--purple);"><div class="hfs-n">STEP 3 · 시스템</div><div class="hfs-t">발주요청번호 자동부여</div><div class="hfs-d">SRM이 발주요청을 접수하면 발주요청번호를 자동 생성·부여</div></div>
       <div class="hfa">▶</div>
       <div class="hfs" style="border-top:3px solid var(--green);"><div class="hfs-n">STEP 4 · 계약담당자</div><div class="hfs-t">입찰계획·공고 등록</div><div class="hfs-d">계약방법(일반/지명/수의) 결정 후 입찰공고를 SRM에 등록, 입찰서류 게시</div></div>
       <div class="hfa">▶</div>
-      <div class="hfs" style="border-top:3px solid var(--amber);"><div class="hfs-n">STEP 5 · 협력업체/시스템</div><div class="hfs-t">입찰참가 · 평가·심사</div><div class="hfs-d">협력업체가 입찰서 제출, 마감 시 ⚙️ 자동마감되어 계약담당자가 사업수행능력평가·가격평가로 적격심사</div></div>
+      <div class="hfs" style="border-top:3px solid var(--amber);"><div class="hfs-n">STEP 5 · 협력업체/시스템</div><div class="hfs-t">입찰참가 · 평가·심사</div><div class="hfs-d">협력업체가 입찰서 제출, 마감 시 자동마감되어 계약담당자가 사업수행능력평가·가격평가로 적격심사</div></div>
       <div class="hfa">▶</div>
       <div class="hfs" style="border-top:3px solid var(--green);"><div class="hfs-n">STEP 6 · 계약담당자</div><div class="hfs-t">수주계약 체결</div><div class="hfs-d">낙찰자 확정 후 계약서 작성·체결, 계약정보를 PMS에 연계 등록</div></div>
     </div>
@@ -470,19 +470,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
     <div class="sec-t"><span class="n">2</span>주체별 역할</div>
     <div class="gv on">
       <div class="gc static" style="border-top:3px solid var(--blue);">
-        <div class="gc-t">👤 사업담당자 (EERS팀)</div>
+        <div class="gc-t"><i data-lucide="user" style="vertical-align:text-bottom; margin-right:4px;"></i>사업담당자 (EERS팀)</div>
         <div class="gc-d">견적요청, 발주요청 작성, PMS 사업정보 연동, 계약 후 사업관리 진행</div>
       </div>
       <div class="gc static" style="border-top:3px solid var(--green);">
-        <div class="gc-t">👤 계약담당자 (경영지원팀)</div>
+        <div class="gc-t"><i data-lucide="user" style="vertical-align:text-bottom; margin-right:4px;"></i>계약담당자 (경영지원팀)</div>
         <div class="gc-d">계약방법 결정, 입찰공고·계약위원회 운영, 적격심사·낙찰자 결정, 계약체결</div>
       </div>
       <div class="gc static" style="border-top:3px solid var(--amber);">
-        <div class="gc-t">🏢 협력업체</div>
+        <div class="gc-t"><i data-lucide="building" style="vertical-align:text-bottom; margin-right:4px;"></i>협력업체</div>
         <div class="gc-d">SRM 등록, 견적서·입찰서 제출, 사업수행능력평가 자료 제출</div>
       </div>
       <div class="gc static" style="border-top:3px solid var(--purple);">
-        <div class="gc-t">⚙️ 시스템 (SRM/PMS)</div>
+        <div class="gc-t"><i data-lucide="cpu" style="vertical-align:text-bottom; margin-right:4px;"></i>시스템 (SRM/PMS)</div>
         <div class="gc-d">발주요청번호 자동부여, 입찰마감 자동처리, PMS↔SRM 데이터 연계</div>
       </div>
     </div>
@@ -495,7 +495,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
       </div>
       <div class="brgc" style="background:var(--green-lt);border-color:var(--green-md);">
         <div class="brgc-t" style="color:var(--green);">SRM → PMS</div>
-        <div class="brgc-d">SRM에서 체결된 계약정보(계약번호·계약금액·계약상대자)가 PMS 계약대장에 자동 반영되어 계약관리에 활용</div>
+        <div class="brgc-d">SRM에서 체결된 계약정보(계약번호·계약금액·계약상대자)가 PMS 계약대장을 자동 반영하여 계약관리에 활용</div>
       </div>
     </div>
   </div>
@@ -503,14 +503,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 
 <div class="page" id="ebidPage">
   <div class="hero">
-    <div class="hero-id" style="color:var(--purple);background:var(--purple-lt);border-color:var(--purple-md);">🧾 전자입찰 유형별 상세프로세스 &nbsp;·&nbsp; SRM 입찰 흐름도</div>
+    <div class="hero-id" style="color:var(--purple);background:var(--purple-lt);border-color:var(--purple-md);"><i data-lucide="receipt" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> 전자입찰 유형별 상세프로세스 &nbsp;·&nbsp; SRM 입찰 흐름도</div>
     <div class="hero-h">전자입찰 유형별<br>상세 프로세스</div>
     <div class="hero-sub">최저가입찰, 제한적최저가입찰, 2단계 경쟁입찰, 심사흐름도별 SRM 처리 단계와 역할 구분</div>
     <div class="hero-chips">
       <div class="hchip"><span class="hchip-dot" style="background:var(--purple)"></span>PDF 4개 흐름 반영</div>
-      <div class="hchip">🏢 공사·구매계약팀</div>
-      <div class="hchip">🤝 파트너사</div>
-      <div class="hchip">📌 사업부 발주요청 연계</div>
+      <div class="hchip">공사·구매계약팀</div>
+      <div class="hchip">파트너사</div>
+      <div class="hchip">사업부 발주요청 연계</div>
     </div>
   </div>
 
@@ -612,14 +612,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 
 <div class="page" id="partnerPage">
   <div class="hero">
-    <div class="hero-id" style="color:var(--amber);background:var(--amber-lt);border-color:var(--amber-md);">✅ 협력업체 선정 세부기준 &nbsp;·&nbsp; 2022.07.29 3차개정 (별표8)</div>
+    <div class="hero-id" style="color:var(--amber);background:var(--amber-lt);border-color:var(--amber-md);"><i data-lucide="user-check" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> 협력업체 선정 세부기준 &nbsp;·&nbsp; 2022.07.29 3차개정 (별표8)</div>
     <div class="hero-h">협력업체 선정<br>세부기준</div>
     <div class="hero-sub">투명하고 공정한 절차를 통해 에너지효율화사업의 협력업체를 선정하기 위한 SRM 기반 선정 기준</div>
     <div class="hero-chips">
       <div class="hchip"><span class="hchip-dot" style="background:var(--amber)"></span>선정절차 7단계</div>
-      <div class="hchip">📐 입찰방식 4종</div>
-      <div class="hchip">📊 사업수행능력평가 80점</div>
-      <div class="hchip">🛡️ 안전보건수준평가 A/B/C</div>
+      <div class="hchip">입찰방식 4종</div>
+      <div class="hchip">사업수행능력평가 80점</div>
+      <div class="hchip">안전보건수준평가 A/B/C</div>
     </div>
   </div>
 
@@ -728,7 +728,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
     </div>
     <div class="brg">
       <div class="brgc" style="background:var(--red-lt);border-color:var(--red-md);flex:none;width:100%;">
-        <div class="brgc-t" style="color:var(--red);">⏱ 제재 효과</div>
+        <div class="brgc-t" style="color:var(--red);">제재 효과</div>
         <div class="brgc-d">위 사유에 해당하는 협력업체는 입찰참가자격이 취소되며, <strong>2년간</strong> 당사 입찰·계약 참가가 제한된다.</div>
       </div>
     </div>
@@ -737,14 +737,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 
 <div class="page" id="regPage1">
   <div class="hero">
-    <div class="hero-id">📜 계약규정 &nbsp;·&nbsp; 2022.07.29 5차개정 &nbsp;·&nbsp; 총 143조 · 4개 장</div>
+    <div class="hero-id"><i data-lucide="scroll" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> 계약규정 &nbsp;·&nbsp; 2022.07.29 5차개정 &nbsp;·&nbsp; 총 143조 · 4개 장</div>
     <div class="hero-h">계약규정<br>핵심 절차 다이어그램</div>
     <div class="hero-sub">물품구매·공사·용역 계약의 방법, 절차, 검사, 대금지급에 관한 회사 규정 요약</div>
     <div class="hero-chips">
       <div class="hchip"><span class="hchip-dot"></span>2022.07.29 5차개정 반영</div>
-      <div class="hchip">📑 총 143조 + 별표1(청렴계약 이행각서)</div>
-      <div class="hchip">🏗️ 4개 장 구성</div>
-      <div class="hchip">🖥️ 전자입찰시스템(SRM) 원칙</div>
+      <div class="hchip">총 143조 + 별표1(청렴계약 이행각서)</div>
+      <div class="hchip">4개 장 구성</div>
+      <div class="hchip">전자입찰시스템(SRM) 원칙</div>
     </div>
   </div>
 
@@ -912,14 +912,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 
 <div class="page" id="regPage2">
   <div class="hero">
-    <div class="hero-id">📋 K0-지원-기준-0001 &nbsp;·&nbsp; 2023.12.08 4차개정 &nbsp;·&nbsp; 총 224 페이지</div>
+    <div class="hero-id"><i data-lucide="folder-open" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> K0-지원-기준-0001 &nbsp;·&nbsp; 2023.12.08 4차개정 &nbsp;·&nbsp; 총 224 페이지</div>
     <div class="hero-h">계약업무 처리기준<br>13개 별표 구성 다이어그램</div>
     <div class="hero-sub">계약규정의 세부조건·절차 — 입찰유의서, 계약일반조건, 협력업체 선정 및 사업수행능력평가 세부기준</div>
     <div class="hero-chips">
       <div class="hchip"><span class="hchip-dot"></span>2023.12.08 4차개정 (선금·기성금 운영지침 편입)</div>
-      <div class="hchip">📑 별표 1~13</div>
-      <div class="hchip">🏢 주관: 경영지원팀</div>
-      <div class="hchip">🔁 유효성평가 1년 주기</div>
+      <div class="hchip">별표 1~13</div>
+      <div class="hchip">주관: 경영지원팀</div>
+      <div class="hchip">유효성평가 1년 주기</div>
     </div>
   </div>
 
@@ -1090,300 +1090,259 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
   </div>
 </div>
 
-
-<div class="page" id="statPage1">
+<div class="page" id="secdocPage">
   <div class="hero">
-    <div class="hero-id" style="color:var(--blue);background:var(--blue-lt);border-color:var(--blue-md);">📊 PMS 통계 자료 분석 &nbsp;·&nbsp; 종합현황</div>
-    <div class="hero-h">계약현황<br>종합 현황</div>
-    <div class="hero-sub">전체 계약 건수·금액·유형별 비중을 한눈에 확인하는 종합 대시보드</div>
-    <div class="hero-chips"><div class="hchip"><span class="hchip-dot" style="background:var(--blue)"></span>기준일 2026-05-31</div><div class="hchip">📄 총 610건</div><div class="hchip">💰 총 6,326억원</div><div class="hchip">🏗️ ESCO계약 502건 (82.3%)</div></div>
+    <div class="hero-id" style="color:var(--red);background:var(--red-lt);border-color:var(--red-md);"><i data-lucide="shield-alert" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> 문서 보안 &nbsp;·&nbsp; 솔루션 비교 분석</div>
+    <div class="hero-h">문서보안SW 적용 비교<br>프로토타입</div>
+    <div class="hero-sub">파일 업로드 이후 조회·다운로드 과정에서 워터마크 및 타임스탬프를 적용하는 두 가지 솔루션 비교</div>
+    <div class="hero-chips">
+      <div class="hchip"><span class="hchip-dot" style="background:var(--red);"></span>사이냅 문서뷰어 (조회 시 적용)</div>
+      <div class="hchip"><i data-lucide="bar-chart-3" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> 오즈리포트 (업로드 시 생성)</div>
+    </div>
   </div>
+
   <div class="content">
-    <div class="sec-t"><span class="n">1</span>핵심 지표</div>
-    <div class="kpis">
-      <div class="kpi" style="border-top-color:var(--blue);"><div class="kpi-l">총 계약 건수</div><div class="kpi-v">610<span class="u">건</span></div><div class="kpi-s">기준일 2026-05-31</div></div>
-      <div class="kpi" style="border-top-color:var(--green);"><div class="kpi-l">총 계약금액</div><div class="kpi-v">6,326<span class="u">억원</span></div><div class="kpi-s">전체 사업 규모</div></div>
-      <div class="kpi" style="border-top-color:var(--amber);"><div class="kpi-l">ESCO(시설대여) 계약</div><div class="kpi-v">502<span class="u">건</span></div><div class="kpi-s">전체의 82.3%</div></div>
-      <div class="kpi" style="border-top-color:var(--purple);"><div class="kpi-l">기타(장기할부 등)</div><div class="kpi-v">108<span class="u">건</span></div><div class="kpi-s">전체의 17.7%</div></div>
+    <div class="sec-t"><span class="n">1</span>요약 메트릭</div>
+    <div class="sec-sub">두 가지 보안SW 적용 방식의 핵심 정의 및 가치</div>
+    <div class="kpis" style="margin: 14px 0 22px;">
+      <div class="kpi" style="border-top-color:var(--blue);"><div class="kpi-icon-wrap" style="color:var(--blue);"><i data-lucide="eye" style="width:20px; height:20px;"></i></div><div class="kpi-l">문서뷰어 방식</div><div class="kpi-v" style="font-size:16px; font-family:var(--font); font-weight:500; margin-top:8px;">조회 시점 보안 적용</div><div class="kpi-s">원본 파일 포맷 유지 및 실시간 렌더링</div></div>
+      <div class="kpi" style="border-top-color:var(--green);"><div class="kpi-icon-wrap" style="color:var(--green);"><i data-lucide="bar-chart-3" style="width:20px; height:20px;"></i></div><div class="kpi-l">리포팅툴 방식</div><div class="kpi-v" style="font-size:16px; font-family:var(--font); font-weight:500; margin-top:8px;">업로드 시점 PDF 생성</div><div class="kpi-s">보안 정보가 삽입된 신규 PDF 파일 영구 보관</div></div>
+      <div class="kpi" style="border-top-color:var(--navy);"><div class="kpi-icon-wrap" style="color:var(--navy);"><i data-lucide="shield-check" style="width:20px; height:20px;"></i></div><div class="kpi-l">공통 목적</div><div class="kpi-v" style="font-size:16px; font-family:var(--font); font-weight:500; margin-top:8px;">유통 문서 통제</div><div class="kpi-s">기관 로고 워터마크 및 업로드 시각 타임스탬프 적용</div></div>
+      <div class="kpi" style="border-top-color:var(--amber);"><div class="kpi-icon-wrap" style="color:var(--amber);"><i data-lucide="alert-circle" style="width:20px; height:20px;"></i></div><div class="kpi-l">핵심 차이</div><div class="kpi-v" style="font-size:16px; font-family:var(--font); font-weight:500; margin-top:8px;">원본 보존 vs 보안 생성</div><div class="kpi-s">비즈니스 요구사항에 따른 도입 방향 결정</div></div>
     </div>
 
-    <div class="sec-t"><span class="n">2</span>계약유형 비중</div>
-    <div class="donut-wrap">
-      <div class="donut" style="background:conic-gradient(var(--blue) 0% 82.3%, var(--amber) 82.3% 100%);"></div>
-      <div class="donut-lgd">
-        <div class="donut-li"><div class="donut-d" style="background:var(--blue)"></div>ESCO(시설대여)계약 — 502건 (82.3%)</div>
-        <div class="donut-li"><div class="donut-d" style="background:var(--amber)"></div>장기할부판매 등 기타 — 108건 (17.7%)</div>
+    <div class="sec-t"><span class="n">2</span>사이냅 문서뷰어 도입 방식</div>
+    <div class="sec-sub">열람 시점에 동적으로 보안 속성을 부여하고 원본을 유지하는 방식</div>
+    <div class="cb" style="margin-bottom: 22px;">
+      <div class="ch" style="cursor:default; background:var(--bg3);">
+        <div class="ch-t"><i data-lucide="eye" style="vertical-align:text-bottom; margin-right:5px; width:17px; height:17px;"></i>사이냅 문서뷰어 업무 절차</div>
+        <span class="bdg b-bl">조회 중심</span>
+      </div>
+      <div class="cd op">
+        <div class="sl">
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--blue)"></div><div class="si-v" style="background:var(--border2);"></div></div>
+            <div class="si-c">
+               <div class="si-t">1. 파일 업로드</div>
+               <div class="si-d2">사용자가 원본 파일을 시스템(PMS)에 등록합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="user"></i>사용자</span></div>
+            </div>
+          </div>
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--blue)"></div><div class="si-v" style="background:var(--border2);"></div></div>
+            <div class="si-c">
+               <div class="si-t">2. 목록 화면 버튼 제공</div>
+               <div class="si-d2">업로드된 파일 목록 옆에 '바로보기'와 '다운로드' 버튼을 분리 제공합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="cpu"></i>시스템</span></div>
+            </div>
+          </div>
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--blue)"></div><div class="si-v" style="background:var(--border2);"></div></div>
+            <div class="si-c">
+               <div class="si-t">3. 바로보기 클릭</div>
+               <div class="si-d2">사이냅 문서뷰어가 실행되며, 화면 내에 기관 로고 워터마크와 업로드 시각 타임스탬프를 실시간 오버레이하여 표시합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="user"></i>사용자 / <i data-lucide="cpu"></i>문서뷰어</span></div>
+            </div>
+          </div>
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--blue)"></div><div class="si-v" style="background:var(--border2);"></div></div>
+            <div class="si-c">
+               <div class="si-t">4. 뷰어 내 다운로드</div>
+               <div class="si-d2">워터마크와 타임스탬프가 합성 적용된 PDF 파일로 다운로드합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="user"></i>사용자</span><span class="cp cp-dc"><i data-lucide="file-text"></i>보안 적용 PDF</span></div>
+            </div>
+          </div>
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--blue)"></div><div class="si-v"></div></div>
+            <div class="si-c">
+               <div class="si-t">5. 일반 다운로드 (외부)</div>
+               <div class="si-d2">문서뷰어 외부의 일반 다운로드 시에는 워터마크 및 타임스탬프가 적용되지 않은 원본 파일(HWP, DOCX, XLSX 등)을 그대로 다운로드합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="user"></i>사용자</span><span class="cp cp-wn"><i data-lucide="alert-circle"></i>원본 파일 제공</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="sec-t"><span class="n">3</span>진행상태별 현황</div>
-    <div class="bch">
-      <div class="bcr"><div class="bcr-l">진행중</div><div class="bcr-bar"><div class="bcr-fill" style="width:63.6%;background:var(--blue);">388건 · 63.6%</div></div><div class="bcr-v">3,950억원</div></div>
-      <div class="bcr"><div class="bcr-l">준공완료(상환중)</div><div class="bcr-bar"><div class="bcr-fill" style="width:32.0%;background:var(--green);">195건 · 32.0%</div></div><div class="bcr-v">2,070억원</div></div>
-      <div class="bcr"><div class="bcr-l">해지/취소</div><div class="bcr-bar"><div class="bcr-fill" style="width:4.4%;background:var(--amber);">27건 · 4.4%</div></div><div class="bcr-v">306억원</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">4</span>종합 요약 테이블</div>
-    <div class="mv on" style="display:block;">
-      <table class="mt">
-        <thead><tr><th>구분</th><th>건수</th><th>비중</th><th>계약금액</th><th>비고</th></tr></thead>
-        <tbody>
-          <tr><td class="phn">ESCO(시설대여)계약</td><td>502건</td><td>82.3%</td><td>5,180억원</td><td>3자계약 (사업자·사용자·EPC사)</td></tr>
-          <tr><td class="phn">장기할부판매계약 등</td><td>108건</td><td>17.7%</td><td>1,146억원</td><td>2자계약 (사업자·사용자)</td></tr>
-          <tr><td class="phn">합계</td><td>610건</td><td>100%</td><td>6,326억원</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="statPage2">
-  <div class="hero">
-    <div class="hero-id" style="color:var(--blue);background:var(--blue-lt);border-color:var(--blue-md);">📈 PMS 통계 자료 분석 &nbsp;·&nbsp; 연도별 추이</div>
-    <div class="hero-h">연도별 계약<br>추이 분석</div>
-    <div class="hero-sub">2021년~2026년(상반기) 신규 계약 건수 및 금액 추이</div>
-    <div class="hero-chips"><div class="hchip"><span class="hchip-dot" style="background:var(--blue)"></span>기준일 2026-05-31</div><div class="hchip">📈 6개 연도 비교</div><div class="hchip">🚀 최근 3개년 성장세</div></div>
-  </div>
-  <div class="content">
-    <div class="sec-t"><span class="n">1</span>연도별 신규계약 건수</div>
-    <div class="bch">
-      <div class="bcr"><div class="bcr-l">2021년</div><div class="bcr-bar"><div class="bcr-fill" style="width:35.8%;background:var(--blue-md);color:var(--text);">58건</div></div><div class="bcr-v">540억원</div></div>
-      <div class="bcr"><div class="bcr-l">2022년</div><div class="bcr-bar"><div class="bcr-fill" style="width:53.7%;background:var(--blue-md);color:var(--text);">87건</div></div><div class="bcr-v">820억원</div></div>
-      <div class="bcr"><div class="bcr-l">2023년</div><div class="bcr-bar"><div class="bcr-fill" style="width:74.7%;background:var(--blue);">121건</div></div><div class="bcr-v">1,260억원</div></div>
-      <div class="bcr"><div class="bcr-l">2024년</div><div class="bcr-bar"><div class="bcr-fill" style="width:89.5%;background:var(--blue);">145건</div></div><div class="bcr-v">1,510억원</div></div>
-      <div class="bcr"><div class="bcr-l">2025년</div><div class="bcr-bar"><div class="bcr-fill" style="width:100%;background:var(--blue-dk);">162건</div></div><div class="bcr-v">1,690억원</div></div>
-      <div class="bcr"><div class="bcr-l">2026년(~05월)</div><div class="bcr-bar"><div class="bcr-fill" style="width:22.8%;background:var(--green);">37건</div></div><div class="bcr-v">506억원</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">2</span>전년 동기 대비</div>
-    <div class="kpis">
-      <div class="kpi" style="border-top-color:var(--green);"><div class="kpi-l">2024→2025 건수 증가율</div><div class="kpi-v">+11.7<span class="u">%</span></div><div class="kpi-s">145건 → 162건</div></div>
-      <div class="kpi" style="border-top-color:var(--green);"><div class="kpi-l">2024→2025 금액 증가율</div><div class="kpi-v">+11.9<span class="u">%</span></div><div class="kpi-s">1,510억 → 1,690억</div></div>
-      <div class="kpi" style="border-top-color:var(--blue);"><div class="kpi-l">5개년 연평균 성장률(CAGR)</div><div class="kpi-v">22.8<span class="u">%</span></div><div class="kpi-s">2021~2025 기준</div></div>
-      <div class="kpi" style="border-top-color:var(--amber);"><div class="kpi-l">2026년 누적 진행률</div><div class="kpi-v">22.8<span class="u">%</span></div><div class="kpi-s">2025년 대비 5월 기준</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">3</span>연도별 상세 테이블</div>
-    <div class="mv on" style="display:block;">
-      <table class="mt">
-        <thead><tr><th>연도</th><th>신규 계약 건수</th><th>계약금액</th><th>전년대비 건수</th><th>전년대비 금액</th></tr></thead>
-        <tbody>
-          <tr><td class="phn">2021</td><td>58건</td><td>540억원</td><td>—</td><td>—</td></tr>
-          <tr><td class="phn">2022</td><td>87건</td><td>820억원</td><td>+50.0%</td><td>+51.9%</td></tr>
-          <tr><td class="phn">2023</td><td>121건</td><td>1,260억원</td><td>+39.1%</td><td>+53.7%</td></tr>
-          <tr><td class="phn">2024</td><td>145건</td><td>1,510억원</td><td>+19.8%</td><td>+19.8%</td></tr>
-          <tr><td class="phn">2025</td><td>162건</td><td>1,690억원</td><td>+11.7%</td><td>+11.9%</td></tr>
-          <tr><td class="phn">2026 (~05월)</td><td>37건</td><td>506억원</td><td>—</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="statPage3">
-  <div class="hero">
-    <div class="hero-id" style="color:var(--blue);background:var(--blue-lt);border-color:var(--blue-md);">🏢 PMS 통계 자료 분석 &nbsp;·&nbsp; 부서/분야별 현황</div>
-    <div class="hero-h">부서·분야별<br>계약 현황</div>
-    <div class="hero-sub">주관 부서 및 사업분야별 계약 건수·금액 비중</div>
-    <div class="hero-chips"><div class="hchip"><span class="hchip-dot" style="background:var(--blue)"></span>기준일 2026-05-31</div><div class="hchip">🏢 3개 주관부서</div><div class="hchip">🏭 분야별 비중 비교</div></div>
-  </div>
-  <div class="content">
-    <div class="sec-t"><span class="n">1</span>주관부서별 현황</div>
-    <div class="bch">
-      <div class="bcr"><div class="bcr-l">EERS팀</div><div class="bcr-bar"><div class="bcr-fill" style="width:100%;background:var(--blue);">412건 · 67.5%</div></div><div class="bcr-v">4,150억원</div></div>
-      <div class="bcr"><div class="bcr-l">운영실</div><div class="bcr-bar"><div class="bcr-fill" style="width:33.5%;background:var(--green);">138건 · 22.6%</div></div><div class="bcr-v">1,520억원</div></div>
-      <div class="bcr"><div class="bcr-l">기획지원팀</div><div class="bcr-bar"><div class="bcr-fill" style="width:14.6%;background:var(--amber);">60건 · 9.9%</div></div><div class="bcr-v">656억원</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">2</span>사업분야별 비중</div>
-    <div class="donut-wrap">
-      <div class="donut" style="background:conic-gradient(var(--blue) 0% 45%, var(--green) 45% 72%, var(--amber) 72% 90%, var(--purple-md) 90% 100%);"></div>
-      <div class="donut-lgd">
-        <div class="donut-li"><div class="donut-d" style="background:var(--blue)"></div>조명(LED) — 275건 (45.0%)</div>
-        <div class="donut-li"><div class="donut-d" style="background:var(--green)"></div>냉난방(공조) — 165건 (27.0%)</div>
-        <div class="donut-li"><div class="donut-d" style="background:var(--amber)"></div>보일러/열원설비 — 110건 (18.0%)</div>
-        <div class="donut-li"><div class="donut-d" style="background:var(--purple-md)"></div>기타(ZEB 등) — 60건 (10.0%)</div>
+    <div class="brg" style="margin-bottom:34px;">
+      <div class="brgc" style="background:var(--green-lt); border-color:var(--green-md);">
+        <div class="brgc-t" style="color:var(--green);"><i data-lucide="check-circle" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>장점</div>
+        <div class="brgc-d">
+          • <strong>원본 품질 유지</strong>: 포맷 변환으로 인한 깨짐이 전혀 없습니다.<br>
+          • <strong>다양한 형식 지원</strong>: 한글(HWP), MS 오피스, PDF, 이미지 등 거의 모든 오피스 포맷 지원.
+        </div>
+      </div>
+      <div class="brgc" style="background:var(--amber-lt); border-color:var(--amber-md);">
+        <div class="brgc-t" style="color:var(--amber);"><i data-lucide="alert-triangle" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>단점 및 주의</div>
+        <div class="brgc-d">
+          • <strong>원본 직접 적용 불가</strong>: 원본 파일 자체를 수정하여 보관하는 것은 아닙니다.<br>
+          • <strong>일반 다운로드 취약</strong>: 바로보기를 거치지 않는 다운로드는 일반 원본이 제공되므로 별도 권한 제어가 필요합니다.
+        </div>
       </div>
     </div>
 
-    <div class="sec-t"><span class="n">3</span>부서 × 분야 상세 테이블</div>
-    <div class="mv on" style="display:block;">
-      <table class="mt">
-        <thead><tr><th>주관부서</th><th>건수</th><th>계약금액</th><th>주요 분야</th><th>비중</th></tr></thead>
-        <tbody>
-          <tr><td class="phn">EERS팀</td><td>412건</td><td>4,150억원</td><td>조명·냉난방 중심</td><td>67.5%</td></tr>
-          <tr><td class="phn">운영실</td><td>138건</td><td>1,520억원</td><td>보일러/열원설비 중심</td><td>22.6%</td></tr>
-          <tr><td class="phn">기획지원팀</td><td>60건</td><td>656억원</td><td>ZEB·신사업 분야</td><td>9.9%</td></tr>
-          <tr><td class="phn">합계</td><td>610건</td><td>6,326억원</td><td>—</td><td>100%</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="statPage4">
-  <div class="hero">
-    <div class="hero-id" style="color:var(--blue);background:var(--blue-lt);border-color:var(--blue-md);">🚦 PMS 통계 자료 분석 &nbsp;·&nbsp; 진행/이상 현황</div>
-    <div class="hero-h">사업 진행 및<br>이상 현황</div>
-    <div class="hero-sub">공사 진행 단계별 현황 및 지연·이상 발생 사업 모니터링</div>
-    <div class="hero-chips"><div class="hchip"><span class="hchip-dot" style="background:var(--blue)"></span>기준일 2026-05-31</div><div class="hchip">🟢 정상진행 다수</div><div class="hchip">🟠 이상현황 모니터링</div></div>
-  </div>
-  <div class="content">
-    <div class="sec-t"><span class="n">1</span>공사 진행단계별 현황</div>
-    <div class="bch">
-      <div class="bcr"><div class="bcr-l">계약체결</div><div class="bcr-bar"><div class="bcr-fill" style="width:100%;background:var(--blue-md);color:var(--text);">388건</div></div><div class="bcr-v">100%</div></div>
-      <div class="bcr"><div class="bcr-l">착공</div><div class="bcr-bar"><div class="bcr-fill" style="width:91.0%;background:var(--blue);">353건</div></div><div class="bcr-v">91.0%</div></div>
-      <div class="bcr"><div class="bcr-l">공사중(기성진행)</div><div class="bcr-bar"><div class="bcr-fill" style="width:62.6%;background:var(--blue-dk);">243건</div></div><div class="bcr-v">62.6%</div></div>
-      <div class="bcr"><div class="bcr-l">준공대기</div><div class="bcr-bar"><div class="bcr-fill" style="width:18.0%;background:var(--green);">70건</div></div><div class="bcr-v">18.0%</div></div>
-      <div class="bcr"><div class="bcr-l">이상현황(지연 등)</div><div class="bcr-bar"><div class="bcr-fill" style="width:6.4%;background:var(--amber);">25건</div></div><div class="bcr-v">6.4%</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">2</span>이상현황 유형별 분류</div>
-    <div class="gv on">
-      <div class="gc static" style="border-top:3px solid var(--amber);"><div class="gc-n" style="color:var(--amber);">14건</div><div class="gc-t">착공 지연</div><div class="gc-d">계약체결 후 사급물자 조달·현장여건 등으로 착공이 지연되고 있는 사업</div></div>
-      <div class="gc static" style="border-top:3px solid var(--amber);"><div class="gc-n" style="color:var(--amber);">7건</div><div class="gc-t">공정 지연</div><div class="gc-d">기성률이 계획 대비 10%p 이상 저조한 사업, 진척관리 강화 필요</div></div>
-      <div class="gc static" style="border-top:3px solid var(--red);"><div class="gc-n" style="color:var(--red);">3건</div><div class="gc-t">분쟁/클레임</div><div class="gc-d">계약변경·하도급 분쟁 등으로 법무재무팀 협의가 진행 중인 사업</div></div>
-      <div class="gc static" style="border-top:3px solid var(--red);"><div class="gc-n" style="color:var(--red);">1건</div><div class="gc-t">계약해지 검토</div><div class="gc-d">계약상대자 귀책으로 계약규정 제113조 절차 검토 중인 사업</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">3</span>모니터링 요약</div>
-    <div class="kpis">
-      <div class="kpi" style="border-top-color:var(--green);"><div class="kpi-l">정상 진행</div><div class="kpi-v">363<span class="u">건</span></div><div class="kpi-s">진행중 388건 중 93.6%</div></div>
-      <div class="kpi" style="border-top-color:var(--amber);"><div class="kpi-l">이상현황</div><div class="kpi-v">25<span class="u">건</span></div><div class="kpi-s">전체 진행중의 6.4%</div></div>
-      <div class="kpi" style="border-top-color:var(--red);"><div class="kpi-l">분쟁/해지 검토</div><div class="kpi-v">4<span class="u">건</span></div><div class="kpi-s">법무재무팀 협의중</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="statPage5">
-  <div class="hero">
-    <div class="hero-id" style="color:var(--blue);background:var(--blue-lt);border-color:var(--blue-md);">💵 PMS 통계 자료 분석 &nbsp;·&nbsp; 상환·회수 현황</div>
-    <div class="hero-h">상환금<br>회수 현황</div>
-    <div class="hero-sub">준공완료(상환중) 사업의 상환계획 대비 회수 진행률</div>
-    <div class="hero-chips"><div class="hchip"><span class="hchip-dot" style="background:var(--blue)"></span>기준일 2026-05-31</div><div class="hchip">📥 195건 상환중</div><div class="hchip">📊 평균 회수율 50.9%</div></div>
-  </div>
-  <div class="content">
-    <div class="sec-t"><span class="n">1</span>회수 현황 핵심 지표</div>
-    <div class="kpis">
-      <div class="kpi" style="border-top-color:var(--blue);"><div class="kpi-l">상환대상 계약금액</div><div class="kpi-v">2,070<span class="u">억원</span></div><div class="kpi-s">준공완료 195건</div></div>
-      <div class="kpi" style="border-top-color:var(--green);"><div class="kpi-l">회수 완료액</div><div class="kpi-v">1,054<span class="u">억원</span></div><div class="kpi-s">평균 회수율 50.9%</div></div>
-      <div class="kpi" style="border-top-color:var(--amber);"><div class="kpi-l">잔여 회수예정액</div><div class="kpi-v">1,016<span class="u">억원</span></div><div class="kpi-s">49.1% 잔여</div></div>
-      <div class="kpi" style="border-top-color:var(--red);"><div class="kpi-l">연체 발생 건</div><div class="kpi-v">3<span class="u">건</span></div><div class="kpi-s">상환업무 절차서 적용 대상</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">2</span>회수율 구간별 분포</div>
-    <div class="bch">
-      <div class="bcr"><div class="bcr-l">80% 이상</div><div class="bcr-bar"><div class="bcr-fill" style="width:18.5%;background:var(--green);">36건</div></div><div class="bcr-v">18.5%</div></div>
-      <div class="bcr"><div class="bcr-l">50~80%</div><div class="bcr-bar"><div class="bcr-fill" style="width:43.6%;background:var(--blue);">85건</div></div><div class="bcr-v">43.6%</div></div>
-      <div class="bcr"><div class="bcr-l">20~50%</div><div class="bcr-bar"><div class="bcr-fill" style="width:30.3%;background:var(--amber);">59건</div></div><div class="bcr-v">30.3%</div></div>
-      <div class="bcr"><div class="bcr-l">20% 미만</div><div class="bcr-bar"><div class="bcr-fill" style="width:7.7%;background:var(--red);">15건</div></div><div class="bcr-v">7.7%</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">3</span>3개사 상환현황 비교 (대표 사례)</div>
-    <div class="mv on" style="display:block;">
-      <table class="mt">
-        <thead><tr><th>업체명</th><th>계약금액</th><th>상환완료액</th><th>회수율</th><th>상태</th></tr></thead>
-        <tbody>
-          <tr><td class="phn">롯데슈퍼LED</td><td>48억원</td><td>27.9억원</td><td>58.2%</td><td><span class="bdg b-gr">정상</span></td></tr>
-          <tr><td class="phn">일공팩</td><td>32억원</td><td>15.2억원</td><td>47.5%</td><td><span class="bdg b-am">진행중</span></td></tr>
-          <tr><td class="phn">덕우전자</td><td>26억원</td><td>12.2억원</td><td>47.0%</td><td><span class="bdg b-am">진행중</span></td></tr>
-          <tr><td class="phn">3개사 평균</td><td>35.3억원</td><td>18.4억원</td><td>50.9%</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="sec-sub">※ 상세 월별 상환계획·실적은 「상환스케줄 현황」 메뉴 참조</div>
-  </div>
-</div>
-
-<div class="page" id="statPage6">
-  <div class="hero">
-    <div class="hero-id" style="color:var(--blue);background:var(--blue-lt);border-color:var(--blue-md);">📐 PMS 통계 자료 분석 &nbsp;·&nbsp; 수익률 분석</div>
-    <div class="hero-h">사업 수익률<br>(IRR) 분석</div>
-    <div class="hero-sub">계약별 내부수익률(IRR) 구간 분포 및 평균 수익률 추이</div>
-    <div class="hero-chips"><div class="hchip"><span class="hchip-dot" style="background:var(--blue)"></span>기준일 2026-05-31</div><div class="hchip">📊 평균 IRR 약 7.4%</div><div class="hchip">🎯 목표구간 7~9% 최다</div></div>
-  </div>
-  <div class="content">
-    <div class="sec-t"><span class="n">1</span>IRR 핵심 지표</div>
-    <div class="kpis">
-      <div class="kpi" style="border-top-color:var(--blue);"><div class="kpi-l">전체 평균 IRR</div><div class="kpi-v">7.4<span class="u">%</span></div><div class="kpi-s">610건 가중평균</div></div>
-      <div class="kpi" style="border-top-color:var(--green);"><div class="kpi-l">최다 분포 구간</div><div class="kpi-v">7~9<span class="u">%</span></div><div class="kpi-s">251건 (41.1%)</div></div>
-      <div class="kpi" style="border-top-color:var(--amber);"><div class="kpi-l">5% 미만 비중</div><div class="kpi-v">6.9<span class="u">%</span></div><div class="kpi-s">42건 — 수익률 적합성 재검토 대상</div></div>
-      <div class="kpi" style="border-top-color:var(--purple);"><div class="kpi-l">11% 이상 비중</div><div class="kpi-v">3.8<span class="u">%</span></div><div class="kpi-s">23건 — 고수익 사업</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">2</span>IRR 구간별 분포</div>
-    <div class="bch">
-      <div class="bcr"><div class="bcr-l">5% 미만</div><div class="bcr-bar"><div class="bcr-fill" style="width:16.7%;background:var(--red);">42건 · 6.9%</div></div><div class="bcr-v">재검토 대상</div></div>
-      <div class="bcr"><div class="bcr-l">5~7%</div><div class="bcr-bar"><div class="bcr-fill" style="width:78.9%;background:var(--amber);">198건 · 32.5%</div></div><div class="bcr-v">기준 충족</div></div>
-      <div class="bcr"><div class="bcr-l">7~9%</div><div class="bcr-bar"><div class="bcr-fill" style="width:100%;background:var(--blue);">251건 · 41.1%</div></div><div class="bcr-v">최다 구간</div></div>
-      <div class="bcr"><div class="bcr-l">9~11%</div><div class="bcr-bar"><div class="bcr-fill" style="width:38.2%;background:var(--green);">96건 · 15.7%</div></div><div class="bcr-v">우수</div></div>
-      <div class="bcr"><div class="bcr-l">11% 이상</div><div class="bcr-bar"><div class="bcr-fill" style="width:9.2%;background:var(--purple);">23건 · 3.8%</div></div><div class="bcr-v">고수익</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">3</span>연도별 평균 IRR 추이</div>
-    <div class="mv on" style="display:block;">
-      <table class="mt">
-        <thead><tr><th>연도</th><th>평균 IRR</th><th>전년대비</th><th>비고</th></tr></thead>
-        <tbody>
-          <tr><td class="phn">2021</td><td>6.8%</td><td>—</td><td>—</td></tr>
-          <tr><td class="phn">2022</td><td>7.0%</td><td>+0.2%p</td><td>—</td></tr>
-          <tr><td class="phn">2023</td><td>7.2%</td><td>+0.2%p</td><td>—</td></tr>
-          <tr><td class="phn">2024</td><td>7.5%</td><td>+0.3%p</td><td>원가상승 반영</td></tr>
-          <tr><td class="phn">2025</td><td>7.6%</td><td>+0.1%p</td><td>—</td></tr>
-          <tr><td class="phn">2026 (~05월)</td><td>7.5%</td><td>-0.1%p</td><td>「수익률 운영지침」 기준 적합</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="statPage7">
-  <div class="hero">
-    <div class="hero-id" style="color:var(--blue);background:var(--blue-lt);border-color:var(--blue-md);">🗓️ PMS 통계 자료 분석 &nbsp;·&nbsp; 상환스케줄 현황</div>
-    <div class="hero-h">상환스케줄<br>현황</div>
-    <div class="hero-sub">주요 3개사(롯데슈퍼LED·일공팩·덕우전자) 월별 상환계획 대비 실적</div>
-    <div class="hero-chips"><div class="hchip"><span class="hchip-dot" style="background:var(--blue)"></span>기준일 2026-05-31</div><div class="hchip">🏢 3개사 관리</div><div class="hchip">📅 월별 상환계획 대비 실적</div></div>
-  </div>
-  <div class="content">
-    <div class="sec-t"><span class="n">1</span>업체별 상환 진행률</div>
-    <div class="bch">
-      <div class="bcr"><div class="bcr-l">롯데슈퍼LED</div><div class="bcr-bar"><div class="bcr-fill" style="width:58.2%;background:var(--blue);">27.9억 / 48억</div></div><div class="bcr-v">58.2%</div></div>
-      <div class="bcr"><div class="bcr-l">일공팩</div><div class="bcr-bar"><div class="bcr-fill" style="width:47.5%;background:var(--green);">15.2억 / 32억</div></div><div class="bcr-v">47.5%</div></div>
-      <div class="bcr"><div class="bcr-l">덕우전자</div><div class="bcr-bar"><div class="bcr-fill" style="width:47.0%;background:var(--amber);">12.2억 / 26억</div></div><div class="bcr-v">47.0%</div></div>
-    </div>
-
-    <div class="sec-t"><span class="n">2</span>월별 상환 스케줄 (최근 6개월)</div>
-    <div class="mv on" style="display:block;">
-      <table class="mt">
-        <thead><tr><th>월</th><th>롯데슈퍼LED 계획/실적</th><th>일공팩 계획/실적</th><th>덕우전자 계획/실적</th><th>월 합계 실적</th></tr></thead>
-        <tbody>
-          <tr><td class="phn">2026-01</td><td>0.8억 / 0.8억</td><td>0.5억 / 0.5억</td><td>0.4억 / 0.4억</td><td>1.7억</td></tr>
-          <tr><td class="phn">2026-02</td><td>0.8억 / 0.8억</td><td>0.5억 / 0.4억</td><td>0.4억 / 0.4억</td><td>1.6억</td></tr>
-          <tr><td class="phn">2026-03</td><td>0.8억 / 0.8억</td><td>0.5억 / 0.5억</td><td>0.4억 / 0.3억</td><td>1.6억</td></tr>
-          <tr><td class="phn">2026-04</td><td>0.8억 / 0.8억</td><td>0.5억 / 0.5억</td><td>0.4억 / 0.4억</td><td>1.7억</td></tr>
-          <tr><td class="phn">2026-05</td><td>0.8억 / 0.7억</td><td>0.5억 / 0.4억</td><td>0.4억 / 0.4억</td><td>1.5억</td></tr>
-          <tr><td class="phn">2026-06 (예정)</td><td>0.8억 / —</td><td>0.5억 / —</td><td>0.4억 / —</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="sec-t"><span class="n">3</span>잔여 상환 안내</div>
-    <div class="brg">
-      <div class="brgc" style="background:var(--blue-lt);border-color:var(--blue-md);">
-        <div class="brgc-t" style="color:var(--blue);">롯데슈퍼LED</div>
-        <div class="brgc-d">잔여 20.1억원, 잔여기간 약 25개월. 월 0.8억원 정상 상환 중.</div>
+    <div class="sec-t"><span class="n">3</span>오즈리포트 도입 방식</div>
+    <div class="sec-sub">업로드 시점에 PDF 템플릿에 내용을 맵핑하여 영구 보안 PDF를 신규 생성하는 방식</div>
+    <div class="cb" style="margin-bottom: 22px;">
+      <div class="ch" style="cursor:default; background:var(--bg3);">
+        <div class="ch-t"><i data-lucide="bar-chart-3" style="vertical-align:text-bottom; margin-right:5px; width:17px; height:17px;"></i>오즈리포트 업무 절차</div>
+        <span class="bdg b-gr">파일 생성 중심</span>
       </div>
-      <div class="brgc" style="background:var(--green-lt);border-color:var(--green-md);">
-        <div class="brgc-t" style="color:var(--green);">일공팩</div>
-        <div class="brgc-d">잔여 16.8억원, 잔여기간 약 33개월. 2026-02·05월 일부 미수 발생 — 상환안내 필요.</div>
+      <div class="cd op">
+        <div class="sl">
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--green)"></div><div class="si-v" style="background:var(--border2);"></div></div>
+            <div class="si-c">
+               <div class="si-t">1. PDF 파일 업로드</div>
+               <div class="si-d2">사용자가 오즈리포트가 인식 가능한 PDF 형식으로 원본 파일을 등록합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="user"></i>사용자</span><span class="cp cp-co"><i data-lucide="info"></i>PDF 포맷 한정</span></div>
+            </div>
+          </div>
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--green)"></div><div class="si-v" style="background:var(--border2);"></div></div>
+            <div class="si-c">
+               <div class="si-t">2. 빈 리포트 레이아웃 생성</div>
+               <div class="si-d2">오즈리포트 뷰어가 미리 정의된 빈 레이아웃(틀) 안에 업로드된 PDF 내용을 자동으로 삽입(임베드)합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="cpu"></i>시스템</span></div>
+            </div>
+          </div>
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--green)"></div><div class="si-v" style="background:var(--border2);"></div></div>
+            <div class="si-c">
+               <div class="si-t">3. 워터마크·타임스탬프 적용</div>
+               <div class="si-d2">레이아웃의 배경 및 헤더 영역에 기관 로고 워터마크와 업로드 시점의 타임스탬프 텍스트를 오버레이 처리합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="cpu"></i>시스템</span></div>
+            </div>
+          </div>
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--green)"></div><div class="si-v" style="background:var(--border2);"></div></div>
+            <div class="si-c">
+               <div class="si-t">4. 보안 적용 PDF 생성</div>
+               <div class="si-d2">결합된 레이아웃을 서버에서 빌드하여 워터마크가 완전히 합쳐진(Burn-in) 새로운 PDF 파일을 생성하여 보관합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="cpu"></i>시스템</span><span class="cp cp-dc"><i data-lucide="file-text"></i>보안 적용 PDF 생성</span></div>
+            </div>
+          </div>
+          <div class="si">
+            <div class="si-l"><div class="si-d" style="background:var(--green)"></div><div class="si-v"></div></div>
+            <div class="si-c">
+               <div class="si-t">5. 다운로드 후 확인</div>
+               <div class="si-d2">별도의 문서뷰어 서버 없이, 사용자가 다운로드한 자체 보안 PDF 파일로 내용을 즉시 확인합니다.</div>
+               <div class="si-ch"><span class="cp cp-ow"><i data-lucide="user"></i>사용자</span></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="brgc" style="background:var(--amber-lt);border-color:var(--amber-md);">
-        <div class="brgc-t" style="color:var(--amber);">덕우전자</div>
-        <div class="brgc-d">잔여 13.8억원, 잔여기간 약 34개월. 2026-03월 일부 미수 — 상환업무 절차서에 따라 안내 진행.</div>
+    </div>
+
+    <div class="brg" style="margin-bottom:34px;">
+      <div class="brgc" style="background:var(--green-lt); border-color:var(--green-md);">
+        <div class="brgc-t" style="color:var(--green);"><i data-lucide="check-circle" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>장점</div>
+        <div class="brgc-d">
+          • <strong>원천적 보안 PDF 생성</strong>: 다운로드받는 모든 파일 자체가 완벽히 보안 처리된 단일 PDF 포맷입니다.<br>
+          • <strong>별도 뷰어 불필요</strong>: 클라이언트단에서 열람할 때 뷰어 서버를 거칠 필요가 없습니다.
+        </div>
+      </div>
+      <div class="brgc" style="background:var(--amber-lt); border-color:var(--amber-md);">
+        <div class="brgc-t" style="color:var(--amber);"><i data-lucide="alert-triangle" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>단점 및 주의</div>
+        <div class="brgc-d">
+          • <strong>포맷 제한</strong>: 입찰 등 업로드 파일이 PDF로 제한되어야 맵핑이 수월합니다.<br>
+          • <strong>품질 및 부하</strong>: PDF 재합성 시 이미지 압축 등으로 화질 저하가 발생하거나, 대용량 파일 변환 시 서버 부하(지연)가 있을 수 있습니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-t"><span class="n">4</span>방식 비교 메트릭스</div>
+    <div class="sec-sub">사이냅 문서뷰어와 오즈리포트 도입 조건별 상세 비교</div>
+
+    <div class="mv on" style="display:block; margin-bottom:34px;">
+      <table class="mt">
+        <thead>
+          <tr>
+            <th>비교 항목</th>
+            <th>사이냅 문서뷰어</th>
+            <th>오즈리포트</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="phn">기본 개념</td>
+            <td>문서를 열람할 때 보안 정보를 표시하는 <strong>조회 중심 방식</strong></td>
+            <td>업로드 시 보안 정보가 포함된 PDF를 생성하는 <strong>파일 생성 중심 방식</strong></td>
+          </tr>
+          <tr>
+            <td class="phn">지원 파일 형식</td>
+            <td>HWP, DOCX, XLSX, PDF, 이미지 등 다양한 문서 포맷 완벽 대응</td>
+            <td>PDF 파일 업로드 권장 (포맷 제한적)</td>
+          </tr>
+          <tr>
+            <td class="phn">보안 적용 시점</td>
+            <td>문서뷰어에서 바로보기 또는 뷰어 내 다운로드 실행 시 동적 적용</td>
+            <td>파일 업로드 및 서버 측 PDF 빌드 시점에 정적 적용 (Burn-in)</td>
+          </tr>
+          <tr>
+            <td class="phn">원본 보존 여부</td>
+            <td>원본 파일을 전혀 훼손/수정하지 않고 그대로 유지</td>
+            <td>원본을 바탕으로 한 신규 보안용 PDF 파일 생성</td>
+          </tr>
+          <tr>
+            <td class="phn">다운로드 결과물</td>
+            <td>뷰어 내: 보안 PDF / 일반 외부: 워터마크 없는 원본 포맷</td>
+            <td>외부 다운로드 파일 자체가 보안 적용 완료된 PDF</td>
+          </tr>
+          <tr>
+            <td class="phn">문서 품질 영향</td>
+            <td>실시간 렌더링으로 원본 화질 및 서식 훼손 없음</td>
+            <td>PDF 재결합·압축 과정에서 일부 화질 저하 가능성 존재</td>
+          </tr>
+          <tr>
+            <td class="phn">시스템 부하 / 속도</td>
+            <td>업로드 즉시 완료되므로 사용자 체감 업로드 지연 없음</td>
+            <td>변환 및 병합 빌드 프로세스로 인해 파일 업로드 대기 시간 발생 가능</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sec-t"><span class="n">5</span>적용 방향 판단 및 제언</div>
+    <div class="sec-sub">켑코이에스 시스템 환경 및 보안 등급 요구사항에 따른 최종 제안</div>
+
+    <div class="cards-2" style="margin-bottom: 22px;">
+      <div class="card" style="border-top:4px solid var(--blue); background: linear-gradient(180deg, var(--blue-lt) 0%, var(--bg2) 100%);">
+        <h4 style="color:var(--blue-dk); font-weight:700;"><i data-lucide="eye" style="width:16px; height:16px; vertical-align:text-bottom; margin-right:4px;"></i>사이냅 문서뷰어 적합군</h4>
+        <p class="desc" style="margin-top:10px; font-size:13.5px; line-height:1.6; color:var(--text2);">
+          다양한 원본 문서 형식(HWP, Excel 등)의 정밀한 레이아웃을 유지해야 하고, 원본 품질 훼손 없이 화면 열람 과정에서의 <strong>유출 방지 및 타임스탬프 확인</strong>이 최우선인 비즈니스 도메인에 권장됩니다.
+        </p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--green); background: linear-gradient(180deg, var(--green-lt) 0%, var(--bg2) 100%);">
+        <h4 style="color:var(--green-dk); font-weight:700;"><i data-lucide="bar-chart-3" style="width:16px; height:16px; vertical-align:text-bottom; margin-right:4px;"></i>오즈리포트 적합군</h4>
+        <p class="desc" style="margin-top:10px; font-size:13.5px; line-height:1.6; color:var(--text2);">
+          사용자가 다운로드해 보관하는 파일 자체에 워터마크와 보안 정보가 <strong>물리적으로 내포(Burn-in)</strong>되어야 하고, 업로드 문서 유형을 PDF로 엄격히 제한할 수 있는 계약/전자입찰 문서 유통 체계에 권장됩니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="cards-2">
+      <div class="card">
+        <h4 style="font-size:16px; margin-bottom:12px; color:var(--text); font-weight:700;"><i data-lucide="lightbulb" style="width:16px; height:16px; vertical-align:text-bottom; margin-right:4px;"></i>핵심 가이드라인 요약</h4>
+        <div class="list">
+          <div class="item"><span class="dot green" style="background:var(--green);"></span><span>문서뷰어 방식은 <strong>원본의 무결성 보존 및 포맷 범용성</strong> 측면에서 강점이 있습니다.</span></div>
+          <div class="item"><span class="dot green" style="background:var(--green);"></span><span>리포팅툴 방식은 배포 및 반출되는 <strong>개별 파일 자체에 물리적 보안</strong>을 박아두는 측면에서 강점이 있습니다.</span></div>
+          <div class="item"><span class="dot orange" style="background:var(--amber);"></span><span>보안 목표가 "화면 조회 시의 유출 차단"인지, "반출 파일의 악용 원천 방지"인지에 따라 판단해야 합니다.</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="font-size:16px; margin-bottom:12px; color:var(--text); font-weight:700;"><i data-lucide="alert-triangle" style="width:16px; height:16px; vertical-align:text-bottom; margin-right:4px;"></i>추가 검토 과제</h4>
+        <div class="list">
+          <div class="item"><span class="dot red" style="background:var(--red);"></span><span>문서뷰어 도입 시, 뷰어를 통하지 않은 일반 다운로드 경로에 대한 DRM 또는 별도 다운로드 통제 방안이 필요합니다.</span></div>
+          <div class="item"><span class="dot red" style="background:var(--red);"></span><span>리포팅툴 도입 시, 입찰 참가 업체의 업로드 포맷을 PDF로 단일화하는 가이드라인 제정이 병행되어야 합니다.</span></div>
+          <div class="item"><span class="dot red" style="background:var(--red);"></span><span>PDF 재컴파일로 인한 화질 저하 및 서버 렌더링 지연이 사용성 기준을 충족하는지 사전 벤치마킹 테스트가 필요합니다.</span></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
 
     <div class="stbar">
       <span><span class="st-dot"></span>운영 중</span>
@@ -1529,10 +1488,10 @@ function buildFlow(){
           <div class="si-t">${s.t}</div>
           <div class="si-d2">${s.d}</div>
           <div class="si-ch">
-            <span class="cp cp-ow">👤 ${s.ow}</span>
-            ${s.doc?`<span class="cp cp-dc">📄 ${s.doc}</span>`:''}
-            ${s.wn?`<span class="cp cp-wn">⚠ ${s.wn}</span>`:''}
-            ${s.cn?`<span class="cp cp-co">◈ ${s.cn}</span>`:''}
+            <span class="cp cp-ow"><i data-lucide="user"></i> ${s.ow}</span>
+            ${s.doc?`<span class="cp cp-dc"><i data-lucide="file-text"></i> ${s.doc}</span>`:''}
+            ${s.wn?`<span class="cp cp-wn"><i data-lucide="alert-circle"></i> ${s.wn}</span>`:''}
+            ${s.cn?`<span class="cp cp-co"><i data-lucide="info"></i> ${s.cn}</span>`:''}
           </div>
         </div>
       </div>`;
@@ -1559,6 +1518,7 @@ function buildFlow(){
       </div>`;
     view.appendChild(card);
   });
+  lucide.createIcons();
 }
 
 function buildGrid(){
@@ -1573,6 +1533,7 @@ function buildGrid(){
     g.onclick=()=>{setView('flow',null);setTimeout(()=>{document.getElementById('c'+p.id)?.scrollIntoView({behavior:'smooth',block:'start'});if(!document.getElementById('d'+p.id).classList.contains('op'))toggleCard(p.id);},100);};
     view.appendChild(g);
   });
+  lucide.createIcons();
 }
 
 function buildMatrix(){
@@ -1583,25 +1544,56 @@ function buildMatrix(){
   PH.forEach(p=>{
     p.steps.forEach((s,si)=>{
       const tr=document.createElement('tr');
-      if(si===0) tr.innerHTML=`<td class="phn" rowspan="${p.steps.length}" style="border-left:3px solid ${p.tc}"><span style="color:${p.tc};font-family:var(--mono);font-size:12px;">${p.id}.</span><br>${p.title}</td>`;
+      if(si===0) tr.innerHTML=`<td class="phn" rowspan="${p.steps.length}" style="border-left:3px solid ${p.tc}"><span style="color:${p.tc};font-family:var(--mono);font-size:13px;">${p.id}.</span><br>${p.title}</td>`;
       tr.innerHTML+=`<td>${s.t}</td><td>${p.owner}</td><td>${s.ow}</td>
-        <td style="font-size:11px;color:var(--blue);">${s.doc||'—'}</td>
-        <td style="font-size:11px;color:${s.type==='c'?'var(--purple)':'var(--text3)'};">${s.cn||s.wn||''}</td>`;
+        <td style="font-size:13px;color:var(--blue);">${s.doc||'—'}</td>
+        <td style="font-size:13px;color:${s.type==='c'?'var(--purple)':'var(--text3)'};">${s.cn||s.wn||''}</td>`;
       tb.appendChild(tr);
     });
   });
   t.appendChild(tb); view.appendChild(t);
+  lucide.createIcons();
 }
 
-function showPage(name, el){
-  const map={proc:'procPage',srm:'srmPage',ebid:'ebidPage',partner:'partnerPage',reg1:'regPage1',reg2:'regPage2',stat1:'statPage1',stat2:'statPage2',stat3:'statPage3',stat4:'statPage4',stat5:'statPage5',stat6:'statPage6',stat7:'statPage7'};
+let lastPage = 'proc';
+function showPage(name, el, updateHash = true){
+  const map={proc:'procPage',srm:'srmPage',ebid:'ebidPage',partner:'partnerPage',reg1:'regPage1',reg2:'regPage2',secdoc:'secdocPage'};
+  if(!map[name]) return;
   document.querySelectorAll('.main > .page').forEach(p=>p.classList.remove('on'));
   document.getElementById(map[name]).classList.add('on');
   document.querySelectorAll('.nv').forEach(n=>n.classList.remove('on'));
-  if(el) el.classList.add('on');
-  else document.getElementById('nvProc')?.classList.add('on');
+  
+  let activeEl = el;
+  if(!activeEl) {
+    const nvId = 'nv' + name.charAt(0).toUpperCase() + name.slice(1);
+    activeEl = document.getElementById(nvId);
+  }
+  if(activeEl) activeEl.classList.add('on');
+  
   document.getElementById('mainArea').scrollTo({top:0});
+  if(updateHash) {
+    window.location.hash = 'page=' + name;
+  }
 }
+
+function handleRouting(){
+  const hash = window.location.hash;
+  if(hash.startsWith('#page=')){
+    const pageName = hash.replace('#page=', '');
+    if(pageName === 'terms'){
+      openTerms(false);
+    } else {
+      closeTerms(false);
+      showPage(pageName, null, false);
+      lastPage = pageName;
+    }
+  } else {
+    closeTerms(false);
+    showPage('proc', null, false);
+    lastPage = 'proc';
+  }
+}
+window.addEventListener('hashchange', handleRouting);
 
 function toggleCard(id){
   const d=document.getElementById('d'+id),chv=document.getElementById('chv'+id),cb=document.getElementById('cb'+id);
@@ -1659,7 +1651,7 @@ document.getElementById('mainArea').addEventListener('scroll',function(){
   });
 });
 
-buildNav(); buildFlow(); buildGrid(); buildMatrix(); setView('flow',null);
+buildNav(); buildFlow(); buildGrid(); buildMatrix(); setView('flow',null); handleRouting(); lucide.createIcons();
 
 /* ── 용어의 정의 ── */
 const TERMS = [
@@ -1686,7 +1678,7 @@ const TERMS = [
 function buildTermsModal() {
   const rows = TERMS.map((t,i) => `
     <div class="term" data-idx="${i}">
-      <div class="term-k"><span class="term-kb">${t.k}</span>${t.en ? `<br><span style="font-size:10px;color:var(--text3);font-style:italic;margin-top:2px;display:block;">${t.en}</span>` : ''}</div>
+      <div class="term-k"><span class="term-kb">${t.k}</span>${t.en ? `<br><span style="font-size:13px;color:var(--text3);font-style:italic;margin-top:2px;display:block;">${t.en}</span>` : ''}</div>
       <div class="term-d">${t.d}</div>
     </div>`).join('');
 
@@ -1694,14 +1686,14 @@ function buildTermsModal() {
     <div class="ovl" id="termsOverlay" onclick="if(event.target===this)closeTerms()">
       <div class="modal" role="dialog" aria-modal="true" aria-label="용어의 정의">
         <div class="modal-hd">
-          <span class="mh-ic">📖</span>
+          <span class="mh-ic"><i data-lucide="book-open"></i></span>
           <span class="mh-t">용어의 정의</span>
-          <span style="font-size:11px;color:#9bbad4;font-family:var(--mono);margin-right:8px;">E1-사업-절차-0003 §5</span>
+          <span style="font-size:13px;color:#9bbad4;font-family:var(--mono);margin-right:8px;">E1-사업-절차-0003 §5</span>
           <span class="mh-x" onclick="closeTerms()" title="닫기">✕</span>
         </div>
         <div class="modal-bd">
           <div class="tsrch">
-            <span class="ts-ic">🔍</span>
+            <span class="ts-ic"><i data-lucide="search"></i></span>
             <input type="text" id="termSearch" placeholder="용어 검색 (예: ESCO, M&V, 공사금액 ...)" oninput="filterTerms(this.value)" autofocus>
           </div>
           <div id="termList">${rows}</div>
@@ -1711,18 +1703,27 @@ function buildTermsModal() {
     </div>`);
 }
 
-function openTerms() {
-  if (!document.getElementById('termsOverlay')) buildTermsModal();
+function openTerms(updateHash = true) {
+  if (!document.getElementById('termsOverlay')) {
+    buildTermsModal();
+    lucide.createIcons();
+  }
   document.getElementById('termsOverlay').classList.add('open');
   document.getElementById('nvTerms').classList.add('on');
   setTimeout(() => document.getElementById('termSearch')?.focus(), 80);
   document.addEventListener('keydown', handleTermsKey);
+  if(updateHash) {
+    window.location.hash = 'page=terms';
+  }
 }
 
-function closeTerms() {
+function closeTerms(updateHash = true) {
   document.getElementById('termsOverlay')?.classList.remove('open');
   document.getElementById('nvTerms').classList.remove('on');
   document.removeEventListener('keydown', handleTermsKey);
+  if(updateHash) {
+    window.location.hash = 'page=' + lastPage;
+  }
 }
 
 function handleTermsKey(e) { if (e.key === 'Escape') closeTerms(); }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>문서뷰어·리포팅툴 도입 방식 비교 프로토타입</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:#1d4ed8;
+      --blue2:#2563eb;
+      --blue3:#dbeafe;
+      --navy:#0f172a;
+      --text:#334155;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --bg:#f8fafc;
+      --green:#16a34a;
+      --green-bg:#dcfce7;
+      --orange:#f97316;
+      --orange-bg:#ffedd5;
+      --red:#dc2626;
+      --red-bg:#fee2e2;
+      --card:#ffffff;
+      --shadow:0 14px 35px rgba(15,23,42,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text)}
+    .layout{display:flex;min-height:100vh}
+    aside{width:280px;background:#0f172a;color:white;padding:28px 22px;position:fixed;inset:0 auto 0 0;box-shadow:8px 0 24px rgba(15,23,42,.18)}
+    .logo{display:flex;gap:12px;align-items:center;margin-bottom:28px}
+    .logo-icon{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#60a5fa,#2563eb);display:grid;place-items:center;font-size:22px;font-weight:800}
+    .logo h1{font-size:18px;line-height:1.35;margin:0;font-weight:800}
+    .logo p{font-size:12px;color:#cbd5e1;margin:2px 0 0}
+    nav a{display:flex;align-items:center;gap:12px;color:#cbd5e1;text-decoration:none;padding:13px 14px;border-radius:14px;margin-bottom:8px;font-size:14px;font-weight:600}
+    nav a.active, nav a:hover{background:#1e293b;color:white}
+    .side-note{position:absolute;left:22px;right:22px;bottom:24px;background:#1e293b;border:1px solid #334155;border-radius:16px;padding:16px;font-size:12px;color:#cbd5e1;line-height:1.55}
+    main{margin-left:280px;width:calc(100% - 280px);padding:34px 42px 60px}
+    .hero{background:linear-gradient(135deg,#1d4ed8,#38bdf8);border-radius:28px;padding:34px 38px;color:white;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.14);right:-80px;top:-90px}
+    .hero h2{font-size:30px;margin:0 0 12px;font-weight:800;letter-spacing:-.5px}
+    .hero p{font-size:16px;line-height:1.65;margin:0;max-width:920px;color:#e0f2fe}
+    .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:24px 0}
+    .metric{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}
+    .metric .icon{font-size:27px;margin-bottom:10px}
+    .metric b{display:block;color:var(--navy);font-size:17px;margin-bottom:5px}
+    .metric span{font-size:13px;color:var(--muted);line-height:1.5}
+    section{margin-top:34px}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    .section-title .badge{width:38px;height:38px;border-radius:12px;background:var(--blue3);color:var(--blue);display:grid;place-items:center;font-size:19px}
+    .section-title h3{margin:0;color:var(--navy);font-size:23px;font-weight:800}
+    .cards-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .card{background:white;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+    .card h4{margin:0 0 8px;font-size:20px;color:var(--navy)}
+    .card p.desc{margin:0 0 18px;color:var(--muted);font-size:14px;line-height:1.6}
+    .flow{display:flex;flex-direction:column;gap:12px;margin:18px 0}
+    .step{display:flex;align-items:center;gap:14px;background:#f8fafc;border:1px solid var(--line);border-radius:16px;padding:14px}
+    .num{width:30px;height:30px;border-radius:10px;background:var(--blue);color:white;font-weight:800;display:grid;place-items:center;font-size:13px;flex:none}
+    .step strong{display:block;color:var(--navy);font-size:14px;margin-bottom:2px}
+    .step span{font-size:12px;color:var(--muted);line-height:1.45}
+    .split-line{height:1px;background:var(--line);margin:20px 0}
+    .tag-row{display:flex;gap:10px;flex-wrap:wrap}
+    .tag{border-radius:999px;padding:8px 12px;font-size:12px;font-weight:700}
+    .tag.green{background:var(--green-bg);color:var(--green)}
+    .tag.orange{background:var(--orange-bg);color:var(--orange)}
+    .tag.red{background:var(--red-bg);color:var(--red)}
+    .tag.blue{background:var(--blue3);color:var(--blue)}
+    .compare{width:100%;border-collapse:separate;border-spacing:0;background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+    .compare th{background:#eff6ff;color:#1e3a8a;font-size:14px;padding:16px;text-align:left;border-bottom:1px solid var(--line)}
+    .compare td{padding:16px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.55;vertical-align:top}
+    .compare tr:last-child td{border-bottom:0}
+    .compare td:first-child{font-weight:800;color:var(--navy);width:170px;background:#f8fafc}
+    .decision{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .decision .box{border-radius:24px;padding:26px;color:white;box-shadow:var(--shadow)}
+    .box.viewer{background:linear-gradient(135deg,#1d4ed8,#60a5fa)}
+    .box.report{background:linear-gradient(135deg,#0f766e,#22c55e)}
+    .box h4{margin:0 0 10px;font-size:21px}
+    .box p{margin:0;line-height:1.65;font-size:14px;color:rgba(255,255,255,.9)}
+    .mini-title{font-size:14px;font-weight:800;color:var(--navy);margin:18px 0 10px}
+    .list{display:flex;flex-direction:column;gap:8px}
+    .item{display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.5;color:var(--text)}
+    .item .dot{width:8px;height:8px;border-radius:50%;margin-top:7px;flex:none}
+    .dot.green{background:var(--green)} .dot.orange{background:var(--orange)} .dot.red{background:var(--red)}
+    footer{margin-top:34px;color:var(--muted);font-size:12px;text-align:right}
+    @media(max-width:1100px){aside{position:static;width:100%;height:auto}.layout{display:block}main{margin-left:0;width:100%;padding:24px}.summary-grid,.cards-2,.decision{grid-template-columns:1fr}.side-note{position:static;margin-top:30px}}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="logo">
+        <div class="logo-icon">📄</div>
+        <div>
+          <h1>문서 보안 적용<br>방식 비교</h1>
+          <p>Viewer vs Reporting Tool</p>
+        </div>
+      </div>
+      <nav>
+        <a class="active" href="#overview">🏠 개요</a>
+        <a href="#viewer">👁️ 사이냅 문서뷰어</a>
+        <a href="#report">📊 오즈리포트</a>
+        <a href="#compare">⚖️ 방식 비교</a>
+        <a href="#decision">✅ 적용 방향</a>
+      </nav>
+      <div class="side-note">
+        핵심 판단 기준은 <b>원본 보존</b>, <b>지원 파일 형식</b>, <b>워터마크 적용 시점</b>, <b>다운로드 파일의 보안성</b>입니다.
+      </div>
+    </aside>
+
+    <main>
+      <section id="overview" class="hero">
+        <h2>워터마크·타임스탬프 적용 업무 프로토타입</h2>
+        <p>파일 업로드 이후 문서 열람·다운로드 과정에서 기관 로고 워터마크와 업로드 시각 타임스탬프를 적용하는 두 가지 방식, 즉 <b>사이냅 문서뷰어 방식</b>과 <b>오즈리포트 방식</b>의 업무 흐름과 장단점을 비교합니다.</p>
+      </section>
+
+      <div class="summary-grid">
+        <div class="metric"><div class="icon">👁️</div><b>문서뷰어 방식</b><span>조회 시점에 보안 정보를 적용하고 원본은 그대로 유지</span></div>
+        <div class="metric"><div class="icon">📑</div><b>리포팅툴 방식</b><span>업로드 시점에 보안 정보가 포함된 PDF 생성</span></div>
+        <div class="metric"><div class="icon">🛡️</div><b>공통 목적</b><span>워터마크와 타임스탬프를 통한 문서 유통 통제</span></div>
+        <div class="metric"><div class="icon">⚠️</div><b>핵심 차이</b><span>원본 유지 중심인지, 보안 적용 파일 생성 중심인지</span></div>
+      </div>
+
+      <section id="viewer">
+        <div class="section-title"><div class="badge">👁️</div><h3>1. 사이냅 문서뷰어 도입 방식</h3></div>
+        <div class="card">
+          <h4>업무 전개 절차</h4>
+          <p class="desc">파일 업로드 후 목록 화면에서 바로보기와 다운로드 기능을 분리하여 제공합니다.</p>
+          <div class="flow">
+            <div class="step"><div class="num">1</div><div><strong>파일 업로드</strong><span>사용자가 원본 파일을 시스템에 등록합니다.</span></div></div>
+            <div class="step"><div class="num">2</div><div><strong>목록 화면 버튼 제공</strong><span>업로드된 파일 옆에 ‘바로보기’와 ‘다운로드’ 버튼을 제공합니다.</span></div></div>
+            <div class="step"><div class="num">3</div><div><strong>바로보기 클릭</strong><span>사이냅 문서뷰어가 열리고, 뷰어 내에서 기관 로고 워터마크와 업로드 시각 타임스탬프를 표시합니다.</span></div></div>
+            <div class="step"><div class="num">4</div><div><strong>뷰어 내 다운로드</strong><span>워터마크와 타임스탬프가 적용된 PDF 파일을 다운로드합니다.</span></div></div>
+            <div class="step"><div class="num">5</div><div><strong>일반 다운로드</strong><span>문서뷰어 외부에서 다운로드할 경우 워터마크와 타임스탬프가 적용되지 않은 원본 파일을 다운로드합니다.</span></div></div>
+          </div>
+          <div class="split-line"></div>
+          <div class="tag-row">
+            <span class="tag green">장점: 원본 품질 유지</span>
+            <span class="tag green">장점: 다양한 파일 형식 대응</span>
+            <span class="tag orange">단점: 원본 직접 적용 불가</span>
+            <span class="tag red">주의: 일반 다운로드는 원본 제공</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="report">
+        <div class="section-title"><div class="badge">📊</div><h3>2. 오즈리포트 도입 방식</h3></div>
+        <div class="card">
+          <h4>업무 전개 절차</h4>
+          <p class="desc">업로드 단계에서 PDF 파일을 리포트 레이아웃으로 변환하고, 워터마크와 타임스탬프가 포함된 신규 PDF를 생성합니다.</p>
+          <div class="flow">
+            <div class="step"><div class="num">1</div><div><strong>PDF 파일 업로드</strong><span>오즈리포트에서 인식 가능한 PDF 형식으로 파일을 등록합니다.</span></div></div>
+            <div class="step"><div class="num">2</div><div><strong>빈 리포트 레이아웃 생성</strong><span>오즈리포트의 빈 레이아웃 안에 PDF 내용을 자동 삽입합니다.</span></div></div>
+            <div class="step"><div class="num">3</div><div><strong>워터마크·타임스탬프 적용</strong><span>파일 업로드 시점에 기관 로고와 업로드 시간을 PDF에 반영합니다.</span></div></div>
+            <div class="step"><div class="num">4</div><div><strong>보안 적용 PDF 생성</strong><span>원본을 기반으로 워터마크와 타임스탬프가 포함된 PDF를 새로 생성합니다.</span></div></div>
+            <div class="step"><div class="num">5</div><div><strong>다운로드 후 확인</strong><span>별도 문서뷰어 없이 다운로드한 PDF 파일로 문서를 확인합니다.</span></div></div>
+          </div>
+          <div class="split-line"></div>
+          <div class="tag-row">
+            <span class="tag green">장점: 보안 적용 PDF 생성</span>
+            <span class="tag green">장점: 별도 뷰어 불필요</span>
+            <span class="tag orange">단점: PDF만 가능</span>
+            <span class="tag red">주의: 화질 저하·업로드 지연 가능</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="compare">
+        <div class="section-title"><div class="badge">⚖️</div><h3>3. 두 방식 비교</h3></div>
+        <table class="compare">
+          <thead>
+            <tr><th>비교 항목</th><th>사이냅 문서뷰어</th><th>오즈리포트</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>기본 개념</td><td>문서를 열람할 때 보안 정보를 표시하는 조회 중심 방식</td><td>업로드 시 보안 정보가 포함된 PDF를 생성하는 파일 생성 중심 방식</td></tr>
+            <tr><td>지원 파일</td><td>HWP, DOCX, XLSX, PDF 등 다양한 문서 형식 대응 가능</td><td>PDF 파일만 업로드 가능</td></tr>
+            <tr><td>적용 시점</td><td>문서뷰어에서 바로보기 또는 뷰어 내 다운로드 시 적용</td><td>파일 업로드 및 PDF 생성 시점에 적용</td></tr>
+            <tr><td>원본 보존</td><td>원본 파일을 변경하지 않음</td><td>원본 기반의 신규 PDF 생성</td></tr>
+            <tr><td>다운로드 결과</td><td>뷰어 내 다운로드는 보안 PDF, 일반 다운로드는 원본 파일</td><td>다운로드 파일 자체가 보안 적용 PDF</td></tr>
+            <tr><td>품질 영향</td><td>원본 품질 훼손 없음</td><td>PDF 재생성 과정에서 화질 저하 가능</td></tr>
+            <tr><td>처리 속도</td><td>업로드 속도 부담이 상대적으로 적음</td><td>변환·생성 과정으로 업로드 시간이 길어질 수 있음</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="decision">
+        <div class="section-title"><div class="badge">✅</div><h3>4. 적용 방향 판단</h3></div>
+        <div class="decision">
+          <div class="box viewer">
+            <h4>사이냅 문서뷰어가 적합한 경우</h4>
+            <p>다양한 원본 문서 형식을 유지해야 하고, 원본 품질 훼손 없이 열람 과정에서 워터마크와 타임스탬프를 제공하는 것이 중요한 경우 적합합니다.</p>
+          </div>
+          <div class="box report">
+            <h4>오즈리포트가 적합한 경우</h4>
+            <p>사용자가 다운로드하는 파일 자체에 워터마크와 타임스탬프가 반드시 포함되어야 하며, PDF 중심의 문서 유통 체계가 가능한 경우 적합합니다.</p>
+          </div>
+        </div>
+
+        <div class="cards-2" style="margin-top:22px">
+          <div class="card">
+            <h4>핵심 메시지</h4>
+            <div class="list">
+              <div class="item"><span class="dot green"></span><span>문서뷰어 방식은 <b>원본 보존과 다중 파일 형식 지원</b>에 강점이 있습니다.</span></div>
+              <div class="item"><span class="dot green"></span><span>리포팅툴 방식은 <b>보안 적용 PDF를 직접 생성</b>할 수 있다는 점이 강점입니다.</span></div>
+              <div class="item"><span class="dot orange"></span><span>보안 요구사항이 “열람 통제”인지 “배포 파일 자체 통제”인지에 따라 선택 기준이 달라집니다.</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <h4>검토 필요 사항</h4>
+            <div class="list">
+              <div class="item"><span class="dot red"></span><span>일반 다운로드에서도 워터마크 적용이 필수인지 확인해야 합니다.</span></div>
+              <div class="item"><span class="dot red"></span><span>업로드 대상 파일 형식이 PDF로 제한 가능한지 검토해야 합니다.</span></div>
+              <div class="item"><span class="dot red"></span><span>PDF 재생성 시 화질 저하와 처리 시간 증가를 수용할 수 있는지 확인해야 합니다.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>HTML Prototype · Document Security Workflow Comparison</footer>
+    </main>
+  </div>
+</body>
+</html>
