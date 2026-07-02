@@ -322,6 +322,54 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 .donut-lgd{display:flex;flex-direction:column;gap:8px;}
 .donut-li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);}
 .donut-d{width:11px;height:11px;border-radius:3px;flex-shrink:0;}
+
+/* ===== SIDEBAR SUB-NAV ===== */
+.nv-sub{margin-left:20px;padding:5px 10px;}
+.nv-sub .nv-num{width:18px;height:18px;font-size:11px;}
+.nv-sub .nv-lbl{font-size:13px;}
+.nv-sub .nv-dot{width:5px;height:5px;}
+
+/* ===== FLOW DIAGRAM (순서도) ===== */
+.fd-lgd{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 26px;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;}
+.fd-lgd-i{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text2);}
+.fd-wrap{display:flex;flex-direction:column;gap:28px;}
+.fd-block{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px 24px 24px;box-shadow:var(--sh1);}
+.fd-block-title{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:#fff;font-size:14px;font-weight:700;padding:6px 16px;border-radius:8px;letter-spacing:.02em;}
+.fd-block-desc{font-size:13px;color:var(--text2);margin:10px 0 18px;line-height:1.65;}
+.fd-sub-t{font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 10px;display:flex;align-items:center;gap:6px;}
+.fd-sub-t:first-child{margin-top:0;}
+
+.fd-row{display:flex;align-items:center;flex-wrap:wrap;row-gap:10px;}
+.fd-node{background:var(--bg2);border:1.5px solid var(--border2);border-radius:9px;padding:9px 14px;min-width:104px;box-shadow:var(--sh1);}
+.fd-node-t{font-size:13px;font-weight:700;color:var(--text);line-height:1.35;}
+.fd-node-s{font-size:11.5px;color:var(--text3);margin-top:2px;line-height:1.4;}
+.fd-node.n-bl{border-color:var(--blue-md);border-top:3px solid var(--blue);}
+.fd-node.n-gr{border-color:var(--green-md);border-top:3px solid var(--green);}
+.fd-node.n-am{border-color:var(--amber-md);border-top:3px solid var(--amber);}
+.fd-node.n-pu{border-color:var(--purple-md);border-top:3px solid var(--purple);}
+.fd-node.n-nv{border-color:var(--border2);border-top:3px solid var(--navy);}
+
+.fd-arrow{display:flex;align-items:center;justify-content:center;width:26px;color:var(--border2);font-size:15px;flex-shrink:0;}
+
+.fd-pill{border-radius:20px;padding:6px 13px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px;flex-shrink:0;white-space:nowrap;}
+.fd-pill .lucide{width:12px;height:12px;stroke-width:2.4px;}
+.fd-pill-btn{background:var(--purple-lt);color:var(--purple);border:1px solid var(--purple-md);}
+.fd-pill-func{background:var(--blue-lt);color:var(--blue);border:1px solid var(--blue-md);}
+.fd-pill-key{background:var(--green-lt);color:var(--green-dk);border:1px solid var(--green-md);font-family:var(--mono);}
+
+.fd-state{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;flex-shrink:0;color:#fff;text-align:center;line-height:1.25;box-shadow:var(--sh1);padding:2px;}
+
+.fd-loop{display:flex;align-items:flex-start;gap:7px;font-size:12.5px;color:var(--red-dk);background:var(--red-lt);border:1px dashed var(--red-md);border-radius:8px;padding:9px 13px;margin-top:14px;line-height:1.55;}
+.fd-loop .lucide{width:14px;height:14px;stroke-width:2.2px;flex-shrink:0;margin-top:1px;}
+.fd-note{display:flex;align-items:flex-start;gap:7px;font-size:12.5px;color:var(--text2);background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:9px 13px;margin-top:10px;line-height:1.55;}
+.fd-note .lucide{width:14px;height:14px;stroke-width:2.2px;flex-shrink:0;margin-top:1px;color:var(--text3);}
+
+.fd-fan{display:flex;align-items:stretch;margin-top:4px;}
+.fd-fan-src{flex-shrink:0;width:116px;display:flex;align-items:center;padding-right:14px;}
+.fd-fan-rows{flex:1;display:flex;flex-direction:column;border-left:2px solid var(--border2);padding-left:0;min-width:0;}
+.fd-fan-row{display:flex;align-items:center;flex-wrap:wrap;row-gap:8px;gap:10px;padding:9px 0 9px 20px;position:relative;}
+.fd-fan-row::before{content:'';position:absolute;left:0;top:50%;width:20px;height:2px;background:var(--border2);}
+.fd-fan-row:not(:last-child){border-bottom:1px dashed var(--border);}
 </style>
 <header class="hdr">
   <div class="hdr-l">
@@ -356,12 +404,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
       </div>
       <div class="nv on" id="nvProc" onclick="showPage('proc',this)">
         <div class="nv-num" style="background:var(--blue-lt);color:var(--blue);"><i data-lucide="clipboard-list"></i></div>
-        <div class="nv-lbl">PMS 업무 프로세스</div>
+        <div class="nv-lbl">사업관리 업무 절차</div>
         <div class="nv-dot" style="background:var(--blue)"></div>
       </div>
       <div class="nv" id="nvSrm" onclick="showPage('srm',this)">
         <div class="nv-num" style="background:var(--green-lt);color:var(--green);"><i data-lucide="refresh-cw"></i></div>
-        <div class="nv-lbl">SRM 업무 프로세스</div>
+        <div class="nv-lbl">입찰 업무절차</div>
         <div class="nv-dot" style="background:var(--green)"></div>
       </div>
       <div class="nv" id="nvEbid" onclick="showPage('ebid',this)">
@@ -388,6 +436,17 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
         <div class="nv-num" style="background:var(--red-lt);color:var(--red);"><i data-lucide="shield-alert"></i></div>
         <div class="nv-lbl">문서보안SW 적용 비교</div>
         <div class="nv-dot" style="background:var(--red)"></div>
+      </div>
+      <div class="side-div"></div>
+      <div class="nv" id="nvPmsdef" onclick="showPage('pmsdef',this)">
+        <div class="nv-num" style="background:var(--green-lt);color:var(--green-dk);"><i data-lucide="workflow"></i></div>
+        <div class="nv-lbl">업무프로세스 정의(PMS)</div>
+        <div class="nv-dot" style="background:var(--green-dk)"></div>
+      </div>
+      <div class="nv nv-sub" id="nvPmsflow" onclick="showPage('pmsflow',this)">
+        <div class="nv-num" style="background:var(--surface);color:var(--text2);"><i data-lucide="git-branch"></i></div>
+        <div class="nv-lbl">순서도</div>
+        <div class="nv-dot" style="background:var(--text3)"></div>
       </div>
       <div id="navList" style="display:none;"></div>
     </div>
@@ -440,7 +499,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 <div class="page" id="srmPage">
   <div class="hero">
     <div class="hero-id" style="color:var(--green);background:var(--green-lt);border-color:var(--green-md);"><i data-lucide="refresh-cw" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> SRM (전자입찰시스템) &nbsp;·&nbsp; srm.kepcoes.co.kr</div>
-    <div class="hero-h">SRM 업무 프로세스<br>전주기 흐름</div>
+    <div class="hero-h">입찰 업무절차<br>전주기 흐름</div>
     <div class="hero-sub">견적요청부터 발주요청·입찰·평가심사를 거쳐 수주계약 체결 및 PMS 연계까지의 전체 흐름</div>
     <div class="hero-chips">
       <div class="hchip"><span class="hchip-dot" style="background:var(--green)"></span>전주기 6단계</div>
@@ -1342,7 +1401,392 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
   </div>
 </div>
 
+<div class="page" id="pmsdefPage">
+  <div class="hero">
+    <div class="hero-id" style="color:var(--green-dk);background:var(--green-lt);border-color:var(--green-md);"><i data-lucide="workflow" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> PMS Process(To-Be) &nbsp;·&nbsp; 시스템 화면·기능 흐름 정의</div>
+    <div class="hero-h">업무프로세스 정의(PMS)<br>화면·기능 흐름 설계</div>
+    <div class="hero-sub">사업접수부터 사업결산까지 PMS 화면 전이, 등록 정보, 버튼(BTN)·연계기능(FUNC) 흐름을 정의한 시스템 프로세스</div>
+    <div class="hero-chips">
+      <div class="hchip"><span class="hchip-dot" style="background:var(--green-dk)"></span>5개 모듈</div>
+      <div class="hchip">📌 사업접수 → 프로젝트 생성 → 계약·자금 관리 → 사업결산</div>
+      <div class="hchip">ERP · SRM 외부연계</div>
+      <div class="hchip">🖼 원본 다이어그램 포함</div>
+    </div>
+  </div>
 
+  <div class="content">
+    <div class="sec-t"><span class="n">1</span>PMS 5대 모듈 구성</div>
+    <div class="sec-sub">사업 접수부터 결산까지 프로젝트 단위로 정보가 이어지는 5개 핵심 모듈</div>
+    <div class="gv on">
+      <div class="gc static" style="border-top:3px solid var(--blue);">
+        <div class="gc-n" style="color:var(--blue);">01</div>
+        <div class="gc-t">사업접수</div>
+        <div class="gc-d">실제 사업을 시작하기 위해 기본정보를 입력하는 단계. 해당 정보는 전체 필수값으로 정의.</div>
+      </div>
+      <div class="gc static" style="border-top:3px solid var(--green);">
+        <div class="gc-n" style="color:var(--green);">02</div>
+        <div class="gc-t">프로젝트 생성</div>
+        <div class="gc-d">세부 정보를 입력하고 수행 절차(심의·계약)를 밟기 위한 기본 단계. 기본정보/계약관리/투자관리/발주관리/상환관리로 구분.</div>
+      </div>
+      <div class="gc static" style="border-top:3px solid var(--amber);">
+        <div class="gc-n" style="color:var(--amber);">03</div>
+        <div class="gc-t">계약관리</div>
+        <div class="gc-d">사업 내 발생되는 계약번호를 기준으로 전반 흐름을 확인할 수 있는 운영 기능. 수주계약·발주계약을 조회.</div>
+      </div>
+      <div class="gc static" style="border-top:3px solid var(--purple);">
+        <div class="gc-n" style="color:var(--purple);">04</div>
+        <div class="gc-t">자금관리</div>
+        <div class="gc-d">사업 진행 중 발생되는 자금 흐름(투자·상환·절차)을 확인하기 위한 DATA 조회 기능.</div>
+      </div>
+      <div class="gc static" style="border-top:3px solid var(--navy);">
+        <div class="gc-n" style="color:var(--navy);">05</div>
+        <div class="gc-t">사업결산</div>
+        <div class="gc-d">프로젝트 단위 기준하여 완료된 사업에 대한 최종 정보 조회 및 결산.</div>
+      </div>
+    </div>
+
+    <div class="sec-t"><span class="n">2</span>표기 기준 (BTN · FUNC · Key)</div>
+    <div class="sec-sub">화면 흐름도에서 반복 사용되는 세 가지 표기 요소의 정의</div>
+    <div class="brg">
+      <div class="brgc" style="background:var(--purple-lt);border-color:var(--purple-md);">
+        <div class="brgc-t" style="color:var(--purple);"><i data-lucide="mouse-pointer-click" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>BTN (버튼)</div>
+        <div class="brgc-d">사용자가 화면에서 직접 클릭해 상태를 전이시키는 액션. 예) 임시저장, 프로젝트 생성, 사업심의 요청, 계약 품의 승인</div>
+      </div>
+      <div class="brgc" style="background:var(--blue-lt);border-color:var(--blue-md);">
+        <div class="brgc-t" style="color:var(--blue);"><i data-lucide="link" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>FUNC (연계기능)</div>
+        <div class="brgc-d">ERP·SRM 등 외부 시스템과 자동으로 데이터를 주고받는 연동 기능. 예) 투자정보 입력, 투자금 지급현황, 발주 계약</div>
+      </div>
+      <div class="brgc" style="background:var(--green-lt);border-color:var(--green-md);">
+        <div class="brgc-t" style="color:var(--green);"><i data-lucide="key" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>Key (연계 키)</div>
+        <div class="brgc-d">화면 간 데이터를 연결하는 기준값. 프로젝트 생성 이후 대부분 <strong>프로젝트 번호</strong> 또는 <strong>계약 번호</strong>를 기준으로 연계.</div>
+      </div>
+    </div>
+    <div class="sec-sub" style="margin-top:-6px;">상태 흐름 &nbsp;
+      <span class="bdg" style="background:var(--surface);color:var(--text2);border-color:var(--border2);">작성</span> →
+      <span class="bdg" style="background:var(--amber-lt);color:var(--amber);border-color:var(--amber-md);">승인요청</span> →
+      <span class="bdg b-gr">승인</span> 또는
+      <span class="bdg" style="background:var(--red-lt);color:var(--red);border-color:var(--red-md);">반려</span>(재작성) →
+      <span class="bdg" style="background:var(--purple-lt);color:var(--purple);border-color:var(--purple-md);">완료</span>
+    </div>
+
+    <div class="sec-t"><span class="n">3</span>사업접수</div>
+    <div class="sec-sub">실제 사업을 시작하기 위해 기본정보를 입력하는 단계 — 사업 정보의 투명성 및 이후 진행 Process의 안정성을 목적으로 전체 항목을 필수값으로 정의</div>
+    <div class="hf">
+      <div class="hfs" style="border-top:3px solid var(--blue);"><div class="hfs-n">STEP 1</div><div class="hfs-t">신규 프로젝트 생성</div><div class="hfs-d">사업접수 현황 조회를 통해 신규 여부를 확인하고 신규 프로젝트 생성을 진행</div></div>
+      <div class="hfa">▶</div>
+      <div class="hfs" style="border-top:3px solid var(--blue);"><div class="hfs-n">STEP 2</div><div class="hfs-t">사업정보 등록</div><div class="hfs-d">사업의 기본정보를 입력. 필수값 Check 등을 진행하지 않으며 실제 입력된 정보 기준으로 저장</div></div>
+      <div class="hfa">▶</div>
+      <div class="hfs" style="border-top:3px solid var(--purple);"><div class="hfs-n">BTN</div><div class="hfs-t">임시저장</div><div class="hfs-d">사업정보의 일부만 입력했거나 프로젝트 생성을 위한 일정이 필요한 상태 등에서 정보를 임시저장하는 기능. 정보의 필수값 Check 등을 진행하지 않으며 실제 입력된 정보 기준으로 저장</div></div>
+      <div class="hfa">▶</div>
+      <div class="hfs" style="border-top:3px solid var(--purple);"><div class="hfs-n">BTN</div><div class="hfs-t">프로젝트 생성</div><div class="hfs-d">사업의 기본정보를 기반으로 하여 프로젝트 생성. 실제 프로젝트 생성을 위한 정보 연동(→ 프로젝트 관리 : 프로젝트 목록 → 프로젝트 상세 → 기본정보)</div></div>
+    </div>
+
+    <div class="sec-t"><span class="n">4</span>프로젝트 생성 — 5개 정보 영역</div>
+    <div class="sec-sub">이관된 사업정보는 프로젝트 형태로 재구성되며, 기본정보/계약관리/투자관리/발주관리/상환관리의 정보 영역으로 구분됨 — 계약 정보를 기준으로 사업심의 및 계약품의가 진행</div>
+    <div class="gv on">
+      <div class="gc static" style="border-top:3px solid var(--green);">
+        <div class="gc-t">기본정보</div>
+        <div class="gc-d">사업의 기본정보. 최초 사업저장 시 연동되는 정보.</div>
+      </div>
+      <div class="gc static" style="border-top:3px solid var(--green);">
+        <div class="gc-t">계약관리</div>
+        <div class="gc-d">사업 계약 체결을 위한 Process 진행(심의/결재). 심의 및 계약을 실제 체결하기 위한 정보·계약서 및 첨부파일.</div>
+      </div>
+      <div class="gc static" style="border-top:3px solid var(--green);">
+        <div class="gc-t">투자관리</div>
+        <div class="gc-d">프로젝트의 심의 및 계약 완료 후 확정된 투자금에 대한 정보. 투자금 지급이 필요한 대상(EPC사·거래처 등)의 계약정보·지급 현황 내역 적재.</div>
+      </div>
+      <div class="gc static" style="border-top:3px solid var(--green);">
+        <div class="gc-t">발주관리</div>
+        <div class="gc-d">수주된 프로젝트 기준 추가 발주가 진행되었을 경우 SRM에서 정보 갱신 또는 신규 등록.</div>
+      </div>
+      <div class="gc static" style="border-top:3px solid var(--green);">
+        <div class="gc-t">상환관리</div>
+        <div class="gc-d">프로젝트의 심의 및 계약 완료 후 상환 스케줄 작성 후 등록. 스케줄 등록 후 확인되는 상환금 입금정보를 회신 받아 적재.</div>
+      </div>
+    </div>
+
+    <div class="sec-t"><span class="n">5</span>사업심의 · 계약품의 상태 흐름</div>
+    <div class="sec-sub">계약관리 정보를 기준으로 작성 → 사업심의 요청 → 승인 → 계약품의 승인 요청 → 완료 순으로 진행 (각 승인 단계는 반려될 경우 이력을 남기고 재작성 단계로 되돌아감)</div>
+    <div class="hf">
+      <div class="hfs" style="border-top:3px solid var(--text3);"><div class="hfs-n">작성</div><div class="hfs-t">계약관리 정보 작성</div><div class="hfs-d">사업 계약 체결을 위한 Process 진행(심의/결재). 심의 및 계약을 실제 체결하기 위한 정보·계약서 및 첨부파일 작성</div></div>
+      <div class="hfa">▶</div>
+      <div class="hfs" style="border-top:3px solid var(--purple);"><div class="hfs-n">BTN</div><div class="hfs-t">사업심의 요청</div><div class="hfs-d">사업심의 요청 → 그룹웨어 심의 요청 연동. 계약정보·첨부파일(사업추진계획안)을 기준으로 심의 요청. 심의 및 결과가 회신되지 않는 기간동안은 정보 수정 불가</div></div>
+      <div class="hfa">▶</div>
+      <div class="hfs" style="border-top:3px solid var(--green);"><div class="hfs-n">승인</div><div class="hfs-t">사업심의 결과 반영</div><div class="hfs-d">사업 심의 결과를 기준으로 추가 정보·첨부파일 등록(심의 결과문, 계약서, 사업시행안 등). 심의 결과에 기재되는 보완사항 등 정보를 입력할 수 있는 기능 고려, 승인 상세 이력 적재</div></div>
+      <div class="hfa">▶</div>
+      <div class="hfs" style="border-top:3px solid var(--purple);"><div class="hfs-n">BTN</div><div class="hfs-t">계약 품의 승인</div><div class="hfs-d">계약품의 요청 → 그룹웨어 계약품의 연동. 계약정보·첨부파일(사업추진계획안)을 기준으로 계약 요청. 심의 및 결과가 회신되지 않는 기간동안은 정보 수정 불가</div></div>
+      <div class="hfa">▶</div>
+      <div class="hfs" style="border-top:3px solid var(--navy);"><div class="hfs-n">완료</div><div class="hfs-t">계약품의 승인·완료</div><div class="hfs-d">계약 품의가 승인되면 완료 상태로 전이. 승인 상세 이력 적재</div></div>
+    </div>
+    <div class="brg" style="margin-top:14px;">
+      <div class="brgc" style="background:var(--red-lt);border-color:var(--red-md);">
+        <div class="brgc-t" style="color:var(--red);">반려 처리</div>
+        <div class="brgc-d">사업심의가 반려되었을 경우 이력 적재(심의 반려의 원인·추가 필요사항 등을 기재, 재심의 요청 기능 고려) · 계약 품의가 반려되었을 경우 BTN : 미계약 승인요청으로 이력 적재(반려 원인·추가 필요사항 등 기재, 재품의 요청 기능 고려)</div>
+      </div>
+      <div class="brgc" style="background:var(--surface);border-color:var(--border2);">
+        <div class="brgc-t" style="color:var(--text2);">BTN : 사업심의 생략</div>
+        <div class="brgc-d">심의 생략 후 대기 단계로 Process 진행하며, 계약품의 이전 단계로 이동. (사업심의 요청 BTN → 사업승인 으로 변경, 사업심의 생략 BTN은 비활성화)</div>
+      </div>
+    </div>
+
+    <div class="sec-t"><span class="n">6</span>정보 영역별 연계 기능(FUNC)</div>
+    <div class="sec-sub">투자관리·상환관리·발주관리는 프로젝트 화면에서 작성 후 외부 시스템(ERP·SRM)과 연계되어 결과를 회신받는 구조</div>
+    <div class="mv on" style="display:block;">
+      <table class="mt">
+        <thead><tr><th>정보 영역</th><th>FUNC</th><th>연계 시스템</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td class="phn">투자관리</td><td>FUNC : 투자정보 입력</td><td>거래처 List</td><td>투자금 지급이 필요한 대상(EPC사·거래처 등)의 계약정보를 작성</td></tr>
+          <tr><td class="phn">투자관리</td><td>FUNC : 투자금 지급현황</td><td>ERP</td><td>등록된 거래처 정보로 투자금이 지급되었을 경우 ERP에서 결과를 회신받아 갱신, 이력 적재</td></tr>
+          <tr><td class="phn">상환관리</td><td>FUNC : 상환금 입금현황</td><td>ERP</td><td>등록된 프로젝트 및 거래처 정보로 상환금이 입금되었을 경우 ERP에서 결과를 회신받아 갱신, 이력 적재</td></tr>
+          <tr><td class="phn">발주관리</td><td>FUNC : 발주 계약</td><td>SRM</td><td>SRM에서 발주된 계약완료 정보 연동</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sec-t"><span class="n">7</span>계약관리 (운영 조회)</div>
+    <div class="sec-sub">사업 내 발생되는 계약번호를 기준으로 전반 흐름을 확인할 수 있는 운영 기능</div>
+    <div class="mv on" style="display:block;">
+      <table class="mt">
+        <thead><tr><th>구분</th><th>정의</th><th>Key</th><th>연계 화면</th></tr></thead>
+        <tbody>
+          <tr><td class="phn">수주 계약</td><td>프로젝트 단위로 진행되는 계약 정보</td><td>계약 번호</td><td>프로젝트 상세 → 계약관리</td></tr>
+          <tr><td class="phn">발주 계약</td><td>프로젝트에 종속되는 협력업체 계약 정보</td><td>계약 번호</td><td>프로젝트 상세 → 발주 계약관리 → 발주 계약상세</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sec-t"><span class="n">8</span>자금관리</div>
+    <div class="sec-sub">사업 진행 중에 발생되는 자금의 흐름을 확인하기 위한 DATA를 조회하는 기능 — 투자(KEPCOES에서 투자되는 금액), 상환(에너지사용자에게서 회수받는 금액), 절차(자금 흐름의 중간 검증·근거 확인)의 목적으로 구성</div>
+    <div class="mv on" style="display:block;">
+      <table class="mt">
+        <thead><tr><th>기능</th><th>목적</th><th>Key</th><th>연계 화면</th></tr></thead>
+        <tbody>
+          <tr><td class="phn">투자비 지급현황</td><td>투자 → 지급 거래처 및 지급 현황</td><td>프로젝트 번호</td><td>프로젝트 상세 → 투자 관리</td></tr>
+          <tr><td class="phn">상환 현황</td><td>상환 → 상환현황 조회</td><td>프로젝트 번호</td><td>프로젝트 상세 → 상환 관리</td></tr>
+          <tr><td class="phn">원리금 상환내역</td><td>상환 → 상환내역서 조회·정보 상세</td><td>프로젝트 번호</td><td>프로젝트 상세 → 상환 관리</td></tr>
+          <tr><td class="phn">미수금 관리</td><td>상환 → 미수 현황(상환 중 미수가 발생된 계약) 조회</td><td>프로젝트 번호</td><td>프로젝트 상세 → 상환 관리</td></tr>
+          <tr><td class="phn">세금계산서 관리</td><td>절차 → 발행 현황 조회</td><td>계약 번호</td><td>프로젝트 상세 → 투자 관리</td></tr>
+          <tr><td class="phn">전표 관리</td><td>절차 → 발행 현황 조회</td><td>계약 번호</td><td>프로젝트 상세 → 상환 관리</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sec-t"><span class="n">9</span>사업결산</div>
+    <div class="sec-sub">프로젝트 단위 기준하여 완료된 사업에 대한 최종 정보 조회 및 결산 — 정상 계약종료 및 계약 해지 등 상황에 따라 발생되는 CASE의 사업 결산 내역을 완료 시점에 확인</div>
+    <div class="hf">
+      <div class="hfs" style="border-top:3px solid var(--navy);"><div class="hfs-n">사업결산</div><div class="hfs-t">완료 프로젝트 목록</div><div class="hfs-d">Key : 프로젝트 번호로 완료된 프로젝트 목록을 조회</div></div>
+      <div class="hfa">▶</div>
+      <div class="hfs" style="border-top:3px solid var(--navy);"><div class="hfs-n">결산</div><div class="hfs-t">프로젝트 결산상세</div><div class="hfs-d">정상 종료·계약 해지 등 CASE별 최종 결산 내역 확인</div></div>
+    </div>
+
+    <div class="nb nb-sk" style="margin:26px 0 2px;cursor:pointer;" onclick="showPage('pmsflow', document.getElementById('nvPmsflow'))">
+      <span class="nb-ic"><i data-lucide="git-branch" style="width:15px;height:15px;vertical-align:text-bottom;"></i></span>
+      <span class="nb-tx"><strong>전체 흐름을 도식으로 한눈에 보려면</strong> — 하위 메뉴 「순서도」에서 KEPCOES 사업 Process(To-Be)를 화면 컴포넌트로 재구성한 다이어그램을 확인하세요.</span>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="pmsflowPage">
+  <div class="hero">
+    <div class="hero-id" style="color:var(--navy);background:var(--surface);border-color:var(--border2);"><i data-lucide="git-branch" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> 업무프로세스 정의(PMS) &nbsp;·&nbsp; 하위 메뉴</div>
+    <div class="hero-h">PMS 프로세스<br>순서도</div>
+    <div class="hero-sub">KEPCOES 사업 Process(To-Be) 원본 다이어그램을 화면 컴포넌트로 다시 그린 순서도입니다. 사각형은 화면·데이터, 원은 상태, 알약은 BTN·FUNC·Key를 의미합니다.</div>
+    <div class="hero-chips">
+      <div class="hchip"><span class="hchip-dot" style="background:var(--navy)"></span>5개 블록</div>
+      <div class="hchip">사업접수 → 프로젝트 생성 → 계약·자금 관리 → 사업결산</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="fd-lgd">
+      <div class="fd-lgd-i"><span class="fd-node n-bl" style="display:inline-block;width:22px;height:14px;padding:0;"></span>화면 / 데이터</div>
+      <div class="fd-lgd-i"><span class="fd-pill fd-pill-btn"><i data-lucide="mouse-pointer-click"></i>BTN</span>사용자 버튼 액션</div>
+      <div class="fd-lgd-i"><span class="fd-pill fd-pill-func"><i data-lucide="link"></i>FUNC</span>외부 연계 기능(ERP·SRM)</div>
+      <div class="fd-lgd-i"><span class="fd-pill fd-pill-key"><i data-lucide="key"></i>Key</span>화면 간 연계 기준값</div>
+      <div class="fd-lgd-i"><span class="fd-state" style="width:20px;height:20px;background:var(--navy);"></span>상태(작성 / 승인 / 완료 등)</div>
+    </div>
+
+    <div class="fd-wrap">
+
+      <div class="fd-block">
+        <span class="fd-block-title"><i data-lucide="inbox" style="width:14px; height:14px;"></i>① 사업접수</span>
+        <div class="fd-block-desc">실제 사업을 시작하기 위해 기본정보를 입력하는 단계. 사업 정보의 투명성 및 이후 진행 Process의 안정성을 목적으로 전체 항목을 필수값으로 정의.</div>
+
+        <div class="fd-row">
+          <div class="fd-node n-bl"><div class="fd-node-t">사업접수</div></div>
+          <div class="fd-arrow">→</div>
+          <div class="fd-node n-bl"><div class="fd-node-t">신규 프로젝트 생성</div><div class="fd-node-s">사업접수 현황조회 → 신규</div></div>
+          <div class="fd-arrow">→</div>
+          <div class="fd-node n-bl"><div class="fd-node-t">사업정보 등록</div><div class="fd-node-s">필수값 Check 없이 실입력 기준 저장</div></div>
+        </div>
+
+        <div class="fd-fan" style="margin-top:6px;">
+          <div class="fd-fan-rows" style="border-left:2px solid var(--border2); margin-left:52px;">
+            <div class="fd-fan-row">
+              <span class="fd-pill fd-pill-btn"><i data-lucide="mouse-pointer-click"></i>BTN 임시저장</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-pu"><div class="fd-node-t">정보 임시저장</div><div class="fd-node-s">일부 입력 · 일정 필요 시 임시 보관, 필수값 체크 없음</div></div>
+            </div>
+            <div class="fd-fan-row">
+              <span class="fd-pill fd-pill-btn"><i data-lucide="mouse-pointer-click"></i>BTN 프로젝트 생성</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-gr"><div class="fd-node-t">프로젝트 관리</div><div class="fd-node-s">프로젝트 목록 → 프로젝트 상세 → 기본정보</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fd-block">
+        <span class="fd-block-title"><i data-lucide="folder-cog" style="width:14px; height:14px;"></i>② 프로젝트 생성</span>
+        <div class="fd-block-desc">이관된 사업정보는 프로젝트 형태로 재구성되며, 기본정보 / 계약관리 / 투자관리 / 발주관리 / 상환관리의 정보 영역으로 구분. 계약 정보를 기준으로 사업심의 및 계약품의가 진행.</div>
+
+        <div class="fd-sub-t"><i data-lucide="scale" style="width:13px; height:13px;"></i>계약관리 — 사업심의 · 계약품의 상태 흐름</div>
+        <div class="fd-row">
+          <div class="fd-state" style="background:var(--text3);">작성</div>
+          <div class="fd-arrow">→</div>
+          <span class="fd-pill fd-pill-btn"><i data-lucide="mouse-pointer-click"></i>BTN 사업심의 요청</span>
+          <div class="fd-arrow">→</div>
+          <div class="fd-state" style="background:var(--green);">승인</div>
+          <div class="fd-arrow">→</div>
+          <span class="fd-pill fd-pill-btn"><i data-lucide="mouse-pointer-click"></i>BTN 계약 품의 승인</span>
+          <div class="fd-arrow">→</div>
+          <div class="fd-state" style="background:var(--navy);">완료</div>
+        </div>
+        <div class="fd-loop">
+          <i data-lucide="rotate-ccw"></i>
+          <span><strong>반려 시</strong> 이력 적재 후 [작성] 단계로 복귀 — 사업심의 반려는 원인·추가 필요사항을 기재해 재심의 요청, 계약품의 반려는 <strong>BTN 미계약 승인요청</strong>으로 이력 적재 후 재품의 요청</span>
+        </div>
+        <div class="fd-note">
+          <i data-lucide="info"></i>
+          <span><strong>BTN 사업심의 생략</strong> — 심의 생략 후 대기 단계로 진행하며 계약품의 이전 단계로 이동 (사업심의 요청 BTN → 사업승인 으로 변경, 사업심의 생략 BTN은 비활성화)</span>
+        </div>
+
+        <div class="fd-sub-t"><i data-lucide="landmark" style="width:13px; height:13px;"></i>투자관리</div>
+        <div class="fd-row">
+          <div class="fd-node n-gr"><div class="fd-node-t">거래처 List</div></div>
+          <div class="fd-arrow">→</div>
+          <span class="fd-pill fd-pill-func"><i data-lucide="link"></i>FUNC 투자정보 입력</span>
+          <div class="fd-arrow">→</div>
+          <div class="fd-state" style="background:var(--text3); width:48px; height:48px; font-size:12px;">작성</div>
+          <div class="fd-arrow">→</div>
+          <span class="fd-pill fd-pill-func"><i data-lucide="link"></i>FUNC 투자금 지급현황</span>
+          <div class="fd-arrow">→</div>
+          <div class="fd-node n-bl"><div class="fd-node-t">ERP</div><div class="fd-node-s">지급 결과 회신 · 갱신, 이력 적재</div></div>
+        </div>
+
+        <div class="fd-sub-t"><i data-lucide="truck" style="width:13px; height:13px;"></i>발주관리</div>
+        <div class="fd-row">
+          <div class="fd-node n-gr"><div class="fd-node-t">발주 계약 List</div></div>
+          <div class="fd-arrow">→</div>
+          <div class="fd-state" style="background:var(--text3); width:48px; height:48px; font-size:12px;">작성</div>
+          <div class="fd-arrow">→</div>
+          <span class="fd-pill fd-pill-func"><i data-lucide="link"></i>FUNC 발주 계약</span>
+          <div class="fd-arrow">→</div>
+          <div class="fd-node n-pu"><div class="fd-node-t">SRM</div><div class="fd-node-s">발주된 계약완료 정보 연동</div></div>
+        </div>
+
+        <div class="fd-sub-t"><i data-lucide="banknote" style="width:13px; height:13px;"></i>상환관리</div>
+        <div class="fd-row">
+          <div class="fd-node n-gr"><div class="fd-node-t">상환금 요약 / 회수 스케줄</div><div class="fd-node-s">계약정보 기준 자동 노출 · 등록</div></div>
+          <div class="fd-arrow">→</div>
+          <div class="fd-state" style="background:var(--text3); width:48px; height:48px; font-size:12px;">작성</div>
+          <div class="fd-arrow">→</div>
+          <span class="fd-pill fd-pill-func"><i data-lucide="link"></i>FUNC 상환금 입금현황</span>
+          <div class="fd-arrow">→</div>
+          <div class="fd-node n-bl"><div class="fd-node-t">ERP</div><div class="fd-node-s">입금 결과 회신 · 갱신, 이력 적재</div></div>
+        </div>
+      </div>
+
+      <div class="fd-block">
+        <span class="fd-block-title"><i data-lucide="file-signature" style="width:14px; height:14px;"></i>③ 계약관리 (운영 조회)</span>
+        <div class="fd-block-desc">사업 내 발생되는 계약번호를 기준으로 전반 흐름을 확인할 수 있는 운영 기능.</div>
+        <div class="fd-fan">
+          <div class="fd-fan-src"><div class="fd-node n-am"><div class="fd-node-t">계약관리</div></div></div>
+          <div class="fd-fan-rows">
+            <div class="fd-fan-row">
+              <div class="fd-node n-am" style="min-width:130px;"><div class="fd-node-t">수주 계약 목록</div><div class="fd-node-s">프로젝트 단위 계약 정보</div></div>
+              <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>계약 번호</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-bl"><div class="fd-node-t">프로젝트 상세 → 계약관리</div></div>
+            </div>
+            <div class="fd-fan-row">
+              <div class="fd-node n-am" style="min-width:130px;"><div class="fd-node-t">발주 계약 목록</div><div class="fd-node-s">협력업체 계약 정보</div></div>
+              <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>계약 번호</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-bl"><div class="fd-node-t">프로젝트 상세 → 발주 계약관리 → 발주 계약상세</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fd-block">
+        <span class="fd-block-title"><i data-lucide="wallet" style="width:14px; height:14px;"></i>④ 자금관리</span>
+        <div class="fd-block-desc">사업 진행 중 발생되는 자금의 흐름을 확인하기 위한 DATA 조회 기능. 투자(KEPCOES → 지급) · 상환(에너지사용자 → 회수) · 절차(중간 검증 · 근거 확인)로 구성.</div>
+        <div class="fd-fan">
+          <div class="fd-fan-src"><div class="fd-node n-pu"><div class="fd-node-t">자금관리</div></div></div>
+          <div class="fd-fan-rows">
+            <div class="fd-fan-row">
+              <div class="fd-node n-pu" style="min-width:130px;"><div class="fd-node-t">투자비 지급현황</div></div>
+              <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>프로젝트 번호</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-bl"><div class="fd-node-t">프로젝트 상세 → 투자 관리</div></div>
+            </div>
+            <div class="fd-fan-row">
+              <div class="fd-node n-pu" style="min-width:130px;"><div class="fd-node-t">상환 현황</div></div>
+              <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>프로젝트 번호</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-bl"><div class="fd-node-t">프로젝트 상세 → 상환 관리</div></div>
+            </div>
+            <div class="fd-fan-row">
+              <div class="fd-node n-pu" style="min-width:130px;"><div class="fd-node-t">원리금 상환내역</div></div>
+              <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>프로젝트 번호</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-bl"><div class="fd-node-t">프로젝트 상세 → 상환 관리</div></div>
+            </div>
+            <div class="fd-fan-row">
+              <div class="fd-node n-pu" style="min-width:130px;"><div class="fd-node-t">미수금 관리</div></div>
+              <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>프로젝트 번호</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-bl"><div class="fd-node-t">프로젝트 상세 → 상환 관리</div></div>
+            </div>
+            <div class="fd-fan-row">
+              <div class="fd-node n-pu" style="min-width:130px;"><div class="fd-node-t">세금계산서 관리</div></div>
+              <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>계약 번호</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-bl"><div class="fd-node-t">프로젝트 상세 → 투자 관리</div></div>
+            </div>
+            <div class="fd-fan-row">
+              <div class="fd-node n-pu" style="min-width:130px;"><div class="fd-node-t">전표 관리</div></div>
+              <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>계약 번호</span>
+              <div class="fd-arrow">→</div>
+              <div class="fd-node n-bl"><div class="fd-node-t">프로젝트 상세 → 상환 관리</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fd-block">
+        <span class="fd-block-title"><i data-lucide="check-check" style="width:14px; height:14px;"></i>⑤ 사업결산</span>
+        <div class="fd-block-desc">프로젝트 단위 기준하여 완료된 사업에 대한 최종 정보 조회 및 결산. 정상 계약종료 · 계약 해지 등 CASE별 결산 내역을 완료 시점에 확인.</div>
+        <div class="fd-row">
+          <div class="fd-node n-nv"><div class="fd-node-t">사업결산</div></div>
+          <div class="fd-arrow">→</div>
+          <div class="fd-node n-nv"><div class="fd-node-t">완료 프로젝트 목록</div></div>
+          <span class="fd-pill fd-pill-key"><i data-lucide="key"></i>프로젝트 번호</span>
+          <div class="fd-arrow">→</div>
+          <div class="fd-node n-nv"><div class="fd-node-t">프로젝트 결산상세</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex; gap:8px; margin:28px 0 4px; flex-wrap:wrap;">
+      <a class="btn" href="archive/업무프로세스 정의(PMS).png" target="_blank" rel="noopener"><i data-lucide="image" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>원본 이미지 새 창에서 보기</a>
+      <a class="btn" href="archive/업무프로세스 정의(PMS).pdf" target="_blank" rel="noopener"><i data-lucide="file-text" style="width:14px; height:14px; vertical-align:text-bottom; margin-right:4px;"></i>원본 PDF 새 창에서 보기</a>
+    </div>
+  </div>
+</div>
 
     <div class="stbar">
       <span><span class="st-dot"></span>운영 중</span>
@@ -1557,7 +2001,7 @@ function buildMatrix(){
 
 let lastPage = 'proc';
 function showPage(name, el, updateHash = true){
-  const map={proc:'procPage',srm:'srmPage',ebid:'ebidPage',partner:'partnerPage',reg1:'regPage1',reg2:'regPage2',secdoc:'secdocPage'};
+  const map={proc:'procPage',srm:'srmPage',ebid:'ebidPage',partner:'partnerPage',reg1:'regPage1',reg2:'regPage2',secdoc:'secdocPage',pmsdef:'pmsdefPage',pmsflow:'pmsflowPage'};
   if(!map[name]) return;
   document.querySelectorAll('.main > .page').forEach(p=>p.classList.remove('on'));
   document.getElementById(map[name]).classList.add('on');
