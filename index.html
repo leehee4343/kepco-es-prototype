@@ -56,6 +56,9 @@
   --text3:   #5a6e85;
 
   --navy:     #1a3557;
+  --navy-lt:  #e6ecf3;
+  --navy-md:  #7d97b8;
+  --navy-dk:  #12263f;
 
   --blue:     #1a6fc4;
   --blue-lt:  #e8f1fb;
@@ -75,6 +78,9 @@
   --purple:   #5e35b1;
   --purple-lt:#ede7f6;
   --purple-md:#b39ddb;
+  --purple-dk:#5b21b6;
+
+  --line:    #e3e7ee;
 
   --red:     #ef4444;
   --red-lt:  #fdecec;
@@ -373,6 +379,70 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 .fd-fan-row{display:flex;align-items:center;flex-wrap:wrap;row-gap:8px;gap:10px;padding:9px 0 9px 20px;position:relative;}
 .fd-fan-row::before{content:'';position:absolute;left:0;top:50%;width:20px;height:2px;background:var(--border2);}
 .fd-fan-row:not(:last-child){border-bottom:1px dashed var(--border);}
+
+/* ===== SRM SPEC PAGES ===== */
+.role-sec{margin-bottom:30px;}
+.role-sec-hdr{display:flex;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:2px solid var(--rc);margin-bottom:14px;}
+.role-sec-ic{width:32px;height:32px;border-radius:8px;background:var(--rc-lt);color:var(--rc-dk);display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 32px;}
+.role-sec-t{font-size:17px;font-weight:800;color:var(--rc-dk);}
+.role-sec-cnt{margin-left:auto;font-size:12.5px;color:var(--text2);}
+
+details.acc{background:var(--bg2);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden;}
+details.acc[open]{border-color:var(--ac-md);}
+details.acc.lvl1{border-left:4px solid var(--ac);}
+details.acc.lvl2{margin-left:20px;border-left:3px solid var(--line);}
+details.acc.lvl2[open]{border-left-color:var(--ac-md);}
+details.acc.lvl3{margin-left:20px;border-left:3px solid var(--line);}
+summary{padding:12px 16px;cursor:pointer;font-weight:700;font-size:15px;list-style:none;display:flex;align-items:center;gap:8px;}
+summary::-webkit-details-marker{display:none;}
+summary::before{content:'▶';font-size:10px;color:var(--text2);transition:transform .15s;flex:0 0 10px;}
+details[open]>summary::before{transform:rotate(90deg);}
+summary .lvl-tag{font-size:11px;font-weight:700;background:var(--bg);color:var(--text2);border-radius:10px;padding:2px 8px;margin-left:auto;}
+.acc-body{padding:0 16px 16px;}
+
+.leaf-card{padding:14px 16px 16px;}
+.leaf-card .bdg{font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;border:none;}
+.leaf-badges{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.b-sys{background:var(--purple-lt);color:var(--purple-dk);}
+.b-depth{background:var(--bg);color:var(--text2);border:1px solid var(--line) !important;}
+
+.panel-t{font-size:12.5px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.panel-t .dot{width:6px;height:6px;border-radius:50%;background:var(--blue);}
+.func-list{margin:0 0 4px;padding:0;list-style:none;}
+.func-list li{font-size:14.5px;line-height:1.6;padding-left:18px;position:relative;margin-bottom:5px;}
+.func-list li.top::before{content:'●';position:absolute;left:0;top:9px;font-size:5px;color:var(--blue);}
+.func-list li.sub{margin-left:16px;color:var(--text2);font-size:14px;}
+.func-list li.sub::before{content:'–';position:absolute;left:0;color:var(--text2);}
+.func-list li.blank{height:5px;}
+
+.note-panel{background:var(--amber-lt);border:1px solid var(--amber-md);border-radius:10px;padding:12px 14px;margin-top:10px;}
+.note-panel .panel-t{color:var(--amber-dk);margin-bottom:6px;}
+.note-panel .panel-t .dot{background:var(--amber);}
+.note-txt{font-size:13.5px;line-height:1.6;color:#7a4a08;white-space:pre-line;}
+
+.tr-role{font-weight:700;font-size:12px;padding:3px 9px;border-radius:12px;display:inline-block;white-space:nowrap;}
+
+.tab{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--text2);display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.tab:hover{border-color:var(--tc-md);}
+.tab.on{background:var(--tc);color:#fff;border-color:var(--tc);}
+.tab .cnt{font-size:11px;background:rgba(0,0,0,.1);border-radius:10px;padding:1px 7px;}
+.tab.on .cnt{background:rgba(255,255,255,.25);}
+
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 16px;flex:1;min-width:120px;display:flex;align-items:baseline;gap:8px;}
+.stat .v{font-size:19px;font-weight:800;color:var(--blue-dk);}
+.stat .l{font-size:12.5px;color:var(--text2);}
+
+.srm-vbtn{padding:4px 11px;border-radius:5px;font-size:14px;cursor:pointer;border:none;background:transparent;color:var(--text3);font-family:var(--font);transition:all .15s;}
+.srm-vbtn.on{background:var(--bg2);color:var(--text);box-shadow:var(--sh1);}
+
+table.srm-mt{width:100%;border-collapse:collapse;font-size:14px;}
+table.srm-mt th{background:var(--navy-lt);color:var(--navy-dk);text-align:left;padding:10px 12px;font-size:13px;font-weight:700;position:sticky;top:0;white-space:nowrap;border:1px solid var(--border);}
+table.srm-mt td{padding:10px 12px;border:1px solid var(--border);vertical-align:top;}
+table.srm-mt td.wrap{white-space:pre-line;line-height:1.55;font-size:13.5px;}
+table.srm-mt tr:hover td{background:#fafbfd;}
+.view{display:none;}
+.view.on{display:block;}
+.hide{display:none !important;}
 </style>
 <header class="hdr">
   <div class="hdr-l">
@@ -444,6 +514,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
         <div class="nv-num" style="background:var(--amber-lt);color:var(--amber-dk);"><i data-lucide="git-branch"></i></div>
         <div class="nv-lbl">PMS 프로세스 순서도</div>
         <div class="nv-dot" style="background:var(--amber-dk)"></div>
+      </div>
+      <div class="nv" id="nvSrmspec" onclick="showPage('srmspec',this)">
+        <div class="nv-num" style="background:var(--navy-lt);color:var(--navy);"><i data-lucide="list-tree"></i></div>
+        <div class="nv-lbl">메뉴구조 및 기능명세(SRM)</div>
+        <div class="nv-dot" style="background:var(--navy)"></div>
       </div>
       <div id="navList" style="display:none;"></div>
     </div>
@@ -1792,6 +1867,67 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
   </div>
 </div>
 
+<div class="page" id="srmspecPage">
+  <div class="hero">
+    <div class="hero-id" style="color:var(--navy);background:var(--navy-lt);border-color:var(--navy-md);"><i data-lucide="list-tree" style="width:13px; height:13px; stroke-width:2.2px; vertical-align:middle; margin-right:3px;"></i> SRM (전자입찰시스템) &nbsp;·&nbsp; 메뉴구조 및 기능명세</div>
+    <div class="hero-h">SRM 메뉴구조도 및<br>기능명세서</div>
+    <div class="hero-sub">켑코이에스(주) PMS·SRM 통합 플랫폼 재구축에 따른 사용자 역할별 메뉴 구조 및 상세 기능 정의</div>
+    <div class="hero-chips">
+      <div class="hchip"><span class="hchip-dot" style="background:var(--navy)"></span>6개 사용자 역할</div>
+      <div class="hchip">구조도 및 목록 보기</div>
+      <div class="hchip">PMS·ERP·그룹웨어 연계</div>
+      <div class="hchip">총 69개 메뉴/기능 정의</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="sec-t"><span class="n">1</span>메뉴 구조 요약 통계</div>
+    <div class="statbar-content" id="srmStatBar" style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;"></div>
+    
+    <div class="sec-t"><span class="n">2</span>상세 메뉴 및 기능 명세</div>
+    <div class="sec-sub">구조도 보기(Tree) 또는 전체 목록(Table)을 선택하고 필터링할 수 있습니다.</div>
+    
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+      <div class="vtgl" id="srmViewTgl">
+        <button class="srm-vbtn on" id="btnTree" onclick="switchSrmView('outline')">구조도 보기</button>
+        <button class="srm-vbtn" id="btnTable" onclick="switchSrmView('table')">전체 목록</button>
+      </div>
+      <div class="srch" style="margin-left:auto;">
+        <span class="srch-ic"><i data-lucide="search"></i></span>
+        <input type="text" id="srmSearchBox" placeholder="메뉴/기능/비고 검색..." oninput="onSrmSearch(this.value)" style="width:200px;">
+      </div>
+      <a class="btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; background:var(--green-lt); color:var(--green-dk); border-color:var(--green-md);" download="20260707_메뉴구조도_및_기능명세서_SRM_(오탈자수정).xlsx" href="references/20260707_메뉴구조도_및_기능명세서_SRM_(오탈자수정).xlsx">
+        <i data-lucide="download" style="width:14px; height:14px;"></i> 엑셀 다운로드
+      </a>
+    </div>
+    
+    <div class="tabbar-content" id="srmTabBar" style="display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;"></div>
+    
+    <div class="srm-views">
+      <div class="view on" id="viewOutline"></div>
+      <div class="view" id="viewTable">
+        <div class="fcnt" id="tblCnt" style="margin-bottom:10px; font-family:var(--mono); margin-left:2px; color:var(--text3);">총 0건</div>
+        <div class="tbl-wrap" style="overflow-x:auto; border:1px solid var(--border); border-radius:10px;">
+          <table class="srm-mt" style="width:100%; border-collapse:collapse; min-width:800px;">
+            <thead>
+              <tr style="background:var(--bg3); border-bottom:1px solid var(--border);">
+                <th style="padding:10px; text-align:left; font-size:13px; font-weight:700;">역할(구분)</th>
+                <th style="padding:10px; text-align:left; font-size:13px; font-weight:700;">Depth1</th>
+                <th style="padding:10px; text-align:left; font-size:13px; font-weight:700;">Depth2</th>
+                <th style="padding:10px; text-align:left; font-size:13px; font-weight:700;">Depth3</th>
+                <th style="padding:10px; text-align:left; font-size:13px; font-weight:700;">시스템 연계</th>
+                <th style="padding:10px; text-align:left; font-size:13px; font-weight:700; min-width:300px;">기능 정의</th>
+                <th style="padding:10px; text-align:left; font-size:13px; font-weight:700; min-width:180px;">비고</th>
+              </tr>
+            </thead>
+            <tbody id="tblBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     <div class="stbar">
       <span><span class="st-dot"></span>운영 중</span>
       <span>버전: 12차개정</span>
@@ -1893,7 +2029,7 @@ const PH = [
 const bdgCls = {bl:'b-bl',gr:'b-gr',am:'b-am'};
 let allOpen=false, filt='all';
 
-const PAGE_MAP = {proc:'procPage',srm:'srmPage',ebid:'ebidPage',partner:'partnerPage',reg1:'regPage1',reg2:'regPage2',secdoc:'secdocPage',pmsdef:'pmsdefPage',pmsflow:'pmsflowPage'};
+const PAGE_MAP = {proc:'procPage',srm:'srmPage',ebid:'ebidPage',partner:'partnerPage',reg1:'regPage1',reg2:'regPage2',secdoc:'secdocPage',pmsdef:'pmsdefPage',pmsflow:'pmsflowPage',srmspec:'srmspecPage'};
 const SEARCH_PAGES = [
   {key:'proc',    label:'사업관리 업무 절차',      nav:'nvProc'},
   {key:'srm',     label:'입찰 업무절차',           nav:'nvSrm'},
@@ -1904,6 +2040,7 @@ const SEARCH_PAGES = [
   {key:'secdoc',  label:'문서보안SW 적용 비교',     nav:'nvSecDoc'},
   {key:'pmsdef',  label:'업무프로세스 정의(PMS)',   nav:'nvPmsdef'},
   {key:'pmsflow', label:'PMS 프로세스 순서도',      nav:'nvPmsflow'},
+  {key:'srmspec', label:'메뉴구조 및 기능명세(SRM)', nav:'nvSrmspec'},
 ];
 
 function buildNav(){
@@ -2175,7 +2312,183 @@ document.getElementById('mainArea').addEventListener('scroll',function(){
   });
 });
 
-buildNav(); buildFlow(); buildGrid(); buildMatrix(); setView('flow',null); handleRouting(); lucide.createIcons();
+
+/* ===== SRM SPEC DATA & LOGIC ===== */
+
+const ROLE_META = {"협력업체 전용 창구(로그인 전)": {"color": "blue", "icon": "🔓"}, "협력업체 전용 창구(로그인 후)": {"color": "green", "icon": "🏢"}, "사업담당자/계약담당자/관리자": {"color": "amber", "icon": "📊"}, "계약담당자": {"color": "navy", "icon": "📝"}, "사업담당자, 계약담당자": {"color": "red", "icon": "📢"}, "관리자": {"color": "purple", "icon": "⚙️"}};
+const ROLE_ORDER = ["협력업체 전용 창구(로그인 전)", "협력업체 전용 창구(로그인 후)", "사업담당자/계약담당자/관리자", "계약담당자", "사업담당자, 계약담당자", "관리자"];
+const TREE = [{"name": "협력업체 전용 창구(로그인 전)", "children": [{"name": "입찰공고", "children": [{"name": "검색/조회", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "입찰공고", "d2": "검색/조회", "d3": null, "leaf": 2, "sys": null, "func": "· 현재 진행중인 입찰정보(간략정보) 제공\n· 로그인 상태가 아니기 때문에 입찰 참여는 불가능", "note": null}}], "type": "d1"}, {"name": "윤리경영 상담/제보", "children": [], "type": "d1", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "윤리경영 상담/제보", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 윤리경영 상담/제보에 대한 간단한 안내\n· 메일로 접수할 수 있도록 담당자 정보와 메일 주소 안내", "note": "입찰과정에서 비윤리적 활동이 있었다면 신고하는 기능인지, 필요한지 확인 필요"}}, {"name": "협력업체 이용 매뉴얼", "children": [], "type": "d1", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 이용 매뉴얼", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 협력업체 전용 서비스에 대한 매뉴얼\n· 기본은 HTML로 제공하고 PDF로도 다운로드 받을 수 있도록 함", "note": null}}, {"name": "로그인", "children": [], "type": "d1", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "로그인", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 아이디/비밀번호 로그인(승인된 협력업체만 로그인 가능)\n· 승인된 협력업체라도 관리자에 의해 사용여부가 N(사용안함)인 경우 로그인 불가", "note": null}}, {"name": "아이디 찾기", "children": [], "type": "d1", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "아이디 찾기", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 아이디는 사업자등록번호임을 안내", "note": null}}, {"name": "비밀번호 변경", "children": [{"name": "Step#1 정보 확인", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "비밀번호 변경", "d2": "Step#1 정보 확인", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체 신청 시 등록된 정보들을 입력하여 확인 후 비밀번호 변경(사업자등록번호 + 회사명 + 입찰 담당자 이메일)", "note": null}}, {"name": "Step#2 비밀번호 변경", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "비밀번호 변경", "d2": "Step#2 비밀번호 변경", "d3": null, "leaf": 2, "sys": null, "func": "· 기존 비밀번호, 신규 비밀번호, 신규 비밀번호 확인\n· 기존 비밀번호가 일치되면 신규 비밀번호로 변경\n· 변경 후 로그인 화면으로 이동", "note": null}}], "type": "d1"}, {"name": "협력업체 신청", "children": [{"name": "Step#1 약관 및 개인정보 수집 등 동의", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#1 약관 및 개인정보 수집 등 동의", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰 참여를 원하는 기업은 협력업체로의 자격이 부여되어야 함(신청/승인)\n· SRM 사용에 대한 이용약관 동의\n· 개인정보 수집 및 이용에 대한 동의", "note": null}}, {"name": "Step#2 협력업체 기본 정보 등록", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#2 협력업체 기본 정보 등록", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체 기본 정보 등록 : 회사 관련 정보 + 증빙서류(사업자등록증, 법인인감증명서, 면허 등)\n· 면허도 필수 입력값으로 지정되어야 함\n· 신용평가 등급을 선택하는 기능 + 신용평가등급 확인서를 등록하는 기능 추가(필수 아님)", "note": null}}, {"name": "Step#3 입찰 담당자 정보", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#3 입찰 담당자 정보", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰 담당자의 정보 등록\n· 비밀번호는 위의 단계에서 입력해도 되지 않을까 생각됨", "note": null}}, {"name": "Step#4 신청정보 확인", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#4 신청정보 확인", "d3": null, "leaf": 2, "sys": null, "func": "· 신청 시 입력한 모든 정보를 확인(수정가능)\n· 최종제출(협력업체 신청)", "note": null}}, {"name": "Step#5 신청 완료", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#5 신청 완료", "d3": null, "leaf": 2, "sys": null, "func": "· SRM 신청 완료 안내 (승인과정이 필요하다는 안내)\n· 메일 내용 : 신청 완료 안내, 승인과정과 시간이 필요함", "note": null}}], "type": "d1"}], "type": "role"}, {"name": "협력업체 전용 창구(로그인 후)", "children": [{"name": "대시보드", "children": [], "type": "d1", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "대시보드", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· [협력업체]\n공지사항 및 발주 입찰 진행현황확인 화면", "note": null}}, {"name": "공지사항", "children": [{"name": "검색/조회", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "공지사항", "d2": "검색/조회", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체에게 제공하는 공지사항 검색/조회", "note": null}}, {"name": "상세정보", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "공지사항", "d2": "상세정보", "d3": null, "leaf": 2, "sys": null, "func": "· 해당 공지사항의 상세정보", "note": null}}], "type": "d1"}, {"name": "Help Desk", "children": [], "type": "d1", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "Help Desk", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 협력업체가 질문하고 관리자가 답변할 수 있는 기능", "note": "협력업체 대상으로 질문과 답변을 운영할 수 있는지 확인 필요"}}, {"name": "견적관리", "children": [{"name": "견적요청 현황", "children": [{"name": "검색/조회", "children": [], "type": "d3", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "견적관리", "d2": "견적요청 현황", "d3": "검색/조회", "leaf": 3, "sys": null, "func": "· 해당 협력업체에게 견적요청된 건 검색/조회\n· 발주 시작 전 '사전 견적 요청건'과 실제 '견적 요청건'이 한번에 표시되어야 함(재견적 고려)", "note": null}}, {"name": "상세정보", "children": [], "type": "d3", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "견적관리", "d2": "견적요청 현황", "d3": "상세정보", "leaf": 3, "sys": null, "func": "· 견적요청된 상세정보(요청내역, 품목정보) 확인\n· 견적서 제출 기능\n· 견적포기 기능", "note": null}}, {"name": "견적서 제출", "children": [], "type": "d3", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "견적관리", "d2": "견적요청 현황", "d3": "견적서 제출", "leaf": 3, "sys": null, "func": "· 견적서, 견적 참고자료 등록\n· 품목별 단가 등록\n· 등록 후 등록된 내용을 한번 더 확인시키고 '최종 견적 제출' 기능\n· 최종 견적이 제출 되었더라도 견적제출 취소 기능\n· 견적이 제출되었다는 메일 발송", "note": null}}, {"name": "견적 포기", "children": [], "type": "d3", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "견적관리", "d2": "견적요청 현황", "d3": "견적 포기", "leaf": 3, "sys": null, "func": "· 견적포기 기능\n· 견적이 포기되었다는 메일 발송", "note": null}}], "type": "d2"}], "type": "d1"}, {"name": "입찰관리", "children": [{"name": "입찰공고현황", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "입찰관리", "d2": "입찰공고현황", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰정보 검색/조회\n· 입찰 상세정보 제공, 입찰참여 기능으로 전개\n\n· 개찰이 되어버리면 입찰공고에서는 없어짐\n - 과거의 입찰 마감 건 조회 필요\n - 과거의 입찰 정보 : 입찰 공고부터 낙찰 관련 정보까지 보여질 수있는 범위에 대한 고민 필요\n\n· 입찰공고 상세 화면\n - 입찰공고 상세정보\n· 입찰 참여(자가심사/투찰 등)\n - 입찰참여신청 시 서류 업로드(체크리스트 확인)\n - 신청서류 등록 후 참여 신청 \n - 가격 투찰 (추첨번호 4개만 선택 가능)\n - 신청서류 최종제출 후 수정불가\n - 투찰 마감 전 정보 수정 가능 \n - 입찰포기 기능", "note": "입찰참여 기능으로 전개(이건 로그인 이후에 전개되는 건지 확인 필요)"}}, {"name": "입찰결과", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "입찰관리", "d2": "입찰결과", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰 참여 내역에 대한 결과 확인\n - 입찰결과 상세정보 제공\n· 투찰결과 정보 출력 \n - 업체별 투찰 금액 노출\n - 업체정보는 미노출 \n - 투찰한 금액 확인 ", "note": null}}], "type": "d1"}, {"name": "계약관리", "children": [], "type": "d1", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "계약관리", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 해당 협력업체의 계약현황 검색/조회\n· 계약 관련 상세정보 제공\n· 계약 후 보증서 제출\n - 계약 담당자 확인 후 승인 (제출 및 승인상태 조회)", "note": null}}, {"name": "협력업체정보 관리", "children": [{"name": "정보 수정 요청", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "협력업체정보 관리", "d2": "정보 수정 요청", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체 기본 정보는 관리자의 승인을 통해 가능함\n· 기 입력된 정보를 보여주고 수정 가능하게 함\n· 수정요청으로 통해 관리자의 승인을 받아야 함", "note": null}}, {"name": "입찰 담당자 정보 수정", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "협력업체정보 관리", "d2": "입찰 담당자 정보 수정", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰 담당자 정보는 승인 없이 수정할 수 있음", "note": null}}, {"name": "비밀번호 변경", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "협력업체정보 관리", "d2": "비밀번호 변경", "d3": null, "leaf": 2, "sys": null, "func": "· 비밀번호 변경 기능", "note": null}}, {"name": "협력업체 대상 메일 발송", "children": [], "type": "d2", "leafData": {"role": "협력업체 전용 창구(로그인 후)", "d1": "협력업체정보 관리", "d2": "협력업체 대상 메일 발송", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체 대상 메일 발송 기능\n· 메일발송 현황 검색/조회", "note": null}}], "type": "d1"}], "type": "role"}, {"name": "사업담당자/계약담당자/관리자", "children": [{"name": "대시보드", "children": [], "type": "d1", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "대시보드", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· [계약담당자]\n - 공지사항 및 발주 입찰 진행현황확인\n - 캘린더(발주계획,입찰계획), 공지사항 목록 정보 출력\n\n· [사업담당자]\n - 공지사항 및 발주 입찰 진행현황확인\n - 캘린더(발주계획,입찰계획), 공지사항 목록 정보 출력\n\n· [관리자]\n - 시스템 운영 현황 및 주요 통계정보 확인 화면(메뉴사용 내역 등)", "note": null}}, {"name": "사전 견적관리", "children": [{"name": "사전 견적요청", "children": [{"name": "Step#1 견적요청내용 작성", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#1 견적요청내용 작성", "leaf": 3, "sys": null, "func": "예산을 편성하기 위해 협력업체(들)를 선정하여 견적요청하는 기능\n견적요청내용 우선 작성", "note": null}}, {"name": "Step#2 견적에 필요한 품목 선택/작성", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#2 견적에 필요한 품목 선택/작성", "leaf": 3, "sys": null, "func": "· 견적에 필요한 품목 작성(여러 개를 선택할 수 있음)\n· 품목의 상세내용을 입력해야 함\n· 품목을 수동으로 입력하는 기능이 추가되어야 함", "note": "엑셀 업로드 양식 다운로드, 엑셀 업로드 기능이 무엇인지 확인 필요"}}, {"name": "Step#3 추가 전달자료 등록", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#3 추가 전달자료 등록", "leaf": 3, "sys": null, "func": "· 추가 전달자료 등록(파일 등록)", "note": null}}, {"name": "Step#4 견적 요청 업체 선정", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#4 견적 요청 업체 선정", "leaf": 3, "sys": null, "func": "· 견적을 요청할 업체 선정(다수개)", "note": null}}, {"name": "Step#5 견적 마감일시 등록", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#5 견적 마감일시 등록", "leaf": 3, "sys": null, "func": "· 견적 마감일시 등록", "note": null}}, {"name": "Step#6 견적 요청내역 확인", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#6 견적 요청내역 확인", "leaf": 3, "sys": null, "func": "· 현재까지 요청한 모든 내역을 보여줌(수정 가능)\n· 최종제출(견적요청) 기능", "note": null}}, {"name": "Step#7 견적 요청 확인", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#7 견적 요청 확인", "leaf": 3, "sys": null, "func": "· 관리자에게 화면에서 견적이 요청되었다는 내용 안내\n· 견적요청 대상(협력업체)의 담당자에게 메일 발송", "note": null}}], "type": "d2"}, {"name": "사전 견적요청 현황", "children": [{"name": "검색/조회", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청 현황", "d3": "검색/조회", "leaf": 3, "sys": null, "func": "· 해당 협력업체에게 견적요청된 건 검색/조회\n - 제출완료여부 : 2개 / 5개, 모두 들어왔다면 견적완료", "note": null}}, {"name": "상세정보", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청 현황", "d3": "상세정보", "leaf": 3, "sys": null, "func": "· 견적요청된 상세정보(요청내역, 품목정보) 확인\n· 업체별 견적 여부(견적 일시, 견적 여부-견적/견적포기)\n· 견적서 보기 기능(관리자가 등록/수정/포기)", "note": null}}, {"name": "견적서 제출/수정", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청 현황", "d3": "견적서 제출/수정", "leaf": 3, "sys": null, "func": "· 업체별로 견적서 등록하거나 제출된 견적서 수정 가능\n· 견적서, 견적 참고자료 등록\n· 품목별 단가 등록\n· 등록 후 등록된 내용을 한번 더 확인시키고 '최종 견적 제출' 기능\n· 최종 견적이 제출 되었더라도 견적제출 취소 기능\n· 견적이 제출되었다는 메일 발송", "note": null}}, {"name": "견적 포기", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청 현황", "d3": "견적 포기", "leaf": 3, "sys": null, "func": "· 견적포기 기능(견적이 포기되었다는 메일 발송)", "note": null}}], "type": "d2"}], "type": "d1"}, {"name": "발주계약요청", "children": [{"name": "발주계약요청", "children": [{"name": "Step#1 발주계약 기본정보 등록/수정", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청", "d3": "Step#1 발주계약 기본정보 등록/수정", "leaf": 3, "sys": "PMS", "func": "· 발주계약 요청의 주요 정보\n - 계약방법 : 수의계약, 경쟁입찰\n - 낙찰자 선정방법 : 최저가, 제한적최저가, 2단계경쟁입찰(규격·가격 동시), 2단계경쟁입찰(규격·가격 분리), 적격심사\n - 계약기본 정보 : 계약명, 구분(용역·물품구매·공사), 계약예정일, 수주계약명, 추정금액, 계약기간 등\n - 용역·물품구매·공사에 따른 [체크리스트] 제공 : 면허, 납품장소, 계약이행보증금율, 하자이행보증금율, 첨부서류, 품목 등\n\n· 발주계약을 위한 기초정보(검명, 계약예정일 등) 등록\n· 본 발주계약요청 건이 켑코이에스가 수주한 계약 기반으로 발주가 되는 경우라면, PMS에 등록된 수주계약을 호출해서 매핑하는 기능 \n(모든 발주계약이 수주계약과 매핑되는 것은 아님)", "note": null}}, {"name": "Step#2 발주계약요청서 및 품목 등록/수정", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청", "d3": "Step#2 발주계약요청서 및 품목 등록/수정", "leaf": 3, "sys": null, "func": "· 발주계약요청서(기존 발주계약 체크리스트) 등록\n· 이 발주계약이 요청되기 이전 결재된 문서들을 모두 등록\n· 품목 등록(다수개 등록 가능) : 공통품목을 물러오는 기능이 있어야 함", "note": "계약상대자(수의계약경우) 항목은 협력업체 목록에서 선택해야 하는거 아닌지 확인 필요"}}, {"name": "Step#3 발주계약요청내역 확인", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청", "d3": "Step#3 발주계약요청내역 확인", "leaf": 3, "sys": null, "func": "· 등록한 발주계약요청 내역(발주계약요청 내역, 품목 포함)를 확인\n· 전자결재 요청기능", "note": null}}, {"name": "Step#4 전자결재", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청", "d3": "Step#4 전자결재", "leaf": 3, "sys": "그룹웨어", "func": null, "note": null}}], "type": "d2"}, {"name": "발주계약요청 현황", "children": [{"name": "검색/조회", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청 현황", "d3": "검색/조회", "leaf": 3, "sys": null, "func": "· 전체 발주계약요청 내역 검색/조회\n - 발주계약 내용, 상태값, 요청번호 / 계약명, 수주계약번호 등\n - 발주계약상태 : 요청대기, 요청결재중, 요청, 접수, 반려", "note": null}}, {"name": "상세정보", "children": [], "type": "d3", "leafData": {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청 현황", "d3": "상세정보", "leaf": 3, "sys": null, "func": "· 발주계약요청에서 입력한 모든 정보 제공(이 화면에서 수정 불가)\n· 이 메뉴는 발주계약요청 이후를 못보는 사업담당자들에게 제공", "note": null}}], "type": "d2"}], "type": "d1"}], "type": "role"}, {"name": "계약담당자", "children": [{"name": "발주계획", "children": [{"name": "발주계약 요청접수", "children": [], "type": "d2", "leafData": {"role": "계약담당자", "d1": "발주계획", "d2": "발주계약 요청접수", "d3": null, "leaf": 2, "sys": null, "func": "· 사업담당자의 발주계약요청 접수 및 처리 화면\n - 계약담당자가 발주요청 내역 검토\n - 발주요청 내용 검토 후 접수/자료보완/반려 처리 가능 \n - 접수 시 다음 프로세스 이동 \n\n· 발주계약이 요청된 건의 목록/현황 제공\n - 상태 : 요청(발주계약이 요청된 건), 접수(결재가 완료된 건)\n· 전자결재를 통해 최종 처리되면, 상태를 '접수'로 자동화하면 좋음\n - 단, 수동으로 상태를 처리하는 기능도 필요함\n· 계약 담당자 변경 : 계약담당자를 다른 사람에게 위임하고자 할때 활용(많이 사용하지 않음)\n· 기존 화면의 작성자는 '사업담당자'를 의미함(이런 문구들 조정해서 업무의 혼돈을 최소화해야 함)\n· 발주계획리포트 기능은 미개발 되었으며 무시해도 되는 기능\n· 발주계약요청서, 입찰계획서 확인 가능", "note": null}}, {"name": "발주계획 등록", "children": [{"name": "발주계획 처리", "children": [], "type": "d3", "leafData": {"role": "계약담당자", "d1": "발주계획", "d2": "발주계획 등록", "d3": "발주계획 처리", "leaf": 3, "sys": "그룹웨어", "func": "· 접수 사업에 대한 발주계획 등록 화면 \n - 접수 완료된 사업 대상 발주계획 등록→그룹웨어 전자결제 등록\n - 발주 방식,일정,필요서류,계약 대상 업체 정보 입력(수의계약시만)\n - 발주계획 결재이후 입찰 단계 연계(입찰시에만) \n - (수의계약 시) 수의계약프로세스 진행 필요\n - (입찰시) 입찰 프로세스 진행\n\n· 발주계약요청 건의 전자결재가 완료되면, 본 화면으로 정보를 불러옴(넘어올 때에는 '결재완료' 상태임)\n· 발주계약 요청건 중 '접수' 상태가 된 건을 호출하여 불러옴\n - 단, 시스템 영역에서는 복사를 해서 별도의 테이블에 담음(기존의 발주계약 요청 건은 요청상태 그대로 남음)\n· 여기서 계약담당자에 의해 '품의 상세정보', '품목'의 정보들이 수정될 수 있음\n· 발주계획이 수정/검토되면 전자결재로 품의를 진행함\n - 단 수의 계약을 경우 본 기능에서 수의계약의 견적을 요청할 수 있는 기능으로 연동되어야 함\n· 발주계약 요청과 전자결재 없이, 직접 입력해서 바로 발주계획을 등록할 수 있는 기능 필요", "note": "작성중 상태는 어떻게 변경하는지 확인 필요"}}, {"name": "수의계약 견적 관리", "children": [], "type": "d3", "leafData": {"role": "계약담당자", "d1": "발주계획", "d2": "발주계획 등록", "d3": "수의계약 견적 관리", "leaf": 3, "sys": null, "func": "· 수의계약으로 진행하는 건에 대한 견적 관리 기능\n· 업체(들)를 선택해서 견적을 요청하는 기능\n· 단독견적, 다수견적 선택 및 사유입력 기능 필요\n· 견적 프로세스 : 견적요청 > 견적제출 > 선정 > 확정\n - 재견적/재재견적 등이 이루어질 수 있음\n - 선정 후 업체의 사정 등으로 다른 업체(차순위)가 선정될 수 있음\n - 확정되었다고 해도 선정업체(해당 협력업체)에게 통보하는 기능은 위험함\n - 확정 후에는 계약체결을 위한 품의(전자결재)를 올려야 함.(별도로 개발하지는 않고 '입찰 진행' 메뉴로 해당 수의계약 건을 넘겨서 통합 처리함", "note": null}}], "type": "d2"}], "type": "d1"}], "type": "role"}, {"name": "사업담당자, 계약담당자", "children": [{"name": "입찰 관리", "children": [{"name": "입찰계획현황", "children": [{"name": "검색/조회", "children": [], "type": "d3", "leafData": {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰계획현황", "d3": "검색/조회", "leaf": 3, "sys": null, "func": "· 발주계약 중 입찰건에 대한 리스트 조회(수의 계약건도 같이 표시될 필요가 있을 수 있음)\n· 입찰진행 상태값 등 다양한 검색/조회 기능 필요", "note": null}}, {"name": "입찰계획 등록", "children": [], "type": "d3", "leafData": {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰계획현황", "d3": "입찰계획 등록", "leaf": 3, "sys": null, "func": "· 입찰 대상 사업의 입찰계획을 등록하는 화면\n - 발주계획 기반 입찰계획 등록\n - 입찰 방식, 일정, 심사 기준 설정\n - 입찰계획 승인 후 공고 등록 단계 연계 \n - 심사계획 등록 \n - 입찰공고 등록\n· 제한적최저가, 2단계경쟁입찰(규격,가격 분리) 등의 별도의 업체평가를 진행시 입찰마감 일시는 업체평가 종료 후 등록 가능\n\n· 발주계획에 결재를 끝내면 자동으로 넘어올 수 있는 지 확인 필요\n· 단 수동으로 입찰계획현황으로 등록하는 기능은 필요험\n· 입찰계획현황으로 넘어와도 발주계획에 있는 자료는 결재 전 내용이 그대로 유지되어야 함\n· 심사계획의 내용 등록 : 입찰 특성에 따라 전반적인 일정, 제안발표/현장설명회 등의 정보 등록\n· 현장설명회가 있는 경우 일정/장소 제공 필요)\n· 입찰 참여 시 제출해야하는 서류 목록(체크리스트)도 등록/관리할 수 있도록 함(입찰 참여 과정에서 누락없이 서류가 등록될 수 있도록)\n· 입찰심사계획 등록\n - 입찰심사 기준정보를 불러와서 셋팅 가능\n - 해당 입찰에 특화된 심사 항목의 추가/수정 가능\n - 평가 인원, 평가자) 설정 등\n· 재공고 시 신규/수동으로 입찰계획을 등록하는 프로세스는 없어야 함(재공고, 재입찰에 대한 프로세스가 고민되어야 함)\n - 재공고 : 입찰참여 기간 변경, 입찰공고 번호 유지\n - 재입찰 : 입찰가격만 다시 입찰/투찰(예 : 너무 낮게 써서 문제 발생), 과거의 입찰가격은 없어져도 됨)", "note": null}}, {"name": "입찰공고 등록", "children": [], "type": "d3", "leafData": {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰계획현황", "d3": "입찰공고 등록", "leaf": 3, "sys": null, "func": "· 입찰계획에 대한 입찰공고 등록\n - 입찰공고 등록 화면 생성 \n - 입찰공고문 관련 정보 등록\n - 홈페이지 등록 (게시일/참여신청마감/입찰참가마감/안내문)\n· 입찰계획 등록 후 입찰공고 버튼을 통해 등록됨 \n· .입찰공고문은 공지사항(대시보드)에 등록", "note": null}}, {"name": "입찰 예정가 등록", "children": [], "type": "d3", "leafData": {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰계획현황", "d3": "입찰 예정가 등록", "leaf": 3, "sys": null, "func": "· 입찰예정가 설정\n - 예정가격 산출기초조서,예정가격표,예비가격표,복수예비가격표 정보 팝업 생성\n - 최저가 2단계경쟁입찰(규격,가격분리)의 경우 예정가격표\n - 제한적 최저가 입찰의 경우 예비가격표 입력 \n - 복수예비가격표의 경우 계약업무처리 기준의 산정기준 참고하여 구현(협력업체 추첨번호 1개만 선택가능)\n - 예정가격표/예비가격표의 경우 가격 등록자(임원) 계정만 가격 입력가능 \n· 개찰 전에만 등록하면 됨.(임원분들)\n· 예정가 입력은 그룹웨어에 결재라인으로 지정되어있음\n· 예정가를 입력하는 건 투찰 건에 해당 함\n - (최저가)예정가 : 예정가 입력 후 복수예비가격 생성\n - 예비가 입력\n· 전자결재 요청을 하면 결재 완료 후 예정가를 입력할 수 있게 처리 \n  (현재는 그 과정 전에는 저장이 안됨)", "note": null}}], "type": "d2"}, {"name": "입찰공고 현황", "children": [{"name": "검색/조회/상세정보", "children": [], "type": "d3", "leafData": {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰공고 현황", "d3": "검색/조회/상세정보", "leaf": 3, "sys": null, "func": "· 입찰에 참여 신청한 업체 현황 조회\n - 입찰공고 목록 제공 : 입찰공고 관련 정보, 입찰참여 마감일시 등\n - 입찰참여 업체 목록 제공\n - 입찰참여 내역 : 참여신청 일시/제출서류 정보 등\n· 심사 종료 후 참여업체 대상 결과 전송(메일 발송)\n· 입찰공고를 업체를 선정하여 메일로 직접 전달 하는 기능 필요\n· 입찰참여를 한 업체를 대상으로 메일 발송 기능 필요\n· 유찰 시 재공고 기능(어떤 프로세스에 해당 기능이 들어갈 지 고민 필요)", "note": null}}, {"name": "입찰심사", "children": [], "type": "d3", "leafData": {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰공고 현황", "d3": "입찰심사", "leaf": 3, "sys": null, "func": "· 입찰참여신청 업체에대해 심사 및 평가 기능\n - 입찰심사 항목 및 평가자 선택\n - 해당 입찰 건의 심사담당자 대상으로 심사 기능 제공\n - 심사대상 입찰 선택→평가업체 선택→업체심사→제출\n· 심사항목, 평가자, 심사시작 및 종료일시 등 입력 → 심사시작 클릭 \n· 평가자가 점수 입력하면 취합해서 업체참여신청현황에 점수가 표기\n· 평가자 선정시 해당 평가자에게 평가 정보 전송 \n· 평가자별 진행여부 확인 ", "note": null}}], "type": "d2"}, {"name": "입찰결과 현황", "children": [{"name": "개찰", "children": [], "type": "d3", "leafData": {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰결과 현황", "d3": "개찰", "leaf": 3, "sys": null, "func": "· 투찰 금액 개찰 실행\n - 해당 입찰공고에 대한 협력업체의 입찰참여여부 출력\n - 입찰참여일시 / 견적서 첨부여부 등 정보 출력 \n· 입찰마감 이후 개찰 : 예정가, 입찰금액, 낙찰하한율, 낙찰하한금액  등 제공(예정가 관리에서 산출된 예정가 불러옴)\n· 입찰마감일시 이후 자동마감(수동 마감도 필요) 후 개찰 활성화\n\n· 개찰이 유효하지 않은 경우(예 : 낙찰 하한율보다 낮게 되는 경우) 재입찰 등이 처리되어야 함\n· '재공고' 처리기능 필요(어떤 프로세스에서 재공고를 처리해야 할지 확인 필요)\n· 수의시담 : 두번 유찰 이후 에는 수의 계약으로 전환 필요\n - 수의시담 기능이 필요한지 여부 확인 필요\n -  수의시담(일시) 내역 등록 기능", "note": "재공고' 처리기능 필요(어떤 프로세스에서 재공고를 처리해야 할지 확인 필요)\n\n· 수의시담 : 두번 유찰 이후 에는 수의 계약으로 전환 필요\n - 수의시담 기능이 필요한지 여부 확인 필요\n -  수의시담(일시) 내역 등록 기능"}}, {"name": "낙찰(업체선정)", "children": [], "type": "d3", "leafData": {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰결과 현황", "d3": "낙찰(업체선정)", "leaf": 3, "sys": "그룹웨어", "func": "· 개찰결과 기반으로 최종 낙찰 업체 선정 \n - 업체별 견적 현황 및 낙찰결과 출력\n· 우선협상대상자 선정 및 공지(메일/문자 등) \n· 협상 이후 낙찰자 선정 및 공지(메일/문자 등)\n· 낙찰/탈락 공지(메일/문자) \n· 그룹웨어 전자결제 생성(발주계약 품의)\n - 전자결재 추가(기존에 해당 결재 기능 없음)", "note": null}}], "type": "d2"}], "type": "d1"}, {"name": "계약 관리", "children": [{"name": "발주계약 현황", "children": [], "type": "d2", "leafData": {"role": "사업담당자, 계약담당자", "d1": "계약 관리", "d2": "발주계약 현황", "d3": null, "leaf": 2, "sys": null, "func": "· 체결된 발주계약 목록 및 계약 상세 내용 검색/조회\n· 입찰/수의계약 절차 종료 후 체결된 발주계약 검색/조회", "note": null}}, {"name": "계약 처리", "children": [], "type": "d2", "leafData": {"role": "사업담당자, 계약담당자", "d1": "계약 관리", "d2": "계약 처리", "d3": null, "leaf": 2, "sys": "PMS", "func": "· 발주계약에 대한 계약서, 보증서 등 계약서류 제출 및 여부 확인\n - 계약서 등록 클릭시 첨부파일 등록\n - 계약서 등록 후 체결 버튼 클릭(체결완료로 상태값 변경)\n - 계약체결 이후 보증서 제출 및 승인/미제출 상태값 변경 등\n - 승인/미제출 상태값 변경 시 협력업체 메일전송\n· 발주계약 체결 완료 시 PMS 정보 전송", "note": null}}], "type": "d1"}], "type": "role"}, {"name": "관리자", "children": [{"name": "협력업체 관리", "children": [{"name": "신청/변경 요청 처리", "children": [{"name": "검색/목록", "children": [], "type": "d3", "leafData": {"role": "관리자", "d1": "협력업체 관리", "d2": "신청/변경 요청 처리", "d3": "검색/목록", "leaf": 3, "sys": null, "func": "· 협력업체 신규 신청 건 검색/조회(처리상태 : 신청완료)\n· 협력업체의 기본정보 수정 요청 건 검색/조회(처리상태 : 정보수정요청", "note": null}}], "type": "d2"}, {"name": "상세정보 및 추가 설정", "children": [{"name": "상세화면", "children": [], "type": "d3", "leafData": {"role": "관리자", "d1": "협력업체 관리", "d2": "상세정보 및 추가 설정", "d3": "상세화면", "leaf": 3, "sys": null, "func": "· 신청 시 입력한 정보 확인 및 수정\n· 관리자의 검토 후 추가 정보 입력 : 소싱그룹 설정, 신용평가등급, 사용여부 설정\n· 승인/거절 처리(승인 또는 거절 시 메일 발송)\n· 승인/거절 처리 이력(승인/거절, 승인/거절일시, 처리자) 정보 제공\n· 거래처 매핑 : 필요에 따라 사용하며, ERP에 등록된 거래처 정보와 \n· 비밀번호 초기화 : 난수의 비밀번호를 생성해서 메일로 발송\n· 해당 업체 코드를 매핑함", "note": null}}], "type": "d2", "leafData": {"role": "관리자", "d1": "협력업체 관리", "d2": "상세정보 및 추가 설정", "d3": null, "leaf": 2, "sys": null, "func": "· 신청 시 입력한 정보 확인 및 수정\n· 관리자의 검토 후 추가 정보 입력 : 소싱그룹 설정, 신용평가등급, 사용여부 설정\n· 승인/거절 처리(승인 또는 거절 시 메일 발송)\n· 승인/거절 처리 이력(승인/거절, 승인/거절일시, 처리자) 정보 제공\n· 거래처 매핑 : 필요에 따라 사용하며, ERP에 등록된 거래처 정보와 \n· 비밀번호 초기화 : 난수의 비밀번호를 생성해서 메일로 발송\n· 해당 업체 코드를 매핑함", "note": null}}, {"name": "검색/조회", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "협력업체 관리", "d2": "검색/조회", "d3": null, "leaf": 2, "sys": null, "func": "· 모든 협력업체 검색/조회\n· 처리상태 : 신청완료, 정보수정요청, 승인, 거절\n· 사용여부 설정으로 로그인을 통제할 수 있음", "note": null}}, {"name": "발주계약 체결현황", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "협력업체 관리", "d2": "발주계약 체결현황", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체별 발주계약 체결 건수 및 현황 화면 이동", "note": null}}], "type": "d1"}, {"name": "기준정보 관리", "children": [{"name": "공통 품목관리", "children": [{"name": "품목 검색/조회", "children": [], "type": "d3", "leafData": {"role": "관리자", "d1": "기준정보 관리", "d2": "공통 품목관리", "d3": "품목 검색/조회", "leaf": 3, "sys": null, "func": "· 견적 등에 공통적으로 사용되는 품목을 미리 설정해 두는 기능", "note": null}}, {"name": "등록/수정", "children": [], "type": "d3", "leafData": {"role": "관리자", "d1": "기준정보 관리", "d2": "공통 품목관리", "d3": "등록/수정", "leaf": 3, "sys": null, "func": "· 품목을 등록/수정하는 기능", "note": "입력된 품목 상세정보 중 대부분 일부 정보만 입력되어있는데, 모든 정보의 등록이 필요한지 확인 필요"}}, {"name": "삭제", "children": [], "type": "d3", "leafData": {"role": "관리자", "d1": "기준정보 관리", "d2": "공통 품목관리", "d3": "삭제", "leaf": 3, "sys": null, "func": "· 등록된 품목 정보 삭제", "note": null}}], "type": "d2"}, {"name": "소싱그룹 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "기준정보 관리", "d2": "소싱그룹 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 소싱그룹으로 선택되어야 할 대분류, 중분류, 소분류를 관리하는 기능", "note": null}}, {"name": "입찰심사 기준정보 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "기준정보 관리", "d2": "입찰심사 기준정보 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰심사 항목 및 배점 생성 \n - 입찰심사 항목 생성 \n - 입찰심사 항목에 대한 배점 입력 \n\n· 심사기준정보 : 평가항목/배점/점수를 자유롭게 바꿀 수 있어야 함\n· 공사/용역/물품 등을 기준으로 미리 설정할 수 있음", "note": null}}, {"name": "개찰/낙찰 기준정보 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "기준정보 관리", "d2": "개찰/낙찰 기준정보 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 개찰/낙찰 기준정보 설정 \n - 개찰 조건 생성\n - 낙찰 조건 생성 \n\n· 계약담당자에게 개찰/낙찰 조건이 있는지 한번 더 체크하기 위한 기존 기능\n· 개찰 낙찰하는 과정에서 담당자가 확인해야할 사항 메모 기능", "note": "계약담당자에게 개찰/낙찰 조건이 있는지 한번 더 체크하기 위한 기존 기능의 필요여부 확인 필요\n개찰 낙찰하는 과정에서 담당자가 확인해야할 사항을 메모해두는 기능"}}, {"name": "메일/SMS 발송내용 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "기준정보 관리", "d2": "메일/SMS 발송내용 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 각 상황마다 협력업체에게 제공되는 메일/SMS 발송내용 관리", "note": null}}], "type": "d1"}, {"name": "공통관리(설정)", "children": [{"name": "관리자 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "관리자 관리", "d3": null, "leaf": 2, "sys": "그룹웨어", "func": "· 그룹웨어의 관리자(직원) 정보를 연동하여 목록/상세정보 제공\n· 사용여부, 접속아이피 등 별도 관리\n· 관리자(직원) 정보에 권한을 매핑하여 사용", "note": null}}, {"name": "권한그룹 및 메뉴별 권한 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "권한그룹 및 메뉴별 권한 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 권한그룹 생성 : 메뉴별 접근 권한 그룹을 생성\n· 권한그룹 검색/조회\n· 권한그룹에 관리자(직원) 매핑 : 다수개의 권한 그룹에 매핑 가능\n· 권한그룹 삭제 : 삭제 유의사항 제공(컨펌 박스)", "note": null}}, {"name": "시스템 권한 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "시스템 권한 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 메뉴별 권한 그룹으로 해결되지 않는 업무\n - 예) PMS의 경우 변경요청 처리/관리 업무 \n - 예) SRM의 경우 예정가격 입력/관리 업무", "note": null}}, {"name": "접속 아이피(IP) 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "접속 아이피(IP) 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 본 시스템에 접근할 수 있는 IP(외부IP) 관리\n· 계정정보(아이디/비밀번호)가 일치하더라도 허용된 IP가 아니면 로그인 불가", "note": null}}, {"name": "코드관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "코드관리", "d3": null, "leaf": 2, "sys": null, "func": "· 시스템 내에서 활용(입력 서식, 처리상태 등)하는 선택정보를 코드로 관리하여 시스템의 확장성 제공\n· 기본 3단계(Depth)의 코드관리 체계 구축(개발 시 필요하다면 4단계로 확장할 수 있음)", "note": null}}, {"name": "로그인 현황", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "로그인 현황", "d3": null, "leaf": 2, "sys": null, "func": "· 본 시스템에 로그인 한 횟수를 기반으로 일/월/연도 기반으로 추이(그래프)와 로우 데이터 제공", "note": null}}, {"name": "메뉴별 접속현황", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "메뉴별 접속현황", "d3": null, "leaf": 2, "sys": null, "func": "· 본 시스템의 메뉴별 접속 횟수(페이지 뷰)를 기반으로 일/월/연도 기반으로 추이(그래프)와 로우 데이터 제공", "note": null}}, {"name": "거래처 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "거래처 관리", "d3": null, "leaf": 2, "sys": null, "func": "· ERP에 등록된 거래처 정보를 연동하여 목록/상세정보 제공\n· PMS에서 사용되는 추가정보 관리 : 신용등급, 부채비율, 기업매출, 시공경험, 근로자 수 등\n· ERP의 거래처 고유정보와 연동하여 일원화 하여 향후 지급/상환 등의 상황에서 연동 관리할 수 있는 기반 마련", "note": null}}, {"name": "공지사항 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "공지사항 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 시스템을 이용하는 사람을 대상으로 한 공지사항\nSRM의 경우 협력업체 공지사항도 포함해서 제공할 수 있도록 함", "note": null}}, {"name": "양식 등 자료실 관리", "children": [], "type": "d2", "leafData": {"role": "관리자", "d1": "공통관리(설정)", "d2": "양식 등 자료실 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 시스템을 이용하는 사람을 대상으로 한 자료실\nSRM의 경우 협력업체 자료실도 포함해서 제공할 수 있도록 함", "note": null}}], "type": "d1"}], "type": "role"}];
+const RECORDS = [{"role": "협력업체 전용 창구(로그인 전)", "d1": "입찰공고", "d2": "검색/조회", "d3": null, "leaf": 2, "sys": null, "func": "· 현재 진행중인 입찰정보(간략정보) 제공\n· 로그인 상태가 아니기 때문에 입찰 참여는 불가능", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "윤리경영 상담/제보", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 윤리경영 상담/제보에 대한 간단한 안내\n· 메일로 접수할 수 있도록 담당자 정보와 메일 주소 안내", "note": "입찰과정에서 비윤리적 활동이 있었다면 신고하는 기능인지, 필요한지 확인 필요"}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 이용 매뉴얼", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 협력업체 전용 서비스에 대한 매뉴얼\n· 기본은 HTML로 제공하고 PDF로도 다운로드 받을 수 있도록 함", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "로그인", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 아이디/비밀번호 로그인(승인된 협력업체만 로그인 가능)\n· 승인된 협력업체라도 관리자에 의해 사용여부가 N(사용안함)인 경우 로그인 불가", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "아이디 찾기", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 아이디는 사업자등록번호임을 안내", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "비밀번호 변경", "d2": "Step#1 정보 확인", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체 신청 시 등록된 정보들을 입력하여 확인 후 비밀번호 변경(사업자등록번호 + 회사명 + 입찰 담당자 이메일)", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "비밀번호 변경", "d2": "Step#2 비밀번호 변경", "d3": null, "leaf": 2, "sys": null, "func": "· 기존 비밀번호, 신규 비밀번호, 신규 비밀번호 확인\n· 기존 비밀번호가 일치되면 신규 비밀번호로 변경\n· 변경 후 로그인 화면으로 이동", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#1 약관 및 개인정보 수집 등 동의", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰 참여를 원하는 기업은 협력업체로의 자격이 부여되어야 함(신청/승인)\n· SRM 사용에 대한 이용약관 동의\n· 개인정보 수집 및 이용에 대한 동의", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#2 협력업체 기본 정보 등록", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체 기본 정보 등록 : 회사 관련 정보 + 증빙서류(사업자등록증, 법인인감증명서, 면허 등)\n· 면허도 필수 입력값으로 지정되어야 함\n· 신용평가 등급을 선택하는 기능 + 신용평가등급 확인서를 등록하는 기능 추가(필수 아님)", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#3 입찰 담당자 정보", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰 담당자의 정보 등록\n· 비밀번호는 위의 단계에서 입력해도 되지 않을까 생각됨", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#4 신청정보 확인", "d3": null, "leaf": 2, "sys": null, "func": "· 신청 시 입력한 모든 정보를 확인(수정가능)\n· 최종제출(협력업체 신청)", "note": null}, {"role": "협력업체 전용 창구(로그인 전)", "d1": "협력업체 신청", "d2": "Step#5 신청 완료", "d3": null, "leaf": 2, "sys": null, "func": "· SRM 신청 완료 안내 (승인과정이 필요하다는 안내)\n· 메일 내용 : 신청 완료 안내, 승인과정과 시간이 필요함", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "대시보드", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· [협력업체]\n공지사항 및 발주 입찰 진행현황확인 화면", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "공지사항", "d2": "검색/조회", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체에게 제공하는 공지사항 검색/조회", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "공지사항", "d2": "상세정보", "d3": null, "leaf": 2, "sys": null, "func": "· 해당 공지사항의 상세정보", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "Help Desk", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 협력업체가 질문하고 관리자가 답변할 수 있는 기능", "note": "협력업체 대상으로 질문과 답변을 운영할 수 있는지 확인 필요"}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "견적관리", "d2": "견적요청 현황", "d3": "검색/조회", "leaf": 3, "sys": null, "func": "· 해당 협력업체에게 견적요청된 건 검색/조회\n· 발주 시작 전 '사전 견적 요청건'과 실제 '견적 요청건'이 한번에 표시되어야 함(재견적 고려)", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "견적관리", "d2": "견적요청 현황", "d3": "상세정보", "leaf": 3, "sys": null, "func": "· 견적요청된 상세정보(요청내역, 품목정보) 확인\n· 견적서 제출 기능\n· 견적포기 기능", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "견적관리", "d2": "견적요청 현황", "d3": "견적서 제출", "leaf": 3, "sys": null, "func": "· 견적서, 견적 참고자료 등록\n· 품목별 단가 등록\n· 등록 후 등록된 내용을 한번 더 확인시키고 '최종 견적 제출' 기능\n· 최종 견적이 제출 되었더라도 견적제출 취소 기능\n· 견적이 제출되었다는 메일 발송", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "견적관리", "d2": "견적요청 현황", "d3": "견적 포기", "leaf": 3, "sys": null, "func": "· 견적포기 기능\n· 견적이 포기되었다는 메일 발송", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "입찰관리", "d2": "입찰공고현황", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰정보 검색/조회\n· 입찰 상세정보 제공, 입찰참여 기능으로 전개\n\n· 개찰이 되어버리면 입찰공고에서는 없어짐\n - 과거의 입찰 마감 건 조회 필요\n - 과거의 입찰 정보 : 입찰 공고부터 낙찰 관련 정보까지 보여질 수있는 범위에 대한 고민 필요\n\n· 입찰공고 상세 화면\n - 입찰공고 상세정보\n· 입찰 참여(자가심사/투찰 등)\n - 입찰참여신청 시 서류 업로드(체크리스트 확인)\n - 신청서류 등록 후 참여 신청 \n - 가격 투찰 (추첨번호 4개만 선택 가능)\n - 신청서류 최종제출 후 수정불가\n - 투찰 마감 전 정보 수정 가능 \n - 입찰포기 기능", "note": "입찰참여 기능으로 전개(이건 로그인 이후에 전개되는 건지 확인 필요)"}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "입찰관리", "d2": "입찰결과", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰 참여 내역에 대한 결과 확인\n - 입찰결과 상세정보 제공\n· 투찰결과 정보 출력 \n - 업체별 투찰 금액 노출\n - 업체정보는 미노출 \n - 투찰한 금액 확인 ", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "계약관리", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· 해당 협력업체의 계약현황 검색/조회\n· 계약 관련 상세정보 제공\n· 계약 후 보증서 제출\n - 계약 담당자 확인 후 승인 (제출 및 승인상태 조회)", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "협력업체정보 관리", "d2": "정보 수정 요청", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체 기본 정보는 관리자의 승인을 통해 가능함\n· 기 입력된 정보를 보여주고 수정 가능하게 함\n· 수정요청으로 통해 관리자의 승인을 받아야 함", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "협력업체정보 관리", "d2": "입찰 담당자 정보 수정", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰 담당자 정보는 승인 없이 수정할 수 있음", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "협력업체정보 관리", "d2": "비밀번호 변경", "d3": null, "leaf": 2, "sys": null, "func": "· 비밀번호 변경 기능", "note": null}, {"role": "협력업체 전용 창구(로그인 후)", "d1": "협력업체정보 관리", "d2": "협력업체 대상 메일 발송", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체 대상 메일 발송 기능\n· 메일발송 현황 검색/조회", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "대시보드", "d2": null, "d3": null, "leaf": 1, "sys": null, "func": "· [계약담당자]\n - 공지사항 및 발주 입찰 진행현황확인\n - 캘린더(발주계획,입찰계획), 공지사항 목록 정보 출력\n\n· [사업담당자]\n - 공지사항 및 발주 입찰 진행현황확인\n - 캘린더(발주계획,입찰계획), 공지사항 목록 정보 출력\n\n· [관리자]\n - 시스템 운영 현황 및 주요 통계정보 확인 화면(메뉴사용 내역 등)", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#1 견적요청내용 작성", "leaf": 3, "sys": null, "func": "예산을 편성하기 위해 협력업체(들)를 선정하여 견적요청하는 기능\n견적요청내용 우선 작성", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#2 견적에 필요한 품목 선택/작성", "leaf": 3, "sys": null, "func": "· 견적에 필요한 품목 작성(여러 개를 선택할 수 있음)\n· 품목의 상세내용을 입력해야 함\n· 품목을 수동으로 입력하는 기능이 추가되어야 함", "note": "엑셀 업로드 양식 다운로드, 엑셀 업로드 기능이 무엇인지 확인 필요"}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#3 추가 전달자료 등록", "leaf": 3, "sys": null, "func": "· 추가 전달자료 등록(파일 등록)", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#4 견적 요청 업체 선정", "leaf": 3, "sys": null, "func": "· 견적을 요청할 업체 선정(다수개)", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#5 견적 마감일시 등록", "leaf": 3, "sys": null, "func": "· 견적 마감일시 등록", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#6 견적 요청내역 확인", "leaf": 3, "sys": null, "func": "· 현재까지 요청한 모든 내역을 보여줌(수정 가능)\n· 최종제출(견적요청) 기능", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청", "d3": "Step#7 견적 요청 확인", "leaf": 3, "sys": null, "func": "· 관리자에게 화면에서 견적이 요청되었다는 내용 안내\n· 견적요청 대상(협력업체)의 담당자에게 메일 발송", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청 현황", "d3": "검색/조회", "leaf": 3, "sys": null, "func": "· 해당 협력업체에게 견적요청된 건 검색/조회\n - 제출완료여부 : 2개 / 5개, 모두 들어왔다면 견적완료", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청 현황", "d3": "상세정보", "leaf": 3, "sys": null, "func": "· 견적요청된 상세정보(요청내역, 품목정보) 확인\n· 업체별 견적 여부(견적 일시, 견적 여부-견적/견적포기)\n· 견적서 보기 기능(관리자가 등록/수정/포기)", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청 현황", "d3": "견적서 제출/수정", "leaf": 3, "sys": null, "func": "· 업체별로 견적서 등록하거나 제출된 견적서 수정 가능\n· 견적서, 견적 참고자료 등록\n· 품목별 단가 등록\n· 등록 후 등록된 내용을 한번 더 확인시키고 '최종 견적 제출' 기능\n· 최종 견적이 제출 되었더라도 견적제출 취소 기능\n· 견적이 제출되었다는 메일 발송", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "사전 견적관리", "d2": "사전 견적요청 현황", "d3": "견적 포기", "leaf": 3, "sys": null, "func": "· 견적포기 기능(견적이 포기되었다는 메일 발송)", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청", "d3": "Step#1 발주계약 기본정보 등록/수정", "leaf": 3, "sys": "PMS", "func": "· 발주계약 요청의 주요 정보\n - 계약방법 : 수의계약, 경쟁입찰\n - 낙찰자 선정방법 : 최저가, 제한적최저가, 2단계경쟁입찰(규격·가격 동시), 2단계경쟁입찰(규격·가격 분리), 적격심사\n - 계약기본 정보 : 계약명, 구분(용역·물품구매·공사), 계약예정일, 수주계약명, 추정금액, 계약기간 등\n - 용역·물품구매·공사에 따른 [체크리스트] 제공 : 면허, 납품장소, 계약이행보증금율, 하자이행보증금율, 첨부서류, 품목 등\n\n· 발주계약을 위한 기초정보(검명, 계약예정일 등) 등록\n· 본 발주계약요청 건이 켑코이에스가 수주한 계약 기반으로 발주가 되는 경우라면, PMS에 등록된 수주계약을 호출해서 매핑하는 기능 \n(모든 발주계약이 수주계약과 매핑되는 것은 아님)", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청", "d3": "Step#2 발주계약요청서 및 품목 등록/수정", "leaf": 3, "sys": null, "func": "· 발주계약요청서(기존 발주계약 체크리스트) 등록\n· 이 발주계약이 요청되기 이전 결재된 문서들을 모두 등록\n· 품목 등록(다수개 등록 가능) : 공통품목을 물러오는 기능이 있어야 함", "note": "계약상대자(수의계약경우) 항목은 협력업체 목록에서 선택해야 하는거 아닌지 확인 필요"}, {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청", "d3": "Step#3 발주계약요청내역 확인", "leaf": 3, "sys": null, "func": "· 등록한 발주계약요청 내역(발주계약요청 내역, 품목 포함)를 확인\n· 전자결재 요청기능", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청", "d3": "Step#4 전자결재", "leaf": 3, "sys": "그룹웨어", "func": null, "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청 현황", "d3": "검색/조회", "leaf": 3, "sys": null, "func": "· 전체 발주계약요청 내역 검색/조회\n - 발주계약 내용, 상태값, 요청번호 / 계약명, 수주계약번호 등\n - 발주계약상태 : 요청대기, 요청결재중, 요청, 접수, 반려", "note": null}, {"role": "사업담당자/계약담당자/관리자", "d1": "발주계약요청", "d2": "발주계약요청 현황", "d3": "상세정보", "leaf": 3, "sys": null, "func": "· 발주계약요청에서 입력한 모든 정보 제공(이 화면에서 수정 불가)\n· 이 메뉴는 발주계약요청 이후를 못보는 사업담당자들에게 제공", "note": null}, {"role": "계약담당자", "d1": "발주계획", "d2": "발주계약 요청접수", "d3": null, "leaf": 2, "sys": null, "func": "· 사업담당자의 발주계약요청 접수 및 처리 화면\n - 계약담당자가 발주요청 내역 검토\n - 발주요청 내용 검토 후 접수/자료보완/반려 처리 가능 \n - 접수 시 다음 프로세스 이동 \n\n· 발주계약이 요청된 건의 목록/현황 제공\n - 상태 : 요청(발주계약이 요청된 건), 접수(결재가 완료된 건)\n· 전자결재를 통해 최종 처리되면, 상태를 '접수'로 자동화하면 좋음\n - 단, 수동으로 상태를 처리하는 기능도 필요함\n· 계약 담당자 변경 : 계약담당자를 다른 사람에게 위임하고자 할때 활용(많이 사용하지 않음)\n· 기존 화면의 작성자는 '사업담당자'를 의미함(이런 문구들 조정해서 업무의 혼돈을 최소화해야 함)\n· 발주계획리포트 기능은 미개발 되었으며 무시해도 되는 기능\n· 발주계약요청서, 입찰계획서 확인 가능", "note": null}, {"role": "계약담당자", "d1": "발주계획", "d2": "발주계획 등록", "d3": "발주계획 처리", "leaf": 3, "sys": "그룹웨어", "func": "· 접수 사업에 대한 발주계획 등록 화면 \n - 접수 완료된 사업 대상 발주계획 등록→그룹웨어 전자결제 등록\n - 발주 방식,일정,필요서류,계약 대상 업체 정보 입력(수의계약시만)\n - 발주계획 결재이후 입찰 단계 연계(입찰시에만) \n - (수의계약 시) 수의계약프로세스 진행 필요\n - (입찰시) 입찰 프로세스 진행\n\n· 발주계약요청 건의 전자결재가 완료되면, 본 화면으로 정보를 불러옴(넘어올 때에는 '결재완료' 상태임)\n· 발주계약 요청건 중 '접수' 상태가 된 건을 호출하여 불러옴\n - 단, 시스템 영역에서는 복사를 해서 별도의 테이블에 담음(기존의 발주계약 요청 건은 요청상태 그대로 남음)\n· 여기서 계약담당자에 의해 '품의 상세정보', '품목'의 정보들이 수정될 수 있음\n· 발주계획이 수정/검토되면 전자결재로 품의를 진행함\n - 단 수의 계약을 경우 본 기능에서 수의계약의 견적을 요청할 수 있는 기능으로 연동되어야 함\n· 발주계약 요청과 전자결재 없이, 직접 입력해서 바로 발주계획을 등록할 수 있는 기능 필요", "note": "작성중 상태는 어떻게 변경하는지 확인 필요"}, {"role": "계약담당자", "d1": "발주계획", "d2": "발주계획 등록", "d3": "수의계약 견적 관리", "leaf": 3, "sys": null, "func": "· 수의계약으로 진행하는 건에 대한 견적 관리 기능\n· 업체(들)를 선택해서 견적을 요청하는 기능\n· 단독견적, 다수견적 선택 및 사유입력 기능 필요\n· 견적 프로세스 : 견적요청 > 견적제출 > 선정 > 확정\n - 재견적/재재견적 등이 이루어질 수 있음\n - 선정 후 업체의 사정 등으로 다른 업체(차순위)가 선정될 수 있음\n - 확정되었다고 해도 선정업체(해당 협력업체)에게 통보하는 기능은 위험함\n - 확정 후에는 계약체결을 위한 품의(전자결재)를 올려야 함.(별도로 개발하지는 않고 '입찰 진행' 메뉴로 해당 수의계약 건을 넘겨서 통합 처리함", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰계획현황", "d3": "검색/조회", "leaf": 3, "sys": null, "func": "· 발주계약 중 입찰건에 대한 리스트 조회(수의 계약건도 같이 표시될 필요가 있을 수 있음)\n· 입찰진행 상태값 등 다양한 검색/조회 기능 필요", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰계획현황", "d3": "입찰계획 등록", "leaf": 3, "sys": null, "func": "· 입찰 대상 사업의 입찰계획을 등록하는 화면\n - 발주계획 기반 입찰계획 등록\n - 입찰 방식, 일정, 심사 기준 설정\n - 입찰계획 승인 후 공고 등록 단계 연계 \n - 심사계획 등록 \n - 입찰공고 등록\n· 제한적최저가, 2단계경쟁입찰(규격,가격 분리) 등의 별도의 업체평가를 진행시 입찰마감 일시는 업체평가 종료 후 등록 가능\n\n· 발주계획에 결재를 끝내면 자동으로 넘어올 수 있는 지 확인 필요\n· 단 수동으로 입찰계획현황으로 등록하는 기능은 필요험\n· 입찰계획현황으로 넘어와도 발주계획에 있는 자료는 결재 전 내용이 그대로 유지되어야 함\n· 심사계획의 내용 등록 : 입찰 특성에 따라 전반적인 일정, 제안발표/현장설명회 등의 정보 등록\n· 현장설명회가 있는 경우 일정/장소 제공 필요)\n· 입찰 참여 시 제출해야하는 서류 목록(체크리스트)도 등록/관리할 수 있도록 함(입찰 참여 과정에서 누락없이 서류가 등록될 수 있도록)\n· 입찰심사계획 등록\n - 입찰심사 기준정보를 불러와서 셋팅 가능\n - 해당 입찰에 특화된 심사 항목의 추가/수정 가능\n - 평가 인원, 평가자) 설정 등\n· 재공고 시 신규/수동으로 입찰계획을 등록하는 프로세스는 없어야 함(재공고, 재입찰에 대한 프로세스가 고민되어야 함)\n - 재공고 : 입찰참여 기간 변경, 입찰공고 번호 유지\n - 재입찰 : 입찰가격만 다시 입찰/투찰(예 : 너무 낮게 써서 문제 발생), 과거의 입찰가격은 없어져도 됨)", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰계획현황", "d3": "입찰공고 등록", "leaf": 3, "sys": null, "func": "· 입찰계획에 대한 입찰공고 등록\n - 입찰공고 등록 화면 생성 \n - 입찰공고문 관련 정보 등록\n - 홈페이지 등록 (게시일/참여신청마감/입찰참가마감/안내문)\n· 입찰계획 등록 후 입찰공고 버튼을 통해 등록됨 \n· .입찰공고문은 공지사항(대시보드)에 등록", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰계획현황", "d3": "입찰 예정가 등록", "leaf": 3, "sys": null, "func": "· 입찰예정가 설정\n - 예정가격 산출기초조서,예정가격표,예비가격표,복수예비가격표 정보 팝업 생성\n - 최저가 2단계경쟁입찰(규격,가격분리)의 경우 예정가격표\n - 제한적 최저가 입찰의 경우 예비가격표 입력 \n - 복수예비가격표의 경우 계약업무처리 기준의 산정기준 참고하여 구현(협력업체 추첨번호 1개만 선택가능)\n - 예정가격표/예비가격표의 경우 가격 등록자(임원) 계정만 가격 입력가능 \n· 개찰 전에만 등록하면 됨.(임원분들)\n· 예정가 입력은 그룹웨어에 결재라인으로 지정되어있음\n· 예정가를 입력하는 건 투찰 건에 해당 함\n - (최저가)예정가 : 예정가 입력 후 복수예비가격 생성\n - 예비가 입력\n· 전자결재 요청을 하면 결재 완료 후 예정가를 입력할 수 있게 처리 \n  (현재는 그 과정 전에는 저장이 안됨)", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰공고 현황", "d3": "검색/조회/상세정보", "leaf": 3, "sys": null, "func": "· 입찰에 참여 신청한 업체 현황 조회\n - 입찰공고 목록 제공 : 입찰공고 관련 정보, 입찰참여 마감일시 등\n - 입찰참여 업체 목록 제공\n - 입찰참여 내역 : 참여신청 일시/제출서류 정보 등\n· 심사 종료 후 참여업체 대상 결과 전송(메일 발송)\n· 입찰공고를 업체를 선정하여 메일로 직접 전달 하는 기능 필요\n· 입찰참여를 한 업체를 대상으로 메일 발송 기능 필요\n· 유찰 시 재공고 기능(어떤 프로세스에 해당 기능이 들어갈 지 고민 필요)", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰공고 현황", "d3": "입찰심사", "leaf": 3, "sys": null, "func": "· 입찰참여신청 업체에대해 심사 및 평가 기능\n - 입찰심사 항목 및 평가자 선택\n - 해당 입찰 건의 심사담당자 대상으로 심사 기능 제공\n - 심사대상 입찰 선택→평가업체 선택→업체심사→제출\n· 심사항목, 평가자, 심사시작 및 종료일시 등 입력 → 심사시작 클릭 \n· 평가자가 점수 입력하면 취합해서 업체참여신청현황에 점수가 표기\n· 평가자 선정시 해당 평가자에게 평가 정보 전송 \n· 평가자별 진행여부 확인 ", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰결과 현황", "d3": "개찰", "leaf": 3, "sys": null, "func": "· 투찰 금액 개찰 실행\n - 해당 입찰공고에 대한 협력업체의 입찰참여여부 출력\n - 입찰참여일시 / 견적서 첨부여부 등 정보 출력 \n· 입찰마감 이후 개찰 : 예정가, 입찰금액, 낙찰하한율, 낙찰하한금액  등 제공(예정가 관리에서 산출된 예정가 불러옴)\n· 입찰마감일시 이후 자동마감(수동 마감도 필요) 후 개찰 활성화\n\n· 개찰이 유효하지 않은 경우(예 : 낙찰 하한율보다 낮게 되는 경우) 재입찰 등이 처리되어야 함\n· '재공고' 처리기능 필요(어떤 프로세스에서 재공고를 처리해야 할지 확인 필요)\n· 수의시담 : 두번 유찰 이후 에는 수의 계약으로 전환 필요\n - 수의시담 기능이 필요한지 여부 확인 필요\n -  수의시담(일시) 내역 등록 기능", "note": "재공고' 처리기능 필요(어떤 프로세스에서 재공고를 처리해야 할지 확인 필요)\n\n· 수의시담 : 두번 유찰 이후 에는 수의 계약으로 전환 필요\n - 수의시담 기능이 필요한지 여부 확인 필요\n -  수의시담(일시) 내역 등록 기능"}, {"role": "사업담당자, 계약담당자", "d1": "입찰 관리", "d2": "입찰결과 현황", "d3": "낙찰(업체선정)", "leaf": 3, "sys": "그룹웨어", "func": "· 개찰결과 기반으로 최종 낙찰 업체 선정 \n - 업체별 견적 현황 및 낙찰결과 출력\n· 우선협상대상자 선정 및 공지(메일/문자 등) \n· 협상 이후 낙찰자 선정 및 공지(메일/문자 등)\n· 낙찰/탈락 공지(메일/문자) \n· 그룹웨어 전자결제 생성(발주계약 품의)\n - 전자결재 추가(기존에 해당 결재 기능 없음)", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "계약 관리", "d2": "발주계약 현황", "d3": null, "leaf": 2, "sys": null, "func": "· 체결된 발주계약 목록 및 계약 상세 내용 검색/조회\n· 입찰/수의계약 절차 종료 후 체결된 발주계약 검색/조회", "note": null}, {"role": "사업담당자, 계약담당자", "d1": "계약 관리", "d2": "계약 처리", "d3": null, "leaf": 2, "sys": "PMS", "func": "· 발주계약에 대한 계약서, 보증서 등 계약서류 제출 및 여부 확인\n - 계약서 등록 클릭시 첨부파일 등록\n - 계약서 등록 후 체결 버튼 클릭(체결완료로 상태값 변경)\n - 계약체결 이후 보증서 제출 및 승인/미제출 상태값 변경 등\n - 승인/미제출 상태값 변경 시 협력업체 메일전송\n· 발주계약 체결 완료 시 PMS 정보 전송", "note": null}, {"role": "관리자", "d1": "협력업체 관리", "d2": "신청/변경 요청 처리", "d3": "검색/목록", "leaf": 3, "sys": null, "func": "· 협력업체 신규 신청 건 검색/조회(처리상태 : 신청완료)\n· 협력업체의 기본정보 수정 요청 건 검색/조회(처리상태 : 정보수정요청", "note": null}, {"role": "관리자", "d1": "협력업체 관리", "d2": "상세정보 및 추가 설정", "d3": "상세화면", "leaf": 3, "sys": null, "func": "· 신청 시 입력한 정보 확인 및 수정\n· 관리자의 검토 후 추가 정보 입력 : 소싱그룹 설정, 신용평가등급, 사용여부 설정\n· 승인/거절 처리(승인 또는 거절 시 메일 발송)\n· 승인/거절 처리 이력(승인/거절, 승인/거절일시, 처리자) 정보 제공\n· 거래처 매핑 : 필요에 따라 사용하며, ERP에 등록된 거래처 정보와 \n· 비밀번호 초기화 : 난수의 비밀번호를 생성해서 메일로 발송\n· 해당 업체 코드를 매핑함", "note": null}, {"role": "관리자", "d1": "협력업체 관리", "d2": "검색/조회", "d3": null, "leaf": 2, "sys": null, "func": "· 모든 협력업체 검색/조회\n· 처리상태 : 신청완료, 정보수정요청, 승인, 거절\n· 사용여부 설정으로 로그인을 통제할 수 있음", "note": null}, {"role": "관리자", "d1": "협력업체 관리", "d2": "상세정보 및 추가 설정", "d3": null, "leaf": 2, "sys": null, "func": "· 신청 시 입력한 정보 확인 및 수정\n· 관리자의 검토 후 추가 정보 입력 : 소싱그룹 설정, 신용평가등급, 사용여부 설정\n· 승인/거절 처리(승인 또는 거절 시 메일 발송)\n· 승인/거절 처리 이력(승인/거절, 승인/거절일시, 처리자) 정보 제공\n· 거래처 매핑 : 필요에 따라 사용하며, ERP에 등록된 거래처 정보와 \n· 비밀번호 초기화 : 난수의 비밀번호를 생성해서 메일로 발송\n· 해당 업체 코드를 매핑함", "note": null}, {"role": "관리자", "d1": "협력업체 관리", "d2": "발주계약 체결현황", "d3": null, "leaf": 2, "sys": null, "func": "· 협력업체별 발주계약 체결 건수 및 현황 화면 이동", "note": null}, {"role": "관리자", "d1": "기준정보 관리", "d2": "공통 품목관리", "d3": "품목 검색/조회", "leaf": 3, "sys": null, "func": "· 견적 등에 공통적으로 사용되는 품목을 미리 설정해 두는 기능", "note": null}, {"role": "관리자", "d1": "기준정보 관리", "d2": "공통 품목관리", "d3": "등록/수정", "leaf": 3, "sys": null, "func": "· 품목을 등록/수정하는 기능", "note": "입력된 품목 상세정보 중 대부분 일부 정보만 입력되어있는데, 모든 정보의 등록이 필요한지 확인 필요"}, {"role": "관리자", "d1": "기준정보 관리", "d2": "공통 품목관리", "d3": "삭제", "leaf": 3, "sys": null, "func": "· 등록된 품목 정보 삭제", "note": null}, {"role": "관리자", "d1": "기준정보 관리", "d2": "소싱그룹 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 소싱그룹으로 선택되어야 할 대분류, 중분류, 소분류를 관리하는 기능", "note": null}, {"role": "관리자", "d1": "기준정보 관리", "d2": "입찰심사 기준정보 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 입찰심사 항목 및 배점 생성 \n - 입찰심사 항목 생성 \n - 입찰심사 항목에 대한 배점 입력 \n\n· 심사기준정보 : 평가항목/배점/점수를 자유롭게 바꿀 수 있어야 함\n· 공사/용역/물품 등을 기준으로 미리 설정할 수 있음", "note": null}, {"role": "관리자", "d1": "기준정보 관리", "d2": "개찰/낙찰 기준정보 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 개찰/낙찰 기준정보 설정 \n - 개찰 조건 생성\n - 낙찰 조건 생성 \n\n· 계약담당자에게 개찰/낙찰 조건이 있는지 한번 더 체크하기 위한 기존 기능\n· 개찰 낙찰하는 과정에서 담당자가 확인해야할 사항 메모 기능", "note": "계약담당자에게 개찰/낙찰 조건이 있는지 한번 더 체크하기 위한 기존 기능의 필요여부 확인 필요\n개찰 낙찰하는 과정에서 담당자가 확인해야할 사항을 메모해두는 기능"}, {"role": "관리자", "d1": "기준정보 관리", "d2": "메일/SMS 발송내용 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 각 상황마다 협력업체에게 제공되는 메일/SMS 발송내용 관리", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "관리자 관리", "d3": null, "leaf": 2, "sys": "그룹웨어", "func": "· 그룹웨어의 관리자(직원) 정보를 연동하여 목록/상세정보 제공\n· 사용여부, 접속아이피 등 별도 관리\n· 관리자(직원) 정보에 권한을 매핑하여 사용", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "권한그룹 및 메뉴별 권한 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 권한그룹 생성 : 메뉴별 접근 권한 그룹을 생성\n· 권한그룹 검색/조회\n· 권한그룹에 관리자(직원) 매핑 : 다수개의 권한 그룹에 매핑 가능\n· 권한그룹 삭제 : 삭제 유의사항 제공(컨펌 박스)", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "시스템 권한 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 메뉴별 권한 그룹으로 해결되지 않는 업무\n - 예) PMS의 경우 변경요청 처리/관리 업무 \n - 예) SRM의 경우 예정가격 입력/관리 업무", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "접속 아이피(IP) 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 본 시스템에 접근할 수 있는 IP(외부IP) 관리\n· 계정정보(아이디/비밀번호)가 일치하더라도 허용된 IP가 아니면 로그인 불가", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "코드관리", "d3": null, "leaf": 2, "sys": null, "func": "· 시스템 내에서 활용(입력 서식, 처리상태 등)하는 선택정보를 코드로 관리하여 시스템의 확장성 제공\n· 기본 3단계(Depth)의 코드관리 체계 구축(개발 시 필요하다면 4단계로 확장할 수 있음)", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "로그인 현황", "d3": null, "leaf": 2, "sys": null, "func": "· 본 시스템에 로그인 한 횟수를 기반으로 일/월/연도 기반으로 추이(그래프)와 로우 데이터 제공", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "메뉴별 접속현황", "d3": null, "leaf": 2, "sys": null, "func": "· 본 시스템의 메뉴별 접속 횟수(페이지 뷰)를 기반으로 일/월/연도 기반으로 추이(그래프)와 로우 데이터 제공", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "거래처 관리", "d3": null, "leaf": 2, "sys": null, "func": "· ERP에 등록된 거래처 정보를 연동하여 목록/상세정보 제공\n· PMS에서 사용되는 추가정보 관리 : 신용등급, 부채비율, 기업매출, 시공경험, 근로자 수 등\n· ERP의 거래처 고유정보와 연동하여 일원화 하여 향후 지급/상환 등의 상황에서 연동 관리할 수 있는 기반 마련", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "공지사항 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 시스템을 이용하는 사람을 대상으로 한 공지사항\nSRM의 경우 협력업체 공지사항도 포함해서 제공할 수 있도록 함", "note": null}, {"role": "관리자", "d1": "공통관리(설정)", "d2": "양식 등 자료실 관리", "d3": null, "leaf": 2, "sys": null, "func": "· 시스템을 이용하는 사람을 대상으로 한 자료실\nSRM의 경우 협력업체 자료실도 포함해서 제공할 수 있도록 함", "note": null}];
+function roleColor(role){ return (ROLE_META[role] && ROLE_META[role].color) || 'blue'; }
+function roleIcon(role){ return (ROLE_META[role] && ROLE_META[role].icon) || '📁'; }
+function countLeaves(node){
+  if(node.leafData && (!node.children || node.children.length===0)) return 1;
+  let c = node.leafData ? 1 : 0;
+  (node.children||[]).forEach(ch=> c += countLeaves(ch));
+  return c;
+}
+let currentSrmRole = '전체';
+function buildSrmStats(){
+  const total = RECORDS.length;
+  const sysCount = RECORDS.filter(r=>r.sys).length;
+  const noteCount = RECORDS.filter(r=>r.note).length;
+  document.getElementById('srmStatBar').innerHTML = `
+    <div class="stat"><span class="v">${total}</span><span class="l">총 메뉴/기능 항목</span></div>
+    <div class="stat"><span class="v">${ROLE_ORDER.length}</span><span class="l">역할(구분)</span></div>
+    <div class="stat"><span class="v">${sysCount}</span><span class="l">시스템 연계 항목</span></div>
+    <div class="stat"><span class="v">${noteCount}</span><span class="l">확인 필요(비고) 항목</span></div>
+  `;
+}
+function buildSrmTabs(){
+  let html = `<div class="tab on" style="--tc:var(--navy-dk);--tc-md:var(--navy-md);" data-role="전체" onclick="selectSrmRole('전체')">전체 <span class="cnt">${RECORDS.length}</span></div>`;
+  TREE.forEach(roleNode=>{
+    const col = roleColor(roleNode.name);
+    const cnt = countLeaves(roleNode);
+    html += `<div class="tab" style="--tc:var(--${col});--tc-md:var(--${col}-md);" data-role="${escapeHtml(roleNode.name)}" onclick="selectSrmRole('${roleNode.name.replace(/'/g,"\\'")}')">
+      ${roleIcon(roleNode.name)} ${escapeHtml(roleNode.name)} <span class="cnt">${cnt}</span></div>`;
+  });
+  document.getElementById('srmTabBar').innerHTML = html;
+}
+function selectSrmRole(name){
+  currentSrmRole = name;
+  document.querySelectorAll('#srmTabBar .tab').forEach(t=> t.classList.toggle('on', t.dataset.role===name));
+  renderSrmOutline();
+  switchSrmView('outline');
+}
+function funcListHTML(func){
+  if(!func) return '<div style="color:var(--text2);font-size:13.5px;">등록된 기능 정의가 없습니다.</div>';
+  const lines = func.split('\n');
+  let html = '<ul class="func-list">';
+  lines.forEach(line=>{
+    const t = line.trim();
+    if(t===''){ html += '<li class="blank"></li>'; return; }
+    if(t.startsWith('·')){
+      html += `<li class="top">${escapeHtml(t.replace(/^·\s*/,''))}</li>`;
+    } else if(t.startsWith('-')){
+      html += `<li class="sub">${escapeHtml(t.replace(/^-\s*/,''))}</li>`;
+    } else {
+      html += `<li class="top">${escapeHtml(t)}</li>`;
+    }
+  });
+  html += '</ul>';
+  return html;
+}
+function leafCardHTML(data, depthLabel){
+  let badges = `<span class="bdg b-depth">${depthLabel}</span>`;
+  if(data.sys) badges += `<span class="bdg b-sys">🔗 시스템 연계: ${escapeHtml(data.sys)}</span>`;
+  let noteHtml = '';
+  if(data.note){
+    noteHtml = `<div class="note-panel"><div class="panel-t"><span class="dot"></span>비고 / 확인 필요 사항</div>
+      <div class="note-txt">${escapeHtml(data.note)}</div></div>`;
+  }
+  return `<div class="leaf-card">
+    <div class="leaf-badges">${badges}</div>
+    <div class="panel-t"><span class="dot"></span>기능 정의</div>
+    ${funcListHTML(data.func)}
+    ${noteHtml}
+  </div>`;
+}
+function nodeHTML(node, level){
+  const hasChildren = node.children && node.children.length>0;
+  const depthLabel = ['','Depth1','Depth2','Depth3'][level];
+  if(!hasChildren){
+    // pure leaf node rendered as a static accordion (always meaningful to show, default open for lvl1 only)
+    const openAttr = level===1 ? 'open' : '';
+    return `<details class="acc lvl${level}" ${openAttr}>
+      <summary>${escapeHtml(node.name)}<span class="lvl-tag">${depthLabel}</span></summary>
+      <div class="acc-body">${leafCardHTML(node.leafData, depthLabel)}</div>
+    </details>`;
+  }
+  let childrenHtml = '';
+  if(node.leafData){
+    childrenHtml += leafCardHTML(node.leafData, depthLabel);
+  }
+  node.children.forEach(ch=> childrenHtml += nodeHTML(ch, level+1));
+  return `<details class="acc lvl${level}">
+    <summary>${escapeHtml(node.name)}<span class="lvl-tag">${depthLabel} 그룹</span></summary>
+    <div class="acc-body">${childrenHtml}</div>
+  </details>`;
+}
+function renderSrmOutline(){
+  const target = document.getElementById('viewOutline');
+  let html = '';
+  const roles = currentSrmRole==='전체' ? TREE : TREE.filter(r=>r.name===currentSrmRole);
+  roles.forEach(roleNode=>{
+    const col = roleColor(roleNode.name);
+    const cnt = countLeaves(roleNode);
+    html += `<div class="role-sec" style="--rc:var(--${col});--rc-lt:var(--${col}-lt);--rc-dk:var(--${col}-dk);--ac:var(--${col});--ac-md:var(--${col}-md);">
+      <div class="role-sec-hdr">
+        <div class="role-sec-ic">${roleIcon(roleNode.name)}</div>
+        <div class="role-sec-t">${escapeHtml(roleNode.name)}</div>
+        <div class="role-sec-cnt">${cnt}개 기능</div>
+      </div>`;
+    (roleNode.children||[]).forEach(d1=> html += nodeHTML(d1, 1));
+    html += `</div>`;
+  });
+  target.innerHTML = html;
+}
+function switchSrmView(name){
+  document.querySelectorAll('#srmspecPage .view').forEach(v=>v.classList.remove('on'));
+  document.getElementById('btnTree').classList.remove('on');
+  document.getElementById('btnTable').classList.remove('on');
+  document.getElementById('srmTabBar').style.display = (name==='outline') ? 'flex' : 'none';
+  if(name==='outline'){
+    document.getElementById('viewOutline').classList.add('on');
+    document.getElementById('btnTree').classList.add('on');
+  } else {
+    document.getElementById('viewTable').classList.add('on');
+    document.getElementById('btnTable').classList.add('on');
+  }
+  document.getElementById('mainArea').scrollTo({top:0});
+}
+function buildSrmTable(list){
+  const body = document.getElementById('tblBody');
+  let rows = '';
+  list.forEach(r=>{
+    const col = roleColor(r.role);
+    rows += `<tr>
+      <td><span class="tr-role" style="background:var(--${col}-lt);color:var(--${col}-dk);">${escapeHtml(r.role)}</span></td>
+      <td>${escapeHtml(r.d1||'')}</td>
+      <td>${escapeHtml(r.d2||'')}</td>
+      <td>${escapeHtml(r.d3||'')}</td>
+      <td>${escapeHtml(r.sys||'')}</td>
+      <td class="wrap">${escapeHtml(r.func||'')}</td>
+      <td class="wrap">${escapeHtml(r.note||'')}</td>
+    </tr>`;
+  });
+  body.innerHTML = rows;
+  document.getElementById('tblCnt').textContent = `총 ${list.length}건`;
+}
+function onSrmSearch(kw){
+  kw = kw.trim().toLowerCase();
+  if(kw===''){
+    renderSrmOutline();
+    buildSrmTable(RECORDS);
+    return;
+  }
+  // outline: filter by hiding non-matching accordions, auto-open matches
+  renderSrmOutline();
+  document.querySelectorAll('#viewOutline details.acc').forEach(det=>{
+    const text = det.textContent.toLowerCase();
+    const match = text.includes(kw);
+    det.classList.toggle('hide', !match);
+    if(match) det.open = true;
+  });
+  document.querySelectorAll('#viewOutline .role-sec').forEach(sec=>{
+    const anyVisible = Array.from(sec.querySelectorAll('details.acc.lvl1')).some(d=>!d.classList.contains('hide'));
+    sec.classList.toggle('hide', !anyVisible);
+  });
+  // table
+  const filtered = RECORDS.filter(r=> JSON.stringify(r).toLowerCase().includes(kw));
+  buildSrmTable(filtered);
+}
+buildSrmStats();
+buildSrmTabs();
+renderSrmOutline();
+buildSrmTable(RECORDS);
+
+
+buildNav(); buildFlow(); buildGrid(); buildMatrix(); setView('flow',null); handleRouting(); buildSrmStats(); buildSrmTabs(); renderSrmOutline(); buildSrmTable(RECORDS); lucide.createIcons();
 
 /* ── 용어의 정의 ── */
 const TERMS = [
